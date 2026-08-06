@@ -1,0 +1,737 @@
+/* ==========================================================
+   LEADERSHIP SECTION
+========================================================== */
+
+.section {
+  position: relative;
+  padding: 70px 50px;
+  background-color: #fdfdfc;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.heading {
+  font-family: var(--font-playfair);
+  color: #1a1a1a;
+  font-size: 48px;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: .5px;
+  line-height: 1.15;
+  margin-bottom: 22px;
+}
+
+.headingAccent {
+  color: #E53945;
+}
+
+.description {
+  color: #5a5a5a;
+max-width: 100%;
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   SWIPER
+========================================================== */
+
+.slider{
+    overflow:hidden;
+    padding-bottom:88px;
+}
+
+.slider :global(.swiper-wrapper){
+    align-items:flex-end;
+}
+
+.slider :global(.swiper-slide){
+    height:auto;
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card{
+
+    position:relative;
+
+    cursor:pointer;
+
+    width:310px;
+
+    flex-shrink:0;
+
+    transition:width .45s ease, transform .45s ease, box-shadow .45s ease;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+    min-height:520px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.imageWrapper{
+
+    position:relative;
+
+    height:520px;
+
+}
+
+.image{
+
+    object-fit:cover;
+
+    filter:grayscale(1);
+
+    transition:filter .7s ease, transform .7s ease;
+
+}
+
+.card:hover .image{
+
+    transform:scale(1.08);
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        180deg,
+
+        rgba(0,0,0,0),
+
+        rgba(0,0,0,.35),
+
+        rgba(0,0,0,.65)
+
+    );
+
+    transition:.45s;
+
+}
+
+.card:hover .overlay{
+
+    background:linear-gradient(
+
+        180deg,
+
+        rgba(0,0,0,.05),
+
+        rgba(0,0,0,.45),
+
+        rgba(0,0,0,.75)
+
+    );
+
+}
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.cardContent{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    padding:28px;
+
+    z-index:3;
+
+}
+
+.name{
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    margin-bottom:0px;
+
+}
+
+.designation{
+
+    color:rgba(255,255,255,.9);
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+/* ==========================================================
+   PLAY BUTTON
+========================================================== */
+
+.playButton{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#ffffff;
+
+    color:#000;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transition:opacity .3s ease;
+
+    z-index:5;
+
+}
+
+.activeCard .playButton{
+
+    opacity:1;
+
+    background:#E53945;
+
+    color:#fff;
+
+    transition:opacity .3s ease .45s, background .3s ease;
+
+}
+
+.activeCard .playButton:hover{
+
+    background:#c72f39;
+
+}
+/* ==========================================================
+   ACTIVE CARD
+========================================================== */
+
+.activeCard {
+
+    width:480px;
+
+    box-shadow: 0 30px 70px rgba(0,0,0,.28);
+
+}
+
+.activeCard .overlay {
+
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.75)
+    );
+
+}
+
+.activeCard .image {
+
+    filter:grayscale(0);
+
+}
+
+/* ==========================================================
+   QUOTE
+========================================================== */
+
+.quoteBlock{
+
+    margin-top:14px;
+
+}
+
+.quoteIcon{
+
+    display:block;
+
+    font-family:var(--font-playfair);
+
+    color:#E53945;
+
+    font-size:34px;
+
+    line-height:1;
+
+    margin-bottom:4px;
+
+}
+
+.quoteText{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:14px;
+
+    font-style:italic;
+
+    line-height:1.5;
+
+}
+
+/* ==========================================================
+   VIDEO MODAL
+========================================================== */
+
+.modalOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.85);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 9999;
+
+    padding: 40px;
+
+    animation: fadeIn .35s ease;
+
+}
+
+.modal {
+
+    position: relative;
+
+    width: min(1200px,95vw);
+
+    aspect-ratio: 16/9;
+
+    background: #000;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+.videoFrame {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+}
+
+.noVideo {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: 22px;
+
+}
+
+.closeButton {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 18px;
+
+    width: 44px;
+
+    height: 44px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.15);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    z-index: 10;
+
+    transition: .35s ease;
+
+}
+
+.closeButton:hover {
+
+    background: #fff;
+
+    color: #000;
+
+}
+/* ==========================================================
+   SWIPER NAVIGATION
+========================================================== */
+
+.slider :global(.swiper-button-next),
+.slider :global(.swiper-button-prev){
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    top:auto;
+
+    bottom:0;
+
+    margin-top:0;
+
+    transition:.35s ease;
+
+}
+
+.slider :global(.swiper-button-prev),
+.slider :global(.swiper-button-next){
+
+    background:transparent;
+
+    border:1px solid rgba(0,0,0,.25);
+
+    color:#1a1a1a;
+
+}
+
+.slider :global(.swiper-button-prev){
+
+    left:auto;
+
+    right:76px;
+
+}
+
+.slider :global(.swiper-button-next){
+
+    right:0;
+
+}
+
+.slider :global(.swiper-button-next:hover),
+.slider :global(.swiper-button-prev:hover){
+
+    background:#E53945;
+
+    border-color:#E53945;
+
+    color:#fff;
+
+}
+
+.slider :global(.swiper-button-next::after),
+.slider :global(.swiper-button-prev::after){
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:1400px){
+
+.heading{
+
+font-size:48px;
+
+}
+
+.imageWrapper{
+
+height:470px;
+
+}
+
+.card{
+
+width:250px;
+
+min-height:470px;
+
+}
+
+.activeCard{
+
+width:420px;
+
+}
+
+}
+
+@media(max-width:1200px){
+
+.section{
+
+padding:90px 0;
+
+}
+
+.heading{
+
+font-size:42px;
+
+}
+
+.description{
+
+font-size:18px;
+
+margin-bottom:50px;
+
+}
+
+.imageWrapper{
+
+height:430px;
+
+}
+
+.card{
+
+width:220px;
+
+min-height:430px;
+
+}
+
+.activeCard{
+
+width:380px;
+
+}
+
+}
+
+@media(max-width:992px){
+
+.heading{
+
+font-size:38px;
+
+text-align:center;
+
+}
+
+.description{
+
+text-align:center;
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+.imageWrapper{
+
+height:420px;
+
+}
+
+.card{
+
+width:260px;
+
+min-height:420px;
+
+}
+
+.activeCard{
+
+width:340px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.section{
+
+padding:70px 0;
+
+}
+
+.heading{
+
+font-size:32px;
+
+}
+
+.description{
+
+font-size:16px;
+
+}
+
+.imageWrapper{
+
+height:420px;
+
+}
+
+.card{
+
+width:220px;
+
+min-height:420px;
+
+}
+
+.activeCard{
+
+width:280px;
+
+}
+
+.modalOverlay{
+
+padding:20px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.heading{
+
+font-size:28px;
+
+}
+
+.imageWrapper{
+
+height:360px;
+
+}
+
+.card{
+
+width:78vw;
+
+min-height:360px;
+
+}
+
+.activeCard{
+
+width:88vw;
+
+}
+
+.name{
+
+font-size:22px;
+
+}
+
+.designation{
+
+font-size:14px;
+
+}
+
+.playButton{
+
+width:60px;
+
+height:60px;
+
+font-size:22px;
+
+}
+
+}

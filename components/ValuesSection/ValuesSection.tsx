@@ -21,9 +21,9 @@ export default function ValuesSection({
   return (
     <section className={styles.valuesSection}>
 
-      <div className="container">
-
-        <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.wrapper}>
 
           {/* LEFT */}
 
@@ -70,8 +70,8 @@ export default function ValuesSection({
           </div>
 
         </div>
-
       </div>
+    </div>
 
     </section>
   );

@@ -1,0 +1,312 @@
+/* ===========================================
+   VALUES SECTION
+=========================================== */
+
+.valuesSection {
+  background: #ffffff;
+  padding: 70px 0 0px;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  width: max(100%, 1440px);
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  min-height: auto;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* ===========================================
+   LEFT
+=========================================== */
+
+.left {
+  position: relative;
+  min-height: auto;
+}
+
+.leftImage {
+  object-fit: cover;
+  transition: transform .8s ease;
+}
+
+.left:hover .leftImage {
+  transform: scale(1.04);
+}
+
+/* ===========================================
+   RIGHT
+=========================================== */
+
+.right {
+  background: #232323;
+  padding: 30px 40px;
+}
+
+.heading {
+  color: #fff;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.subHeading {
+  color: rgba(255,255,255,.75);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 680px;
+}
+
+/* ===========================================
+   GRID
+=========================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 42px 36px;
+}
+
+/* ===========================================
+   CARD
+=========================================== */
+
+.card {
+  padding: 15px;
+  border-radius: 20px;
+  transition: all .45s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      135deg,
+      #d6a019,
+      #b07a00
+  );
+  opacity: 0;
+  transition: .45s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card>* {
+  position: relative;
+  z-index: 2;
+}
+/* ===========================================
+   ICON
+=========================================== */
+
+.icon {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  margin-bottom: 22px;
+  transition: .45s ease;
+}
+
+.card:hover .icon {
+  transform: translateY(-5px) scale(1.08);
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.cardTitle {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: .35s;
+}
+
+/* ===========================================
+   DESCRIPTION
+=========================================== */
+
+.cardDescription {
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  line-height: 1.4;
+  transition: .35s;
+}
+
+.card:hover .cardTitle,
+.card:hover .cardDescription {
+  color: #fff;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,0,0,.30);
+}
+/* ===========================================
+   1400
+=========================================== */
+
+@media (max-width:1400px){
+
+.right{
+    padding:60px 45px;
+}
+
+.heading{
+    font-size:46px;
+}
+
+.subHeading{
+    font-size:22px;
+}
+
+.grid{
+    gap:30px;
+}
+
+}
+
+/* ===========================================
+   1200
+=========================================== */
+
+@media (max-width:1200px){
+
+.wrapper{
+    grid-template-columns:45% 55%;
+}
+
+.grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.card{
+    min-height:210px;
+}
+
+}
+
+/* ===========================================
+   992
+=========================================== */
+
+@media (max-width:992px){
+
+.wrapper{
+    grid-template-columns:1fr;
+}
+
+.left{
+    height:550px;
+    min-height:550px;
+}
+
+.right{
+    padding:60px 35px;
+}
+
+.heading{
+    text-align:center;
+}
+
+.subHeading{
+    text-align:center;
+    margin:auto auto 50px;
+}
+
+.grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* ===========================================
+   768
+=========================================== */
+
+@media(max-width:768px){
+
+.valuesSection{
+    padding:80px 0;
+}
+
+.left{
+    height:420px;
+    min-height:420px;
+}
+
+.right{
+    padding:40px 25px;
+}
+
+.heading{
+    font-size:34px;
+}
+
+.subHeading{
+    font-size:18px;
+}
+
+.grid{
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.card{
+    min-height:190px;
+}
+
+.cardTitle{
+    font-size:24px;
+}
+
+.cardDescription{
+    font-size:16px;
+}
+
+}
+
+/* ===========================================
+   480
+=========================================== */
+
+@media(max-width:480px){
+
+.left{
+    height:320px;
+    min-height:320px;
+}
+
+.heading{
+    font-size:30px;
+}
+
+.subHeading{
+    font-size:17px;
+}
+
+.right{
+    padding:30px 20px;
+}
+
+}

@@ -1,0 +1,510 @@
+﻿/* ==========================================================
+   STATS SECTION
+========================================================= */
+
+.statsSection {
+  padding: 110px 0;
+  background: #fff;
+}
+
+.heading {
+  font-size: 58px;
+  line-height: 1.05;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 70px;
+}
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+.container {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding: 40px 50px;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-rows: 165px 210px 165px;
+  gap: 20px;
+  width: 100%;
+  height: 580px;
+}
+
+.cardWrapper {
+  position: relative;
+  display: grid;
+  align-items: stretch;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
+  transform-origin: center top;
+}
+
+.statsWrapper {
+  grid-row: span 1;
+  min-height: 0;
+}
+
+.imageWrapper {
+  grid-row: span 2;
+  min-height: 0;
+}
+
+.statsWrapper.topExpanded {
+  grid-row: 1 / span 2;
+}
+
+.statsWrapper.bottomExpanded {
+  grid-row: 2 / span 2;
+}
+
+.imageWrapper.collapsedTop {
+  grid-row: 1 / span 1;
+}
+
+.imageWrapper.collapsedBottom {
+  grid-row: 3 / span 1;
+}
+
+.pos1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.pos2 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.pos3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.pos4 {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+
+.pos5 {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+}
+
+.pos6 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.pos7 {
+  grid-column: 3;
+  grid-row: 2 / span 2;
+}
+
+.pos8 {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.hovered {
+  z-index: 2;
+}
+
+.gridHoverActive .cardWrapper:not(.hovered) {
+  transform: scale(0.94);
+}
+
+.gridHoverActive .statsWrapper.hovered {
+  transform: translateY(-10px) scale(1.04);
+  z-index: 10;
+}
+
+.gridHoverActive .pos1.hovered,
+.gridHoverActive .pos3.hovered {
+  grid-row: 1 / span 2;
+}
+
+.gridHoverActive .pos6.hovered,
+.gridHoverActive .pos8.hovered {
+  grid-row: 2 / span 2;
+}
+
+.gridHoverActive .statsWrapper.hovered .statsCard {
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.18);
+}
+
+/* ==========================================================
+   COMMON CARD
+========================================================== */
+
+.statsCard,
+.imageCard {
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp .65s ease forwards;
+}
+
+.statsWrapper .statsCard {
+  min-height: 0;
+  max-height: 165px;
+}
+
+.imageWrapper .imageCard {
+  height: 100%;
+}
+
+.cardInner {
+  padding: 32px;
+  display: grid;
+  gap: 18px;
+  height: 100%;
+}
+
+.gridHoverActive .statsWrapper.hovered .statsCard {
+  transform: translateY(-10px);
+  max-height: 600px;
+}
+
+.gridHoverActive .statsWrapper.hovered .statsCard .hoverContent {
+  opacity: 1;
+  max-height: 260px;
+  transform: translateY(0);
+}
+
+.gridHoverActive .statsWrapper.hovered .statsCard .number,
+.gridHoverActive .statsWrapper.hovered .statsCard .title {
+  transform: translateY(-4px);
+}
+
+.statsCard:nth-child(1),
+.imageCard:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.statsCard:nth-child(2),
+.imageCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.statsCard:nth-child(3),
+.imageCard:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.statsCard:nth-child(4),
+.imageCard:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.statsCard:nth-child(5),
+.imageCard:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.statsCard:nth-child(6),
+.imageCard:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.statsCard:nth-child(7),
+.imageCard:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.statsCard:nth-child(8),
+.imageCard:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+/* ==========================================================
+   STATS CARD
+========================================================== */
+
+.statsCard {
+  min-height: 220px;
+  max-height: 100%;
+  cursor: pointer;
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    max-height .35s ease;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+.gridHoverActive .statsWrapper.hovered {
+  max-height: 100%;
+}
+
+.red {
+  background: #d61d36;
+  color: #fff;
+}
+
+.gray {
+  background: #4a4a4a;
+  color: #fff;
+}
+
+.cardInner {
+  padding: 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.contentTop {
+  display: grid;
+  gap: 14px;
+}
+
+.number {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  font-size: 62px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  transition: transform .35s ease;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+  transition: transform .35s ease;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.hoverContent {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(18px);
+  transition:
+    opacity .35s ease,
+    max-height .35s ease,
+    transform .35s ease;
+}
+
+.hoverContent p {
+  margin: 0;
+}
+
+/* ==========================================================
+   CARD HOVER
+========================================================== */
+
+.statsCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.18);
+}
+
+.statsCard:hover .number,
+.statsCard:hover .title {
+  transform: translateY(-4px);
+}
+
+.statsCard:hover .hoverContent {
+  opacity: 1;
+  max-height: 260px;
+  transform: translateY(0);
+}
+
+/* ==========================================================
+   IMAGE CARD
+========================================================== */
+
+.imageCard {
+  min-height: 0;
+  cursor: pointer;
+}
+
+.imageCard:hover {
+  transform: translateY(-6px);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:
+    transform .7s ease,
+    filter .5s ease;
+}
+
+.imageCard:hover .image {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.08)
+  );
+  opacity: 0;
+  transition: .4s ease;
+}
+
+.imageCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================
+   LARGE DESKTOP (1400px)
+========================================================== */
+
+@media (max-width: 1400px) {
+  .grid {
+    gap: 20px;
+  }
+
+  .imageCard {
+    min-height: 360px;
+  }
+}
+
+/* ==========================================================
+   LAPTOP (1200px)
+========================================================== */
+
+@media (max-width: 1200px) {
+  .statsSection {
+    padding: 90px 0;
+  }
+
+  .heading {
+    font-size: 48px;
+    margin-bottom: 55px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .imageCard {
+    min-height: 360px;
+  }
+}
+
+/* ==========================================================
+   TABLET (992px)
+========================================================== */
+
+@media (max-width: 992px) {
+  .statsSection {
+    padding: 80px 0;
+  }
+
+  .heading {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .imageCard {
+    min-height: 340px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .statsCard,
+  .imageCard {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-auto-rows: minmax(320px, auto);
+  }
+}
+
+/* ==========================================================
+   MOBILE (768px)
+========================================================== */
+
+@media (max-width: 768px) {
+  .statsSection {
+    padding: 70px 0;
+  }
+
+  .heading {
+    font-size: 34px;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cardInner {
+    padding: 26px;
+  }
+
+  .number {
+    font-size: 50px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================
+   SMALL MOBILE (480px)
+========================================================== */
+
+@media (max-width: 480px) {
+  .statsSection {
+    padding: 60px 0;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .grid {
+    padding: 0 16px;
+  }
+
+  .cardInner {
+    padding: 22px;
+  }
+
+  .number {
+    font-size: 42px;
+  }
+}

@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import styles from "./StatsSection.module.css";
 import { StatsCardData } from "@/types/statsSection";
 import { getStrapiMedia } from "@/lib/getStrapiMedia";
@@ -46,10 +43,6 @@ export default function ImageCard({ card }: ImageCardProps) {
           "Image"
         }
         className={styles.image}
-        onError={(e) => {
-          // eslint-disable-next-line no-console
-          console.error("ImageCard load error", imageUrl, e);
-        }}
       />
 
       <div className={styles.imageOverlay}></div>
