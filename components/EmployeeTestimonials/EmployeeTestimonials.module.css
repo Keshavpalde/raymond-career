@@ -1,0 +1,818 @@
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.section{
+
+    position:relative;
+
+    padding:70px 60px;
+
+    background-color:#fdfdfc;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    overflow:hidden;
+
+}
+
+.backgroundImage{
+
+    object-fit:cover;
+
+    z-index:1;
+
+    opacity:.5;
+
+}
+
+.section>.container{
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+.container {
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* ==========================================================
+   HEADING
+========================================================== */
+
+.headingWrapper{
+
+    margin-bottom:60px;
+
+}
+
+.heading{
+
+    font-family:var(--font-playfair);
+
+    color:#1a1a1a;
+
+    font-size:44px;
+
+    font-weight:600;
+
+    font-variant:small-caps;
+
+    letter-spacing:.5px;
+
+    line-height:1.15;
+
+}
+
+.headingAccent{
+
+    color:#E53945;
+
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:1.5fr 420px;
+
+    gap:60px;
+
+    align-items:flex-start;
+
+}
+/* ==========================================================
+   FEATURED
+========================================================== */
+
+.featuredWrapper{
+
+    width:100%;
+
+}
+
+.videoWrapper{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:#000;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+
+}
+
+.video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.iframe{
+
+    width:100%;
+
+    height:100%;
+
+    border:0;
+
+}
+
+/* ==========================================================
+   THUMBNAIL
+========================================================== */
+
+.videoThumbnail{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    padding:0;
+
+    cursor:pointer;
+
+    background:#222;
+
+}
+
+.thumbnailImage{
+
+    object-fit:cover;
+
+}
+
+.videoOverlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.65)
+    );
+
+}
+
+.nameOverlay{
+
+    position:absolute;
+
+    left:28px;
+
+    bottom:26px;
+
+    text-align:left;
+
+    z-index:2;
+
+}
+
+.overlayName{
+
+    color:#fff;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+
+}
+
+.overlayDesignation{
+
+    color:rgba(255,255,255,.85);
+
+    font-size:16px;
+
+}
+
+/* ==========================================================
+   PLAY BUTTON
+========================================================== */
+
+.playButton{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:78px;
+
+    height:78px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:#ffffff;
+
+    color:#1a1a1a;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.35s;
+
+    z-index:2;
+
+}
+
+.videoThumbnail:hover .playButton{
+
+    transform:translate(-50%,-50%) scale(1.08);
+
+    background:#E53945;
+
+    color:#fff;
+}
+
+.playButton svg{
+
+    margin-left:4px;
+
+}
+/* ==========================================================
+   EMPLOYEE DETAILS
+========================================================== */
+
+.employeeDetails{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    margin-top:30px;
+
+}
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-shrink:0;
+
+}
+
+.profileImage{
+
+    position:relative;
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.image{
+
+    object-fit:cover;
+
+}
+
+.employeeName{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1a1a1a;
+
+    margin-bottom:4px;
+
+}
+
+.designation{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    font-style:italic;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+    color:#E53945;
+
+}
+
+.quote{
+
+    flex:1;
+
+    max-width:520px;
+
+}
+
+.quote p{
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    color:#4a4a4a;
+
+}
+
+.navArrows{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-shrink:0;
+
+}
+
+.navArrow{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    border:1px solid rgba(0,0,0,.25);
+
+    color:#1a1a1a;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.35s ease;
+
+}
+
+.navArrow:hover{
+
+    background:#E53945;
+
+    border-color:#E53945;
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   RIGHT SIDEBAR
+========================================================== */
+
+.listWrapper{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    max-height:720px;
+
+    overflow-y:auto;
+
+    padding-right:10px;
+
+}
+
+.listWrapper::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.listWrapper::-webkit-scrollbar-thumb{
+
+    background:#ccc;
+
+    border-radius:10px;
+
+}
+
+.listWrapper::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#ffffff;
+
+    border:none;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    text-align:left;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 16px 32px rgba(0,0,0,.14);
+}
+
+.activeCard{
+
+    box-shadow:0 0 0 2px #E53945, 0 16px 32px rgba(0,0,0,.14);
+}
+
+/* ==========================================================
+   CARD IMAGE
+========================================================== */
+
+.cardImage{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:16/10;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.cardImage .image{
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.card:hover .image{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================================================
+   CARD CONTENT
+========================================================== */
+
+.cardContent{
+
+    padding:14px 16px;
+
+}
+
+.cardContent h4{
+
+    color:#1a1a1a;
+
+    font-size:16px;
+
+    margin-bottom:4px;
+
+    font-weight:700;
+
+}
+
+.cardContent span{
+
+    color:#E53945;
+
+    font-size:13px;
+
+    font-style:italic;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   PLAY ICON
+========================================================== */
+
+.playCircle{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:#E53945;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.35s;
+
+}
+
+.card:hover .playCircle{
+
+    transform:translate(-50%,-50%) scale(1.1);
+
+}
+/* ==========================================================
+   LARGE DESKTOP
+========================================================== */
+
+@media (max-width: 1600px) {
+
+    .heading {
+        font-size: 40px;
+    }
+
+    .content {
+        grid-template-columns: 1.45fr 380px;
+        gap: 50px;
+    }
+
+}
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (max-width: 1400px) {
+
+    .section {
+        padding: 100px 0;
+    }
+
+    .heading {
+        font-size: 36px;
+    }
+
+    .content {
+        grid-template-columns: 1fr 360px;
+        gap: 40px;
+    }
+
+    .employeeName {
+        font-size: 17px;
+    }
+
+}
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width: 1200px) {
+
+    .content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .listWrapper {
+
+        max-height: none;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        overflow: visible;
+
+    }
+
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .heading {
+        font-size: 32px;
+    }
+
+    .employeeDetails {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .navArrows{
+
+        align-self:flex-end;
+    }
+
+    .quote {
+
+        max-width: 100%;
+    }
+
+    .listWrapper{
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px) {
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .heading {
+
+        font-size: 28px;
+
+        text-align: center;
+    }
+
+    .headingWrapper {
+
+        margin-bottom: 40px;
+    }
+
+    .employeeDetails {
+
+        text-align: left;
+    }
+
+    .listWrapper {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 15px;
+    }
+
+    .playButton {
+
+        width: 64px;
+
+        height: 64px;
+    }
+
+    .overlayName{
+
+        font-size:22px;
+    }
+
+}
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width:480px) {
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .heading {
+
+        font-size: 24px;
+    }
+
+    .employeeName {
+
+        font-size: 16px;
+    }
+
+    .designation {
+
+        font-size: 12px;
+    }
+
+    .quote p {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .listWrapper{
+
+        grid-template-columns: 1fr;
+    }
+
+    .cardContent h4 {
+
+        font-size: 15px;
+    }
+
+    .cardContent span {
+
+        font-size: 12px;
+    }
+
+    .playCircle {
+
+        width: 38px;
+
+        height: 38px;
+    }
+
+}

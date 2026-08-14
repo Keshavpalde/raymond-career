@@ -4,6 +4,8 @@ import ValuesSection from "@/components/ValuesSection";
 import LeadershipSection from "@/components/LeadershipSection";
 import MadeForMore from "@/components/MadeForMore";
 import LifeAtRaymondRealty from "@/components/LifeAtRaymondRealty";
+import EmployeeTestimonials from "@/components/EmployeeTestimonials";
+import AwardsRecognition from "@/components/AwardsRecognition";
 
 import { getHome } from "@/services/home";
 
@@ -14,37 +16,55 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <Hero data={home.hero} />
+      {/* Hero Section */}
+      {home.hero && (
+        <Hero data={home.hero} />
+      )}
 
-      {/* Stats */}
-      <StatsSection data={home.statsSection} />
+      {/* Stats Section */}
+      {home.statsSection && (
+        <StatsSection data={home.statsSection} />
+      )}
 
-      {/* Our Values */}
+      {/* Our Values Section */}
       {home.ourValues && (
         <ValuesSection
           data={home.ourValues}
         />
       )}
 
-      {/* Leadership */}
+      {/* Leadership Thoughts Section */}
       {home.leadershipThoughts && (
         <LeadershipSection
           data={home.leadershipThoughts}
         />
       )}
 
-      {/* Made For More */}
+      {/* Made For More Section */}
       {home.madeForMore && (
         <MadeForMore
           data={home.madeForMore}
         />
       )}
 
-      {/* Life At Raymond Realty */}
+      {/* Life At Raymond Realty Section */}
       {home.lifeAtRaymondRealty && (
         <LifeAtRaymondRealty
           data={home.lifeAtRaymondRealty}
+        />
+      )}
+
+      {/* Employee Testimonials Section */}
+      {home.employeeTestimonials && (
+        <EmployeeTestimonials
+          data={home.employeeTestimonials}
+        />
+      )}
+
+      {/* Awards Recognition Section */}
+      {home.awardsRecognition && (
+        <AwardsRecognition
+          data={home.awardsRecognition}
         />
       )}
     </>

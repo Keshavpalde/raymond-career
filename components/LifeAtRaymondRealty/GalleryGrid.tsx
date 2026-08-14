@@ -12,7 +12,6 @@ interface Props {
   heading: string;
   buttonText: string;
   buttonLink: string;
-  revealed: boolean;
 }
 
 export default function GalleryGrid({
@@ -20,7 +19,6 @@ export default function GalleryGrid({
   heading,
   buttonText,
   buttonLink,
-  revealed,
 }: Props) {
   const TOTAL_CELLS = 32;
 
@@ -31,12 +29,7 @@ export default function GalleryGrid({
   let imageIndex = 0;
 
   return (
-    <div
-      className={`
-        ${styles.galleryGrid}
-        ${revealed ? styles.revealed : ""}
-      `}
-    >
+    <div className={styles.galleryGrid}>
       {Array.from({ length: TOTAL_CELLS }).map((_, index) => {
         // Draw center card only once
         if (index === CENTER_START) {
@@ -68,7 +61,7 @@ export default function GalleryGrid({
         return (
           <div
             key={image.id}
-            className={`${styles.gridItem} ${styles.photoCell}`}
+            className={styles.gridItem}
           >
             <GalleryCard image={image} />
           </div>

@@ -5,10 +5,12 @@ import { ValuesSectionData } from "@/types/valuesSection";
 import { LeadershipSectionData } from "@/types/leadership";
 import { MadeForMoreData } from "@/types/madeForMore";
 import { LifeAtRaymondRealtyData } from "@/types/lifeAtRaymondRealty";
+import { EmployeeTestimonialsData } from "@/types/employeeTestimonials";
+import { AwardsRecognitionData } from "@/types/awardsRecognition";
 
 export async function getHome(): Promise<HomeData> {
   const response = await fetchAPI<{ data: any }>(
-    "/api/home?populate=hero.backgroundVideo,hero,statsSection.cards.image,statsSection.cards,ourValues.leftImage,ourValues.ValueItem.icon,leadershipThoughts.backgroundImage,leadershipThoughts.leaderItem.image,leadershipThoughts.leaderItem.expandedImage,leadershipThoughts.leaderItem.video,madeForMore.backgroundImage,madeForMore.tabs.contentImage,madeForMore.tabs.contentItems,lifeAtRaymondRealty.galleryItems.image"
+    "/api/home?populate=hero.backgroundVideo,hero,statsSection.cards.image,statsSection.cards,ourValues.leftImage,ourValues.ValueItem.icon,leadershipThoughts.backgroundImage,leadershipThoughts.leaderItem.image,leadershipThoughts.leaderItem.expandedImage,leadershipThoughts.leaderItem.video,madeForMore.backgroundImage,madeForMore.tabs.contentImage,madeForMore.tabs.contentItems,lifeAtRaymondRealty.galleryItems.image,employeeTestimonials.backgroundImage,employeeTestimonials.testimonials.employeePhoto,employeeTestimonials.testimonials.uploadedVideo,employeeTestimonials.testimonials.thumbnailImage,awardsAndRecognition.awardsYear.awards.awardImage"
   );
 
   const home = response.data;
@@ -125,6 +127,64 @@ export async function getHome(): Promise<HomeData> {
     : undefined;
 
   /* ==========================================================
+     EMPLOYEE TESTIMONIALS
+  ========================================================== */
+
+  const employeeTestimonialsRaw =
+    home?.employeeTestimonials;
+
+  const employeeTestimonials:
+    | EmployeeTestimonialsData
+    | undefined = employeeTestimonialsRaw
+    ? {
+        heading:
+          employeeTestimonialsRaw.heading ?? "",
+
+        backgroundImage:
+          employeeTestimonialsRaw.backgroundImage ?? {
+            url: "",
+            alternativeText: "",
+          },
+
+        testimonials:
+          employeeTestimonialsRaw.testimonials ?? [],
+      }
+    : undefined;
+
+    /* ==========================================================
+   AWARDS & RECOGNITION
+========================================================== */
+
+const awardsRecognitionRaw =
+  home?.awardsAndRecognition;
+
+const awardsRecognition:
+  | AwardsRecognitionData
+  | undefined =
+  awardsRecognitionRaw
+    ? {
+        heading:
+          awardsRecognitionRaw.heading ?? "",
+
+        description:
+          awardsRecognitionRaw.description ?? [],
+
+        awardsYear:
+          (awardsRecognitionRaw.awardsYear ?? []).map(
+            (year: any) => ({
+              ...year,
+
+              awards: (year.awards ?? []).sort(
+                (a: any, b: any) =>
+                  (a.displayOrder ?? 0) -
+                  (b.displayOrder ?? 0)
+              ),
+            })
+          ),
+      }
+    : undefined;
+
+  /* ==========================================================
      RETURN
   ========================================================== */
 
@@ -140,5 +200,9 @@ export async function getHome(): Promise<HomeData> {
     madeForMore,
 
     lifeAtRaymondRealty,
+
+    employeeTestimonials,
+
+    awardsRecognition,
   };
 }

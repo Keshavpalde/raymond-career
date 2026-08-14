@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import ApplyButton from "./ApplyButton";
@@ -21,9 +25,38 @@ interface HeaderProps {
 }
 
 export default function Header({ data }: HeaderProps) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(
+        window.scrollY > window.innerHeight - 100
+      );
+    };
+
+    handleScroll();
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+  }, []);
+
   return (
     <header className={styles.header}>
-      <div className={styles.wrapper}>
+      <div
+        className={`
+          ${styles.wrapper}
+          ${scrolled ? styles.scrolled : ""}
+        `}
+      >
         <Logo logo={data.Logo} />
         <Navigation navigation={data.navigation} />
         <ApplyButton button={data.ctaButton} />

@@ -23,6 +23,14 @@
     border: 1px solid rgba(255,255,255,.15);
 
     border-radius: 999px;
+
+    transition: background .35s ease, border-color .35s ease;
+}
+
+.wrapper.scrolled {
+    background: rgba(0,0,0,.92);
+
+    border-color: rgba(255,255,255,.1);
 }
 
 /* Logo */

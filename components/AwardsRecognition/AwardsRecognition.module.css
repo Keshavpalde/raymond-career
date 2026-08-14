@@ -1,0 +1,506 @@
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.section {
+  padding: 120px 60px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 50px;
+}
+
+.headingWrapper {
+  max-width: 700px;
+}
+
+.heading {
+  font-family: var(--font-playfair);
+  font-size: 38px;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: .5px;
+  line-height: 1.15;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.headingAccent {
+  color: #E53945;
+}
+
+.description p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #6b6b6b;
+}
+
+/* ==========================================================
+   YEAR TABS
+========================================================== */
+
+.yearTabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.yearTab {
+  min-width: 74px;
+  height: 38px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #EDEDED;
+
+  color: #333;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.yearTab:hover {
+  background: #dedede;
+}
+
+.activeTab {
+  background: #E53945;
+  color: #fff;
+}
+
+/* ==========================================================
+   SLIDER
+========================================================== */
+
+.sliderWrapper {
+  position: relative;
+  margin-top: 20px;
+}
+/* ==========================================================
+   SWIPER
+========================================================== */
+
+.slider :global(.swiper) {
+  overflow: visible;
+}
+
+.slider :global(.swiper-slide) {
+  height: auto;
+}
+
+.slider {
+  padding-bottom: 76px;
+}
+
+.slider :global(.swiper-button-next),
+.slider :global(.swiper-button-prev) {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    top: auto;
+
+    bottom: 0;
+
+    margin-top: 0;
+
+    background: transparent;
+
+    border: 1px solid rgba(0,0,0,.2);
+
+    color: #1a1a1a;
+
+    transition: .35s ease;
+
+}
+
+.slider :global(.swiper-button-prev) {
+
+    left: auto;
+
+    right: 66px;
+
+}
+
+.slider :global(.swiper-button-next) {
+
+    right: 0;
+
+}
+
+.slider :global(.swiper-button-next:hover),
+.slider :global(.swiper-button-prev:hover) {
+
+    background: #E53945;
+
+    border-color: #E53945;
+
+    color: #fff;
+
+}
+
+.slider :global(.swiper-button-next::after),
+.slider :global(.swiper-button-prev::after) {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+.slider :global(.swiper-button-disabled) {
+
+    opacity: .3;
+
+}
+/* ==========================================================
+   AWARD CARD
+========================================================== */
+
+.card{
+
+    background:transparent;
+
+    border-radius:0;
+
+    padding:0;
+
+    text-align:center;
+
+    height:100%;
+
+    transition:.35s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    cursor:default;
+
+    overflow:visible;
+
+    position:relative;
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.cardImage{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4/3;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+    transition:.45s ease;
+}
+
+.image{
+
+    object-fit:cover;
+
+    transition:.5s ease;
+}
+
+.card:hover .cardImage{
+
+    transform:translateY(-4px);
+}
+
+.card:hover .image{
+
+    transform:scale(1.06);
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.cardContent{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    flex:1;
+}
+
+.cardContent h3{
+
+    font-size:18px;
+
+    line-height:1.35;
+
+    font-weight:700;
+
+    color:#1A1A1A;
+
+    margin-bottom:8px;
+}
+
+.cardContent p{
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    color:#8a8a8a;
+
+    margin:0;
+
+    max-width:220px;
+}
+
+/* ==========================================================
+   1600px
+========================================================== */
+
+@media (max-width:1600px){
+
+    .heading{
+
+        font-size:36px;
+    }
+
+}
+
+/* ==========================================================
+   1400px
+========================================================== */
+
+@media (max-width:1400px){
+
+    .section{
+
+        padding:100px 0;
+    }
+
+    .header{
+
+        gap:40px;
+    }
+
+    .heading{
+
+        font-size:32px;
+    }
+
+    .description p{
+
+        font-size:15px;
+    }
+
+    .cardContent h3{
+
+        font-size:17px;
+    }
+
+    .cardContent p{
+
+        font-size:13px;
+    }
+
+}
+
+/* ==========================================================
+   1200px
+========================================================== */
+
+@media (max-width:1200px){
+
+    .header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:30px;
+    }
+
+    .headingWrapper{
+
+        max-width:100%;
+    }
+
+    .yearTabs{
+
+        width:100%;
+    }
+
+}
+
+/* ==========================================================
+   992px
+========================================================== */
+
+@media (max-width:992px){
+
+    .section{
+
+        padding:80px 0;
+    }
+
+    .heading{
+
+        font-size:30px;
+    }
+
+    .description p{
+
+        font-size:15px;
+    }
+
+    .header{
+
+        margin-bottom:40px;
+    }
+
+}
+
+/* ==========================================================
+   768px
+========================================================== */
+
+@media (max-width:768px){
+
+    .section{
+
+        padding:70px 0;
+    }
+
+    .header{
+
+        gap:25px;
+
+        margin-bottom:50px;
+    }
+
+    .heading{
+
+        font-size:30px;
+    }
+
+    .description p{
+
+        font-size:16px;
+
+        line-height:1.7;
+    }
+
+    .yearTabs{
+
+        gap:10px;
+    }
+
+    .yearTab{
+
+        min-width:70px;
+
+        height:42px;
+
+        font-size:15px;
+    }
+
+    .cardContent h3{
+
+        font-size:16px;
+    }
+
+    .cardContent p{
+
+        font-size:13px;
+    }
+
+}
+
+/* ==========================================================
+   480px
+========================================================== */
+
+@media (max-width:480px){
+
+    .section{
+
+        padding:60px 0;
+    }
+
+    .heading{
+
+        font-size:26px;
+    }
+
+    .description p{
+
+        font-size:15px;
+    }
+
+    .yearTabs{
+
+        justify-content:center;
+    }
+
+    .yearTab{
+
+        min-width:64px;
+
+        height:40px;
+
+        font-size:14px;
+    }
+
+    .cardContent h3{
+
+        font-size:15px;
+    }
+
+    .cardContent p{
+
+        font-size:12px;
+
+        line-height:1.6;
+    }
+
+}

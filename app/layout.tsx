@@ -4,6 +4,8 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import { getHeader } from "@/services/header";
+import Footer from "@/components/Footer";
+import { getFooter } from "@/services/footer";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -32,11 +34,22 @@ export default async function RootLayout({
 }>) {
   const header = await getHeader();
 
+  const footer = await getFooter().catch(
+    (error) => {
+      console.error(
+        "Failed to load footer:",
+        error
+      );
+      return null;
+    }
+  );
+
   return (
     <html lang="en">
       <body className={`${jost.className} ${playfair.variable}`}>
         <Header data={header} />
         {children}
+        {footer && <Footer data={footer} />}
       </body>
     </html>
   );
