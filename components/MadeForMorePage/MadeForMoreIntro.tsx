@@ -19,6 +19,9 @@ function getRichText(blocks: RichTextBlock[] = []) {
 export default function MadeForMoreIntro({
   data,
 }: MadeForMoreIntroProps) {
+  if (!data) {
+    return null;
+  }
   return (
     <section className={styles.intro}>
       <div className={styles.container}>
