@@ -13,7 +13,17 @@ export async function getMadeForMorePage(): Promise<MadeForMorePageData> {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch Made For More page data");
+    const errorText = await res.text();
+
+    console.error("Strapi API Error:", {
+      status: res.status,
+      statusText: res.statusText,
+      response: errorText,
+    });
+
+    throw new Error(
+      `Failed to fetch Made For More page data: ${res.status}`
+    );
   }
 
   const json = await res.json();
