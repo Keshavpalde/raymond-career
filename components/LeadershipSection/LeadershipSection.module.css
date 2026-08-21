@@ -24,7 +24,7 @@
 }
 
 .heading {
-  font-family: var(--font-playfair);
+  font-family: var(--font-cinzel);
   color: #1a1a1a;
   font-size: 48px;
   font-weight: 600;
@@ -298,7 +298,7 @@ max-width: 100%;
 
     display:block;
 
-    font-family:var(--font-playfair);
+    font-family:var(--font-cinzel);
 
     color:#E53945;
 

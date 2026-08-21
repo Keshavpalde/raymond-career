@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Jost, Playfair_Display } from "next/font/google";
+import {
+  Jost,
+  Cinzel,
+} from "next/font/google";
+
 import "./globals.css";
 
 import Header from "@/components/Header";
 import { getHeader } from "@/services/header";
+
 import Footer from "@/components/Footer";
 import { getFooter } from "@/services/footer";
 
@@ -14,12 +19,11 @@ const jost = Jost({
   variable: "--font-jost",
 });
 
-const playfair = Playfair_Display({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-playfair",
+  variable: "--font-cinzel",
 });
 
 export const metadata: Metadata = {
@@ -34,21 +38,20 @@ export default async function RootLayout({
 }>) {
   const header = await getHeader();
 
-  const footer = await getFooter().catch(
-    (error) => {
-      console.error(
-        "Failed to load footer:",
-        error
-      );
-      return null;
-    }
-  );
+  const footer = await getFooter().catch((error) => {
+    console.error("Failed to load footer:", error);
+    return null;
+  });
 
   return (
     <html lang="en">
-      <body className={`${jost.className} ${playfair.variable}`}>
+      <body
+        className={`${jost.variable} ${cinzel.variable}`}
+      >
         <Header data={header} />
+
         {children}
+
         {footer && <Footer data={footer} />}
       </body>
     </html>

@@ -1,0 +1,244 @@
+.section {
+  width: 100%;
+  padding: 70px 70px;
+  background: #f4f3f1;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+
+  width: 100%;
+  padding-left: max(40px, calc((100vw - 1560px) / 2 + 40px));
+}
+
+/* =========================================
+   Header
+========================================= */
+
+.header {
+  flex: 0 0 340px;
+  max-width: 340px;
+  padding-top: 6px;
+}
+
+.heading {
+  margin: 0;
+
+  font-family: var(--font-cinzel);
+  font-size: 34px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.headingAccent {
+  color: #e53945;
+}
+
+.descriptionWrapper {
+  margin-top: 22px;
+}
+
+.descriptionWrapper p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #666666;
+}
+
+/* =========================================
+   Carousel
+========================================= */
+
+.carouselWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.track {
+  position: relative;
+
+  display: flex;
+  gap: 24px;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 9 / 10;
+  overflow: hidden;
+  background: #e6e6e3;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .imageWrapper img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 16px 0 0;
+
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #e53945;
+}
+
+/* =========================================
+   Navigation
+========================================= */
+
+.navRow {
+  width: 100%;
+  margin-top: 40px;
+  padding-right: max(40px, calc((100vw - 1560px) / 2 + 40px));
+}
+
+.navInner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.2s ease;
+}
+
+.arrow:hover {
+  opacity: 0.6;
+}
+
+.arrow span {
+  display: block;
+}
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (max-width: 991px) {
+  .section {
+    padding: 80px 0 70px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .header {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .carouselWrapper {
+    width: 100%;
+  }
+
+  .navRow {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 60px 0 50px;
+  }
+
+  .container {
+    gap: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .descriptionWrapper p {
+    font-size: 15px;
+  }
+
+  .track {
+    gap: 16px;
+  }
+
+  .card {
+    flex: 0 0 68%;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    margin-top: 12px;
+  }
+
+  .navRow {
+    margin-top: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+}

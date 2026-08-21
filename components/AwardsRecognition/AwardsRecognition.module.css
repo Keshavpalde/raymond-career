@@ -3,7 +3,7 @@
 ========================================================== */
 
 .section {
-  padding: 120px 60px;
+  padding: 70px 70px;
   background: #ffffff;
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
 }
 
 .heading {
-  font-family: var(--font-playfair);
+  font-family: var(--font-cinzel);
   font-size: 38px;
   font-weight: 600;
   font-variant: small-caps;

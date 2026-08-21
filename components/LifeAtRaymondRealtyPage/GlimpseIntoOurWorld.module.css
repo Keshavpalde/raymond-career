@@ -1,0 +1,450 @@
+.section {
+  width: 100%;
+  padding: 0px 0 5cqmax;
+  background: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================================
+   Heading
+========================================= */
+
+.headingWrapper {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.headingWrapper h2 {
+  margin: 0 0 20px;
+
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  color: #222222;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.description p {
+  margin: 0;
+
+  color: #777777;
+
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Main Gallery
+========================================= */
+
+.gallery {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  grid-auto-rows: 180px;
+
+  gap: 10px;
+}
+
+/* =========================================
+   Gallery Item
+========================================= */
+
+.galleryItem {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: #eeeeee;
+
+  text-align: left;
+}
+
+.galleryItem:nth-child(1) {
+  grid-row: span 2;
+}
+
+.galleryItem:nth-child(2) {
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(3) {
+  grid-row: span 2;
+}
+
+.galleryItem:nth-child(4) {
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(5) {
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(6) {
+  grid-row: span 2;
+}
+
+.galleryItem:nth-child(7) {
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(8) {
+  grid-row: span 1;
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.galleryItem:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   Image Overlay
+========================================= */
+
+.imageOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 45%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* =========================================
+   Card Content
+========================================= */
+
+.cardContent {
+  position: absolute;
+
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.arrow {
+  font-size: 25px;
+
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* =========================================
+   Modal Overlay
+========================================= */
+
+.modalOverlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================
+   Modal
+========================================= */
+
+.modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 1400px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  padding: 35px 50px 50px;
+
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   Modal Header
+========================================= */
+
+.modalHeader {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 50px;
+
+  margin-bottom: 35px;
+
+  padding-right: 50px;
+}
+
+.modalHeader h3 {
+  margin: 0;
+
+  flex-shrink: 0;
+
+  color: #d7193f;
+
+  font-size: 27px;
+  line-height: 1.2;
+
+  font-weight: 400;
+
+  text-transform: uppercase;
+}
+
+.modalDescription {
+  flex: 1;
+}
+
+.modalDescription p {
+  margin: 0;
+
+  color: #777777;
+
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   Close Button
+========================================= */
+
+.closeButton {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid #222222;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-size: 30px;
+  line-height: 32px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.closeButton:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+/* =========================================
+   Modal Gallery
+========================================= */
+
+.modalGallery {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 24px;
+}
+
+.modalImage {
+  width: 100%;
+
+  aspect-ratio: 1.35 / 1;
+
+  overflow: hidden;
+}
+
+.modalImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (max-width: 991px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 220px;
+  }
+
+  .galleryItem {
+    grid-row: span 1 !important;
+  }
+
+  .modal {
+    padding: 30px;
+  }
+
+  .modalHeader {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .modalGallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 65px 0 75px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .headingWrapper h2 {
+    font-size: 25px;
+  }
+
+  .description p {
+    font-size: 15px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+
+    grid-auto-rows: 260px;
+
+    gap: 10px;
+  }
+
+  .galleryItem {
+    grid-row: span 1 !important;
+  }
+
+  .cardContent {
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+
+    font-size: 17px;
+  }
+
+  .modalOverlay {
+    padding: 15px;
+  }
+
+  .modal {
+    max-height: 92vh;
+
+    padding: 25px 20px 30px;
+  }
+
+  .modalHeader {
+    padding-right: 45px;
+
+    margin-bottom: 25px;
+  }
+
+  .modalHeader h3 {
+    font-size: 22px;
+  }
+
+  .modalDescription p {
+    font-size: 15px;
+  }
+
+  .modalGallery {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .closeButton {
+    width: 34px;
+    height: 34px;
+
+    font-size: 25px;
+  }
+}

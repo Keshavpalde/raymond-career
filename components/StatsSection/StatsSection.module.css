@@ -264,9 +264,9 @@
 }
 
 .number {
-  font-family: var(--font-playfair);
+  font-family: var(--font-jost);
   font-style: italic;
-  font-size: 62px;
+  font-size: 52px;
   font-weight: 500;
   line-height: 1;
   margin: 0;
