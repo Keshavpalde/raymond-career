@@ -87,6 +87,14 @@ export default function StoriesThatInspire({
     };
   }, [isHovered]);
 
+  /*
+   * If this section is empty in Strapi,
+   * don't render anything.
+   */
+  if (!data) {
+    return null;
+  }
+
   return (
     <section className={styles.section}>
       {/* ================================
