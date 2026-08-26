@@ -25,6 +25,8 @@ export interface StrapiMedia {
 
   url?: string;
 
+  mime?: string;
+
   alternativeText?: string | null;
 
   caption?: string | null;
