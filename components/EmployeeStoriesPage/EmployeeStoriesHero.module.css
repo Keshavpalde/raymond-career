@@ -1,0 +1,131 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+  background: #111111;
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.08) 0%,
+      rgba(0, 0, 0, 0.08) 45%,
+      rgba(0, 0, 0, 0.35) 70%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+.content {
+  position: absolute;
+  left: 60px;
+  bottom: 70px;
+  max-width: 720px;
+}
+
+.content h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-jost);
+  font-size: clamp(42px, 4vw, 64px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -1px;
+}
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+
+  .content {
+    left: 40px;
+    bottom: 60px;
+    max-width: 650px;
+  }
+
+  .content h1 {
+    font-size: clamp(38px, 5vw, 54px);
+  }
+}
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 767px) {
+  .hero {
+    height: 75vh;
+    min-height: 520px;
+  }
+
+  .image {
+    object-position: center center;
+  }
+
+  .overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(0, 0, 0, 0.15) 40%,
+        rgba(0, 0, 0, 0.75) 75%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .content {
+    left: 24px;
+    right: 24px;
+    bottom: 45px;
+    max-width: none;
+  }
+
+  .content h1 {
+    font-size: clamp(34px, 9vw, 46px);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+  }
+}

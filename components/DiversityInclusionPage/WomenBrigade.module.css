@@ -1,0 +1,274 @@
+.section {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 120px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 42% 58%;
+  grid-template-rows: minmax(575px, auto);
+  align-items: stretch;
+}
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.content {
+  position: relative;
+  z-index: 2;
+
+  padding: 62px 65px;
+
+  background:
+    linear-gradient(
+      rgba(15, 15, 15, 0.97),
+      rgba(15, 15, 15, 0.97)
+    );
+
+  color: #ffffff;
+
+  margin-top: -70px;
+  margin-bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.heading {
+  margin: 0 0 30px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.heading::first-line {
+  color: #ffffff;
+}
+
+.headingAccent {
+  color: #e53945;
+}
+
+.description {
+  margin-bottom: 35px;
+}
+
+.description p {
+  margin: 0;
+
+  font-size: 19px;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #f5f5f5;
+}
+
+/* =========================================
+   POINTS
+========================================= */
+
+.points {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  font-size: 18px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.bullet {
+  flex-shrink: 0;
+
+  font-size: 22px;
+  line-height: 1;
+
+  color: #ffffff;
+}
+
+/* =========================================
+   GIF / MEDIA
+========================================= */
+
+.mediaWrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateX(100px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 1s ease;
+}
+
+.mediaVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.gif {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 90px 30px;
+  }
+
+  .container {
+    grid-template-columns: 45% 55%;
+  }
+
+  .content {
+    padding: 50px 45px;
+    margin-top: -50px;
+  }
+
+  .heading {
+    font-size: 32px;
+  }
+
+  .description p {
+    font-size: 17px;
+  }
+
+  .point {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  .content {
+    margin-top: 0;
+    padding: 45px 30px;
+
+    order: 1;
+  }
+
+  .mediaWrapper {
+    order: 2;
+
+    height: 350px;
+
+    transform: translateX(60px);
+  }
+
+  .heading {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    margin-bottom: 30px;
+  }
+
+  .description p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .points {
+    gap: 14px;
+  }
+
+  .point {
+    font-size: 15px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .section {
+    padding: 50px 15px;
+  }
+
+  .content {
+    padding: 35px 24px;
+  }
+
+  .heading {
+    font-size: 27px;
+  }
+
+  .description p {
+    font-size: 15px;
+  }
+
+  .point {
+    font-size: 14px;
+  }
+
+  .mediaWrapper {
+    height: 280px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mediaWrapper {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

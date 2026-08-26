@@ -1,0 +1,500 @@
+.section {
+  width: 100%;
+  padding: 90px 0 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* ================================
+   Heading
+================================ */
+
+.headingWrapper {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.heading {
+  margin: 0 0 12px;
+  color: #ec1f3a;
+  font-family: var(--font-cinzel);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.description p {
+  margin: 0;
+  color: #666666;
+  font-family: var(--font-jost);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* ================================
+   Featured Story
+================================ */
+
+.featuredWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+
+  width: 100%;
+  padding-left: max(24px, 19.3vw);
+}
+
+.featuredStory {
+  flex: 0 0 auto;
+  width: 64vw;
+  background: #f2f2f2;
+}
+
+/* ================================
+   Peek Card
+================================ */
+
+.peekCard {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 510px;
+
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.peekImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================================
+   Video
+================================ */
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 510px;
+  overflow: hidden;
+  background: #111111;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+}
+
+/* ================================
+   Play Button
+================================ */
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.playButton:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #ffffff;
+}
+
+.playButton.playing {
+  opacity: 0;
+}
+
+.playButton.playing:hover {
+  opacity: 1;
+}
+
+.playIcon {
+  width: 0;
+  height: 0;
+
+  margin-left: 4px;
+
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 14px solid #222222;
+}
+
+.pauseIcon {
+  display: flex;
+  gap: 5px;
+}
+
+.pauseIcon span {
+  width: 4px;
+  height: 18px;
+  background: #222222;
+}
+
+/* ================================
+   Next Button
+================================ */
+
+.nextButton {
+  position: absolute;
+  top: 255px;
+  left: 64vw;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #eeeeee;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nextButton:hover {
+  background: #ffffff;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* ================================
+   Employee Information
+================================ */
+
+.storyInfo {
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  padding: 18px 28px;
+}
+
+.employeeInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 280px;
+}
+
+.employeeImage {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.employeeDetails h3 {
+  margin: 0 0 2px;
+
+  color: #111111;
+
+  font-family: var(--font-jost);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.employeeDetails p {
+  margin: 0;
+
+  color: #ec1f3a;
+
+  font-family: var(--font-jost);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.quote {
+  max-width: 560px;
+}
+
+.quote p {
+  margin: 0;
+
+  color: #666666;
+
+  font-family: var(--font-jost);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* ================================
+   Thumbnails
+================================ */
+
+.thumbnailWrapper {
+  width: 100%;
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  max-width: 100%;
+  overflow-x: auto;
+
+  padding: 4px;
+
+  scrollbar-width: none;
+}
+
+.thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbnailButton {
+  width: 116px;
+  height: 82px;
+
+  flex: 0 0 116px;
+
+  padding: 0;
+
+  border: 2px solid transparent;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.thumbnailButton:hover {
+  transform: translateY(-2px);
+}
+
+.thumbnailButton.activeThumbnail {
+  border-color: #ec1f3a;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.thumbnailPlaceholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #dddddd;
+}
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 75px 0 85px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .videoWrapper {
+    height: 440px;
+  }
+
+  .peekCard {
+    height: 440px;
+  }
+
+  .nextButton {
+    top: 220px;
+  }
+
+  .storyInfo {
+    gap: 25px;
+    padding: 18px 22px;
+  }
+
+  .quote {
+    max-width: 480px;
+  }
+}
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 60px 0 70px;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+
+  .heading {
+    font-size: 21px;
+  }
+
+  .description p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .videoWrapper {
+    height: 300px;
+  }
+
+  .featuredWrapper {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .featuredStory {
+    width: 100%;
+  }
+
+  .peekCard {
+    display: none;
+  }
+
+  .playButton {
+    width: 54px;
+    height: 54px;
+  }
+
+  .nextButton {
+    top: 248px;
+    left: auto;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    transform: none;
+  }
+
+  .nextButton:hover {
+    transform: scale(1.05);
+  }
+
+  .storyInfo {
+    min-height: auto;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 18px;
+  }
+
+  .employeeInfo {
+    min-width: 0;
+  }
+
+  .quote {
+    max-width: none;
+  }
+
+  .quote p {
+    font-size: 13px;
+  }
+
+  .thumbnailWrapper {
+    margin-top: 25px;
+    justify-content: flex-start;
+  }
+
+  .thumbnails {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .thumbnailButton {
+    width: 90px;
+    height: 65px;
+    flex-basis: 90px;
+  }
+}

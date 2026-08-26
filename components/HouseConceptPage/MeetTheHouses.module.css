@@ -1,0 +1,437 @@
+.section {
+  width: 100%;
+  padding: 70px 0 90px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.container {
+  width: min(1000px, 90%);
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.headingWrapper {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.heading {
+  margin: 0 0 12px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 27px;
+  line-height: 1.2;
+
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  color: #111111;
+}
+
+.description {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.description p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.55;
+
+  color: #666666;
+}
+
+/* =========================================
+   HOUSES AREA
+========================================= */
+
+.housesWrapper {
+  position: relative;
+
+  width: 100%;
+  max-width: 820px;
+
+  margin: 0 auto;
+
+  padding: 20px 0 15px;
+}
+
+/* =========================================
+   CENTER / CONNECTING LINE
+========================================= */
+
+.centerLine {
+  position: absolute;
+
+  top: 55px;
+  bottom: 55px;
+
+  left: 50%;
+
+  width: 1px;
+
+  background: #d2d2d2;
+
+  transform: translateX(-50%);
+}
+
+/* =========================================
+   ROW
+========================================= */
+
+.houseRow {
+  position: relative;
+
+  width: 100%;
+
+  height: 105px;
+
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 0;
+}
+
+.houseRow:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   LEFT / RIGHT
+========================================= */
+
+.houseRow.left {
+  justify-content: flex-start;
+}
+
+.houseRow.right {
+  justify-content: flex-end;
+}
+
+/* =========================================
+   CONNECTOR
+========================================= */
+
+.connector {
+  position: absolute;
+
+  top: 50%;
+
+  height: 1px;
+
+  background: #d2d2d2;
+
+  transform: translateY(-50%);
+}
+
+.houseRow.left .connector {
+  left: 15px;
+  right: 50%;
+}
+
+.houseRow.right .connector {
+  left: 50%;
+  right: 15px;
+}
+
+/* =========================================
+   HOUSE CARD
+========================================= */
+
+.houseCard {
+  position: relative;
+
+  z-index: 2;
+
+  width: 330px;
+  min-height: 78px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 8px 18px 8px 8px;
+
+  background: #f4f4f4;
+
+  border-radius: 48px;
+
+  box-shadow:
+    0 12px 20px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Left card position */
+
+.houseRow.left .houseCard {
+  margin-left: 30px;
+}
+
+/* Right card position */
+
+.houseRow.right .houseCard {
+  margin-right: 30px;
+}
+
+/* =========================================
+   HOVER
+========================================= */
+
+.houseCard:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Mavericks */
+
+.house1:hover {
+  background: #ffd0b1;
+}
+
+/* Titans */
+
+.house2:hover {
+  background: #c8e7c9;
+}
+
+/* Pioneers */
+
+.house3:hover {
+  background: #c5e2f7;
+}
+
+/* Masters */
+
+.house4:hover {
+  background: #ffe8a6;
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logoWrapper {
+  width: 68px;
+  height: 68px;
+
+  flex: 0 0 68px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.houseContent {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.houseContent h3 {
+  margin: 0 0 4px;
+
+  font-size: 17px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  color: #333333;
+}
+
+.houseContent p {
+  margin: 0;
+
+  max-width: 210px;
+
+  font-size: 12px;
+
+  line-height: 1.35;
+
+  color: #555555;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .container {
+    width: 92%;
+  }
+
+  .housesWrapper {
+    max-width: 760px;
+  }
+
+  .houseCard {
+    width: 300px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 55px 0 65px;
+  }
+
+  .headingWrapper {
+    margin-bottom: 35px;
+  }
+
+  .heading {
+    font-size: 23px;
+  }
+
+  .description p {
+    font-size: 12px;
+  }
+
+  .housesWrapper {
+    padding-left: 0;
+  }
+
+  /* Move line to left */
+  .centerLine {
+    left: 30px;
+
+    top: 35px;
+    bottom: 35px;
+  }
+
+  /* All rows left aligned */
+  .houseRow,
+  .houseRow.left,
+  .houseRow.right {
+    justify-content: flex-start;
+
+    height: auto;
+
+    min-height: 95px;
+  }
+
+  /* Connector */
+  .houseRow.left .connector,
+  .houseRow.right .connector {
+    left: 30px;
+    right: auto;
+
+    width: 35px;
+  }
+
+  /* Card */
+  .houseCard,
+  .houseRow.left .houseCard,
+  .houseRow.right .houseCard {
+    width: calc(100% - 55px);
+
+    margin-left: 55px;
+    margin-right: 0;
+  }
+
+  .logoWrapper {
+    width: 58px;
+    height: 58px;
+
+    flex-basis: 58px;
+  }
+
+  .houseContent h3 {
+    font-size: 16px;
+  }
+
+  .houseContent p {
+    max-width: none;
+
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 25px);
+  }
+
+  .houseCard,
+  .houseRow.left .houseCard,
+  .houseRow.right .houseCard {
+    width: calc(100% - 45px);
+
+    margin-left: 45px;
+  }
+
+  .centerLine {
+    left: 24px;
+  }
+
+  .houseRow.left .connector,
+  .houseRow.right .connector {
+    left: 24px;
+
+    width: 25px;
+  }
+
+  .logoWrapper {
+    width: 52px;
+    height: 52px;
+
+    flex-basis: 52px;
+  }
+
+  .houseContent h3 {
+    font-size: 15px;
+  }
+
+  .houseContent p {
+    font-size: 10px;
+  }
+}
