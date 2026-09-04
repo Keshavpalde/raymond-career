@@ -7,6 +7,7 @@ import { ValueItem } from "@/types/valuesSection";
 
 interface Props {
   item: ValueItem;
+  index: number;
 }
 
 import { getStrapiMedia } from "@/lib/getStrapiMedia";
@@ -25,6 +26,7 @@ function getText(blocks?: any[]) {
 
 export default function ValueCard({
   item,
+  index,
 }: Props) {
 
   // Support both flat `icon.url` and nested Strapi relation `icon.data.attributes.url`
@@ -58,7 +60,9 @@ export default function ValueCard({
           width={56}
           height={56}
           unoptimized
-          className={styles.icon}
+          className={`${styles.icon} ${
+            styles[`icon${index + 1}`] || ""
+          }`}
         />
       ) : null}
 

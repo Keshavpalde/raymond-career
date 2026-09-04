@@ -26,9 +26,8 @@
 .heading {
   font-family: var(--font-cinzel);
   color: #1a1a1a;
-  font-size: 48px;
-  font-weight: 600;
-  font-variant: small-caps;
+  font-size: 30px;
+  font-weight: 300;
   letter-spacing: .5px;
   line-height: 1.15;
   margin-bottom: 22px;
@@ -73,7 +72,12 @@ max-width: 100%;
 
     cursor:pointer;
 
-    width:310px;
+    /* Scales with the viewport so at least 4
+       full cards stay visible in the slider
+       down to ~1200px, instead of a fixed
+       310px width getting cropped to ~3 on
+       common laptop widths. */
+    width:clamp(220px, calc(25vw - 60px), 310px);
 
     flex-shrink:0;
 
@@ -536,8 +540,6 @@ height:470px;
 
 .card{
 
-width:250px;
-
 min-height:470px;
 
 }
@@ -579,8 +581,6 @@ height:430px;
 }
 
 .card{
-
-width:220px;
 
 min-height:430px;
 

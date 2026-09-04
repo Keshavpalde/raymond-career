@@ -90,6 +90,7 @@ export interface WomenBrigadeData {
   description: RichTextBlock[] | null;
   points: WomenBrigadePoint[];
   Gif: StrapiMedia | null;
+  backgroundImage: StrapiMedia | null;
 }
 
 // ============================================

@@ -51,7 +51,7 @@
 
 .headingWrapper{
 
-    margin-bottom:60px;
+    margin-bottom:30px;
 
 }
 
@@ -61,11 +61,9 @@
 
     color:#1a1a1a;
 
-    font-size:44px;
+    font-size:30px;
 
-    font-weight:600;
-
-    font-variant:small-caps;
+    font-weight:300;
 
     letter-spacing:.5px;
 

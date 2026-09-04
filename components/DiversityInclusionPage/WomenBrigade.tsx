@@ -14,6 +14,13 @@ interface WomenBrigadeProps {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
+// Some GIFs are exported with a finite (or missing) loop
+// count, so the browser plays them once and freezes on the
+// last frame. Restarting the <img> src on an interval forces
+// the animation to replay continuously regardless of how the
+// source file was encoded.
+const GIF_RESTART_INTERVAL_MS = 6000;
+
 function getRichText(blocks?: RichTextBlock[] | null) {
   return (blocks || [])
     .map((block) =>
@@ -45,6 +52,7 @@ export default function WomenBrigade({
   data,
 }: WomenBrigadeProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const gifRef = useRef<HTMLImageElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -71,16 +79,41 @@ export default function WomenBrigade({
     return () => observer.disconnect();
   }, []);
 
+  const gifUrl = getMediaUrl(data?.Gif?.url);
+  const backgroundUrl = getMediaUrl(data?.backgroundImage?.url);
+
+  useEffect(() => {
+    if (!gifUrl) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      const img = gifRef.current;
+
+      if (!img) {
+        return;
+      }
+
+      img.src = "";
+      img.src = gifUrl;
+    }, GIF_RESTART_INTERVAL_MS);
+
+    return () => clearInterval(interval);
+  }, [gifUrl]);
+
   if (!data) {
     return null;
   }
-
-  const gifUrl = getMediaUrl(data.Gif?.url);
 
   return (
     <section
       ref={sectionRef}
       className={styles.section}
+      style={
+        backgroundUrl
+          ? { backgroundImage: `url(${backgroundUrl})` }
+          : undefined
+      }
     >
       <div className={styles.container}>
         {/* =========================
@@ -117,7 +150,7 @@ export default function WomenBrigade({
         </div>
 
         {/* =========================
-            GIF
+            GIF (bounded panel)
         ========================== */}
 
         <div
@@ -127,6 +160,7 @@ export default function WomenBrigade({
         >
           {gifUrl && (
             <img
+              ref={gifRef}
               src={gifUrl}
               alt={data.heading || "Women Brigade"}
               className={styles.gif}

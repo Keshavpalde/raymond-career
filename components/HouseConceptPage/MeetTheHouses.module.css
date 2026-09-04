@@ -6,7 +6,7 @@
 }
 
 .container {
-  width: min(1000px, 90%);
+  width: min(1100px, 92%);
   margin: 0 auto;
 }
 
@@ -17,7 +17,7 @@
 .headingWrapper {
   width: 100%;
   max-width: 760px;
-  margin: 0 auto 45px;
+  margin: 0 auto 50px;
   text-align: center;
 }
 
@@ -54,96 +54,38 @@
 
 /* =========================================
    HOUSES AREA
+
+   Positions are authored against a fixed
+   900x640 coordinate space (see the .tsx
+   constants) and expressed here as percent,
+   so the SVG track and the house cards stay
+   perfectly aligned at any rendered width.
 ========================================= */
 
 .housesWrapper {
   position: relative;
 
   width: 100%;
-  max-width: 820px;
+  max-width: 900px;
+
+  aspect-ratio: 900 / 640;
 
   margin: 0 auto;
-
-  padding: 20px 0 15px;
 }
 
-/* =========================================
-   CENTER / CONNECTING LINE
-========================================= */
-
-.centerLine {
+.track {
   position: absolute;
-
-  top: 55px;
-  bottom: 55px;
-
-  left: 50%;
-
-  width: 1px;
-
-  background: #d2d2d2;
-
-  transform: translateX(-50%);
-}
-
-/* =========================================
-   ROW
-========================================= */
-
-.houseRow {
-  position: relative;
+  inset: 0;
 
   width: 100%;
-
-  height: 105px;
-
-  display: flex;
-
-  align-items: center;
-
-  margin-bottom: 0;
+  height: 100%;
 }
 
-.houseRow:last-child {
-  margin-bottom: 0;
-}
-
-/* =========================================
-   LEFT / RIGHT
-========================================= */
-
-.houseRow.left {
-  justify-content: flex-start;
-}
-
-.houseRow.right {
-  justify-content: flex-end;
-}
-
-/* =========================================
-   CONNECTOR
-========================================= */
-
-.connector {
-  position: absolute;
-
-  top: 50%;
-
-  height: 1px;
-
-  background: #d2d2d2;
-
-  transform: translateY(-50%);
-}
-
-.houseRow.left .connector {
-  left: 15px;
-  right: 50%;
-}
-
-.houseRow.right .connector {
-  left: 50%;
-  right: 15px;
+.track path {
+  fill: none;
+  stroke: #d6d6d6;
+  stroke-width: 1.5;
+  stroke-linecap: round;
 }
 
 /* =========================================
@@ -151,12 +93,9 @@
 ========================================= */
 
 .houseCard {
-  position: relative;
+  position: absolute;
 
   z-index: 2;
-
-  width: 330px;
-  min-height: 78px;
 
   display: flex;
 
@@ -164,14 +103,14 @@
 
   gap: 14px;
 
-  padding: 8px 18px 8px 8px;
+  padding: 0 22px;
 
   background: #f4f4f4;
 
-  border-radius: 48px;
+  border-radius: 999px;
 
   box-shadow:
-    0 12px 20px rgba(0, 0, 0, 0.12);
+    0 14px 24px rgba(0, 0, 0, 0.1);
 
   cursor: pointer;
 
@@ -179,18 +118,6 @@
     background-color 0.35s ease,
     transform 0.35s ease,
     box-shadow 0.35s ease;
-}
-
-/* Left card position */
-
-.houseRow.left .houseCard {
-  margin-left: 30px;
-}
-
-/* Right card position */
-
-.houseRow.right .houseCard {
-  margin-right: 30px;
 }
 
 /* =========================================
@@ -201,42 +128,46 @@
   transform: translateY(-3px);
 
   box-shadow:
-    0 16px 25px rgba(0, 0, 0, 0.18);
+    0 18px 28px rgba(0, 0, 0, 0.16);
 }
 
 /* Mavericks */
 
 .house1:hover {
-  background: #ffd0b1;
+  background: #ffe1cc;
 }
 
 /* Titans */
 
 .house2:hover {
-  background: #c8e7c9;
+  background: #d9efd6;
 }
 
 /* Pioneers */
 
 .house3:hover {
-  background: #c5e2f7;
+  background: #d5eaf9;
 }
 
 /* Masters */
 
 .house4:hover {
-  background: #ffe8a6;
+  background: #fff2c2;
 }
 
 /* =========================================
    LOGO
+
+   The icon artwork (colored swirl, etc.)
+   comes from Strapi as-is — no color/shape
+   is generated here.
 ========================================= */
 
 .logoWrapper {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
 
-  flex: 0 0 68px;
+  flex: 0 0 72px;
 
   display: flex;
 
@@ -270,27 +201,25 @@
 }
 
 .houseContent h3 {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 
-  font-size: 17px;
+  font-size: 18px;
 
   line-height: 1.2;
 
   font-weight: 700;
 
-  color: #333333;
+  color: #2b2b2b;
 }
 
 .houseContent p {
   margin: 0;
 
-  max-width: 210px;
-
-  font-size: 12px;
+  font-size: 13px;
 
   line-height: 1.35;
 
-  color: #555555;
+  color: #666666;
 }
 
 /* =========================================
@@ -298,24 +227,25 @@
 ========================================= */
 
 @media (max-width: 900px) {
-  .container {
-    width: 92%;
-  }
-
   .housesWrapper {
-    max-width: 760px;
+    max-width: 640px;
   }
 
-  .houseCard {
-    width: 300px;
+  .houseContent p {
+    font-size: 12px;
   }
 }
 
 /* =========================================
    MOBILE
+
+   The flowing zigzag doesn't hold up at
+   narrow widths, so it collapses to a
+   single left-aligned stack with a plain
+   vertical connector.
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .section {
     padding: 55px 0 65px;
   }
@@ -333,91 +263,59 @@
   }
 
   .housesWrapper {
-    padding-left: 0;
+    aspect-ratio: auto;
+    max-width: 480px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    padding-left: 34px;
   }
 
-  /* Move line to left */
-  .centerLine {
-    left: 30px;
-
-    top: 35px;
-    bottom: 35px;
+  .track {
+    display: none;
   }
 
-  /* All rows left aligned */
-  .houseRow,
-  .houseRow.left,
-  .houseRow.right {
-    justify-content: flex-start;
+  .housesWrapper::before {
+    content: "";
 
-    height: auto;
+    position: absolute;
 
-    min-height: 95px;
+    top: 30px;
+    bottom: 30px;
+    left: 26px;
+
+    width: 1px;
+
+    background: #d6d6d6;
   }
 
-  /* Connector */
-  .houseRow.left .connector,
-  .houseRow.right .connector {
-    left: 30px;
-    right: auto;
+  .houseCard {
+    position: relative;
 
-    width: 35px;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+
+    padding: 14px 20px 14px 10px;
   }
 
-  /* Card */
-  .houseCard,
-  .houseRow.left .houseCard,
-  .houseRow.right .houseCard {
-    width: calc(100% - 55px);
+  .houseCard::before {
+    content: "";
 
-    margin-left: 55px;
-    margin-right: 0;
-  }
+    position: absolute;
 
-  .logoWrapper {
-    width: 58px;
-    height: 58px;
+    top: 50%;
+    left: -34px;
 
-    flex-basis: 58px;
-  }
+    width: 20px;
+    height: 1px;
 
-  .houseContent h3 {
-    font-size: 16px;
-  }
+    background: #d6d6d6;
 
-  .houseContent p {
-    max-width: none;
-
-    font-size: 11px;
-  }
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 480px) {
-  .container {
-    width: calc(100% - 25px);
-  }
-
-  .houseCard,
-  .houseRow.left .houseCard,
-  .houseRow.right .houseCard {
-    width: calc(100% - 45px);
-
-    margin-left: 45px;
-  }
-
-  .centerLine {
-    left: 24px;
-  }
-
-  .houseRow.left .connector,
-  .houseRow.right .connector {
-    left: 24px;
-
-    width: 25px;
+    transform: translateY(-50%);
   }
 
   .logoWrapper {
@@ -428,10 +326,10 @@
   }
 
   .houseContent h3 {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .houseContent p {
-    font-size: 10px;
+    font-size: 12px;
   }
 }

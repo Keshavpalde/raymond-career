@@ -56,11 +56,12 @@ export default function ValuesSection({
 
             <div className={styles.grid}>
 
-              {(data.values ?? []).map((item) => (
+              {(data.values ?? []).map((item, index) => (
 
                 <ValueCard
                   key={item.id}
                   item={item}
+                  index={index}
                 />
 
               ))}

@@ -40,12 +40,12 @@
 .content h2 {
   margin: 0 0 65px;
 
-  max-width: 600px;
+  max-width: 90%;
 
   color: #ffffff;
 
-  font-size: 36px;
-
+  font-size: 30px;
+font-family: var(--font-cinzel);
   line-height: 1.35;
 
   font-weight: 400;

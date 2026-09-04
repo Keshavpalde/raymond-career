@@ -6,6 +6,7 @@ import { MadeForMoreData } from "./madeForMore";
 import { LifeAtRaymondRealtyData } from "./lifeAtRaymondRealty";
 import { EmployeeTestimonialsData } from "./employeeTestimonials";
 import { AwardsRecognitionData } from "./awardsRecognition";
+import { HomeJobOpportunitiesData } from "./homeJobOpportunities";
 
 export interface HomeData {
   hero: HeroData;
@@ -23,4 +24,6 @@ export interface HomeData {
   employeeTestimonials?: EmployeeTestimonialsData;
 
   awardsRecognition?: AwardsRecognitionData;
+
+  jobOpportunities?: HomeJobOpportunitiesData;
 }

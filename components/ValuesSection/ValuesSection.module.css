@@ -55,7 +55,7 @@
 
 .heading {
   color: #fff;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 300;
   line-height: 1.1;
   margin-bottom: 20px;
@@ -120,10 +120,13 @@
 =========================================== */
 
 .icon {
+  display: block;
   width: 58px;
   height: 58px;
   object-fit: contain;
+  object-position: left center;
   margin-bottom: 22px;
+  margin-right: auto;
   transition: .45s ease;
 }
 
@@ -132,13 +135,35 @@
 }
 
 /* ===========================================
+   PER-ICON SIZE OVERRIDES
+
+   Each value card's icon also gets an
+   `icon1`..`icon6` class (in grid order),
+   so any icon's width/height can be changed
+   on its own without affecting the others.
+   object-position:left on .icon above keeps
+   every icon pinned to the left edge of its
+   card no matter what size you give it here
+   — use a fixed px width, not a percentage,
+   or it will stretch across the whole card.
+   Uncomment and adjust as needed.
+=========================================== */
+
+/* .icon1 { width: 58px; height: 58px; } */
+/* .icon2 { width: 58px; height: 58px; } */
+/* .icon3 { width: 58px; height: 58px; } */
+ .icon4 { width: 130px; height: 58px; } 
+ .icon5 { width: 130px; height: 58px; } 
+ .icon6 { width: 130px; height: 58px; } 
+
+/* ===========================================
    TITLE
 =========================================== */
 
 .cardTitle {
   color: #fff;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 10px;
   transition: .35s;
 }
@@ -149,8 +174,8 @@
 
 .cardDescription {
   color: rgba(255,255,255,.82);
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.5;
   transition: .35s;
 }
 

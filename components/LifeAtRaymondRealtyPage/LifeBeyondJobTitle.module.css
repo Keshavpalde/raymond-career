@@ -24,9 +24,10 @@
 .headingWrapper h2 {
   margin: 0;
 
-  font-size: 32px;
+  font-size: 30px;
+  font-family: var(--font-cinzel);
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 300;
 
   color: #222222;
   text-transform: uppercase;

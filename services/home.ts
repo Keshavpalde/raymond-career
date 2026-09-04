@@ -7,10 +7,11 @@ import { MadeForMoreData } from "@/types/madeForMore";
 import { LifeAtRaymondRealtyData } from "@/types/lifeAtRaymondRealty";
 import { EmployeeTestimonialsData } from "@/types/employeeTestimonials";
 import { AwardsRecognitionData } from "@/types/awardsRecognition";
+import { HomeJobOpportunitiesData } from "@/types/homeJobOpportunities";
 
 export async function getHome(): Promise<HomeData> {
   const response = await fetchAPI<{ data: any }>(
-    "/api/home?populate=hero.backgroundVideo,hero,statsSection.cards.image,statsSection.cards,ourValues.leftImage,ourValues.ValueItem.icon,leadershipThoughts.backgroundImage,leadershipThoughts.leaderItem.image,leadershipThoughts.leaderItem.expandedImage,leadershipThoughts.leaderItem.video,madeForMore.backgroundImage,madeForMore.tabs.contentImage,madeForMore.tabs.contentItems,lifeAtRaymondRealty.galleryItems.image,employeeTestimonials.backgroundImage,employeeTestimonials.testimonials.employeePhoto,employeeTestimonials.testimonials.uploadedVideo,employeeTestimonials.testimonials.thumbnailImage,awardsAndRecognition.awardsYear.awards.awardImage"
+    "/api/home?populate=hero.backgroundVideo,hero,statsSection.cards.image,statsSection.cards,ourValues.leftImage,ourValues.ValueItem.icon,leadershipThoughts.backgroundImage,leadershipThoughts.leaderItem.image,leadershipThoughts.leaderItem.expandedImage,leadershipThoughts.leaderItem.video,madeForMore.backgroundImage,madeForMore.tabs.contentImage,madeForMore.tabs.contentItems,lifeAtRaymondRealty.galleryItems.image,employeeTestimonials.backgroundImage,employeeTestimonials.testimonials.employeePhoto,employeeTestimonials.testimonials.uploadedVideo,employeeTestimonials.testimonials.thumbnailImage,awardsAndRecognition.awardsYear.awards.awardImage,homeJobOpportunities.bgImage"
   );
 
   const home = response.data;
@@ -185,6 +186,32 @@ const awardsRecognition:
     : undefined;
 
   /* ==========================================================
+     HOME JOB OPPORTUNITIES
+  ========================================================== */
+
+  const jobOpportunitiesRaw =
+    home?.homeJobOpportunities;
+
+  const jobOpportunities:
+    | HomeJobOpportunitiesData
+    | undefined =
+    jobOpportunitiesRaw
+      ? {
+          heading:
+            jobOpportunitiesRaw.heading ?? "",
+
+          buttonText:
+            jobOpportunitiesRaw.buttonText ?? null,
+
+          buttonUrl:
+            jobOpportunitiesRaw.buttonUrl ?? null,
+
+          bgImage:
+            jobOpportunitiesRaw.bgImage ?? null,
+        }
+      : undefined;
+
+  /* ==========================================================
      RETURN
   ========================================================== */
 
@@ -204,5 +231,7 @@ const awardsRecognition:
     employeeTestimonials,
 
     awardsRecognition,
+
+    jobOpportunities,
   };
 }

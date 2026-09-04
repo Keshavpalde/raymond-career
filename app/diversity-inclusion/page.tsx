@@ -1,54 +1,72 @@
-import HouseConceptHero from "@/components/HouseConceptPage/HouseConceptHero";
-import HouseConcept from "@/components/HouseConceptPage/HouseConcept";
-import MeetTheHouses from "@/components/HouseConceptPage/MeetTheHouses";
-import HouseMoments from "@/components/HouseConceptPage/HouseMoments";
+import DiversityInclusionHero from "@/components/DiversityInclusionPage/DiversityInclusionHero";
+import OurCommitmentToInclusion from "@/components/DiversityInclusionPage/OurCommitmentToInclusion";
+import DiversityInAction from "@/components/DiversityInclusionPage/DiversityInAction";
+import WomenBrigade from "@/components/DiversityInclusionPage/WomenBrigade";
+import DiversityStatistics from "@/components/DiversityInclusionPage/DiversityStatistics";
+import OurWorkplaceCulture from "@/components/DiversityInclusionPage/OurWorkplaceCulture";
 
-import { getHouseConceptPage } from "@/services/houseConceptPage";
+import {
+  getDiversityInclusionPage,
+} from "@/services/diversityInclusionPage";
 
-export default async function HouseConceptPage() {
-  const data = await getHouseConceptPage();
+export default async function DiversityInclusionPage() {
+  const data = await getDiversityInclusionPage();
 
   return (
     <>
-      {/* =================================
-          Hero
-      ================================= */}
+      {/* =====================================
+          Section 1
+          Diversity & Inclusion Hero
+      ====================================== */}
 
-      {data.houseConceptHero && (
-        <HouseConceptHero
-          data={data.houseConceptHero}
-        />
-      )}
+      <DiversityInclusionHero
+        data={data.diversityInclusionHero}
+      />
 
-      {/* =================================
-          House Concept / Video
-      ================================= */}
+      {/* =====================================
+          Section 2
+          Our Commitment To Inclusion
+      ====================================== */}
 
-      {data.houseConcept && (
-        <HouseConcept
-          data={data.houseConcept}
-        />
-      )}
+      <OurCommitmentToInclusion
+        data={data.ourCommitmentToInclusion}
+      />
 
-      {/* =================================
-          Meet The Houses
-      ================================= */}
+      {/* =====================================
+          Section 3
+          Diversity In Action
+      ====================================== */}
 
-      {data.meetTheHouses && (
-        <MeetTheHouses
-          data={data.meetTheHouses}
-        />
-      )}
+      <DiversityInAction
+        data={data.diversityInAction}
+      />
 
-      {/* =================================
-          House Moments
-      ================================= */}
+      {/* =====================================
+          Section 4
+          Women Brigade
+      ====================================== */}
 
-      {data.houseMoments && (
-        <HouseMoments
-          data={data.houseMoments}
-        />
-      )}
+      <WomenBrigade
+        data={data.womenBrigade}
+      />
+
+      {/* =====================================
+          Section 5
+          Diversity Statistics
+      ====================================== */}
+
+      <DiversityStatistics
+        data={data.diversityStatistics}
+      />
+
+      {/* =====================================
+          Section 6
+          Our Workplace Culture
+      ====================================== */}
+
+      <OurWorkplaceCulture
+        data={data.OurWorkplaceCulture}
+      />
     </>
   );
 }
