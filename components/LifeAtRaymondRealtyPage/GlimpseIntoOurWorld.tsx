@@ -65,7 +65,7 @@ export default function GlimpseIntoOurWorld({
 
               return (
                 <button
-                  key={item.image?.id || index}
+                  key={index}
                   type="button"
                   className={styles.galleryItem}
                   onClick={() => setSelectedItem(index)}
@@ -141,7 +141,7 @@ export default function GlimpseIntoOurWorld({
                   return (
                     <div
                       className={styles.modalImage}
-                      key={image.id || index}
+                      key={index}
                     >
                       <img
                         src={imageUrl}

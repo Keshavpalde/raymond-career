@@ -22,12 +22,12 @@
 }
 
 .number {
-  font-size: 46px;
+  font-size: 50px;
   line-height: 1;
-  font-weight: 300;
+    font-weight: 600;
 
   color: transparent;
-  -webkit-text-stroke: 1.5px #ed1b2f;
+  -webkit-text-stroke: 1px #ed1b2f;
 
   white-space: nowrap;
 }
@@ -35,7 +35,7 @@
 .label {
   max-width: 150px;
 
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.45;
   font-weight: 500;
 

@@ -84,8 +84,20 @@ export default function EmployeeStories({
       ? stories[(activeIndex + 1) % stories.length]
       : null;
 
-  const peekImageUrl = nextStory
+  const prevStory =
+    stories.length > 1
+      ? stories[
+          (activeIndex - 1 + stories.length) %
+            stories.length
+        ]
+      : null;
+
+  const nextPeekImageUrl = nextStory
     ? getMediaUrl(nextStory.thumbnail?.url)
+    : "";
+
+  const prevPeekImageUrl = prevStory
+    ? getMediaUrl(prevStory.thumbnail?.url)
     : "";
 
   const handleStoryChange = (index: number) => {
@@ -139,6 +151,16 @@ export default function EmployeeStories({
       ================================= */}
 
       <div className={styles.featuredWrapper}>
+
+        {prevPeekImageUrl && (
+          <div className={styles.peekCard} aria-hidden="true">
+            <img
+              src={prevPeekImageUrl}
+              alt=""
+              className={styles.peekImage}
+            />
+          </div>
+        )}
 
         <div className={styles.featuredStory}>
 
@@ -240,31 +262,47 @@ export default function EmployeeStories({
 
             </div>
 
-          </div>
+          {stories.length > 1 && (
+            <button
+              type="button"
+              className={`${styles.navButton} ${styles.prevButton}`}
+              onClick={() =>
+                handleStoryChange(
+                  (activeIndex - 1 + stories.length) %
+                    stories.length
+                )
+              }
+              aria-label="Previous employee story"
+            >
+              <span>←</span>
+            </button>
+          )}
 
-        {peekImageUrl && (
+          {stories.length > 1 && (
+            <button
+              type="button"
+              className={`${styles.navButton} ${styles.nextButton}`}
+              onClick={() =>
+                handleStoryChange(
+                  (activeIndex + 1) % stories.length
+                )
+              }
+              aria-label="Next employee story"
+            >
+              <span>→</span>
+            </button>
+          )}
+
+        </div>
+
+        {nextPeekImageUrl && (
           <div className={styles.peekCard} aria-hidden="true">
             <img
-              src={peekImageUrl}
+              src={nextPeekImageUrl}
               alt=""
               className={styles.peekImage}
             />
           </div>
-        )}
-
-        {stories.length > 1 && (
-          <button
-            type="button"
-            className={styles.nextButton}
-            onClick={() =>
-              handleStoryChange(
-                (activeIndex + 1) % stories.length
-              )
-            }
-            aria-label="Next employee story"
-          >
-            <span>→</span>
-          </button>
         )}
 
       </div>

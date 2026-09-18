@@ -57,10 +57,12 @@
   align-items: flex-start;
 
   width: 100%;
-  padding-left: max(24px, 19.3vw);
+  gap: 20px;
 }
 
 .featuredStory {
+  position: relative;
+
   flex: 0 0 auto;
   width: 64vw;
   background: #f2f2f2;
@@ -184,14 +186,12 @@
 }
 
 /* ================================
-   Next Button
+   Nav Buttons
 ================================ */
 
-.nextButton {
+.navButton {
   position: absolute;
   top: 255px;
-  left: 64vw;
-  transform: translate(-50%, -50%);
   z-index: 4;
 
   width: 48px;
@@ -216,8 +216,25 @@
     transform 0.25s ease;
 }
 
-.nextButton:hover {
+.navButton:hover {
   background: #ffffff;
+}
+
+.prevButton {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.prevButton:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.nextButton {
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.nextButton:hover {
   transform: translate(-50%, -50%) scale(1.05);
 }
 
@@ -387,7 +404,7 @@
     height: 440px;
   }
 
-  .nextButton {
+  .navButton {
     top: 220px;
   }
 
@@ -445,16 +462,25 @@
     height: 54px;
   }
 
-  .nextButton {
+  .navButton {
     top: 248px;
-    left: auto;
-    right: 12px;
     width: 42px;
     height: 42px;
     font-size: 20px;
+  }
+
+  .prevButton {
+    left: 12px;
     transform: none;
   }
 
+  .nextButton {
+    left: auto;
+    right: 12px;
+    transform: none;
+  }
+
+  .prevButton:hover,
   .nextButton:hover {
     transform: scale(1.05);
   }

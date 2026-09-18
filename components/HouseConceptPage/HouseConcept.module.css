@@ -54,7 +54,7 @@
   font-size: clamp(
     30px,
     3vw,
-    42px
+    30px
   );
 
   line-height: 1.2;
@@ -62,7 +62,7 @@
   font-weight: 400;
 
   text-transform: uppercase;
-
+font-family: 'Cinzel';
   letter-spacing: 1px;
 
   color: #151515;

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import styles from "./HomeJobOpportunities.module.css";
 
 import {
@@ -133,17 +135,19 @@ export default function HomeJobOpportunities({
 }: HomeJobOpportunitiesProps) {
   const backgroundImage = getMediaUrl(data?.bgImage);
 
-  const sectionStyle = backgroundImage
-    ? {
-        backgroundImage: `url("${backgroundImage}")`,
-      }
-    : undefined;
-
   return (
-    <section
-      className={styles.section}
-      style={sectionStyle}
-    >
+    <section className={styles.section}>
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
+          alt=""
+          fill
+          unoptimized
+          aria-hidden="true"
+          className={styles.bgImage}
+        />
+      )}
+
       <div className={styles.overlay} />
 
       <div className={styles.container}>

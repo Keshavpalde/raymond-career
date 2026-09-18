@@ -3,7 +3,7 @@
 
   width: 100%;
 
-  padding: 75px 0 80px;
+  padding: 75px 0 120px;
 
   background: #ffffff;
 
@@ -63,9 +63,9 @@
 .heading {
   margin: 0 0 10px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: cinzel;
 
-  font-size: 25px;
+  font-size: 30px;
 
   line-height: 1.2;
 
@@ -87,7 +87,7 @@
 .description p {
   margin: 0;
 
-  font-size: 13px;
+  font-size: 16px;
 
   line-height: 1.45;
 

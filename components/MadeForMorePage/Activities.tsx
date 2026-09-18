@@ -40,6 +40,9 @@ export default function Activities({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">(
+    "next"
+  );
 
   const activeSlide = slides[activeIndex]?.activitySlide;
   const images = activeSlide?.images || [];
@@ -58,6 +61,7 @@ export default function Activities({
     }
 
     const interval = setInterval(() => {
+      setDirection("next");
       setImageIndex(
         (current) => (current + 1) % images.length
       );
@@ -80,6 +84,7 @@ export default function Activities({
   };
 
   const showNextImage = () => {
+    setDirection("next");
     setImageIndex((current) =>
       images.length === 0
         ? 0
@@ -88,6 +93,7 @@ export default function Activities({
   };
 
   const showPrevImage = () => {
+    setDirection("prev");
     setImageIndex((current) =>
       images.length === 0
         ? 0
@@ -196,26 +202,44 @@ export default function Activities({
             {/* Main Image */}
             {mainImage && (
               <div className={styles.mainImage}>
-                <img
-                  src={getImageUrl(mainImage.url)}
-                  alt={
-                    mainImage.alternativeText ||
-                    activeSlide.title
-                  }
-                />
+                <div
+                  key={`${activeIndex}-${imageIndex}-main`}
+                  className={`${styles.slideTrack} ${
+                    direction === "prev"
+                      ? styles.slideInPrev
+                      : styles.slideInNext
+                  }`}
+                >
+                  <img
+                    src={getImageUrl(mainImage.url)}
+                    alt={
+                      mainImage.alternativeText ||
+                      activeSlide.title
+                    }
+                  />
+                </div>
               </div>
             )}
 
             {/* Secondary Image */}
             {secondaryImage && (
               <div className={styles.secondaryImage}>
-                <img
-                  src={getImageUrl(secondaryImage.url)}
-                  alt={
-                    secondaryImage.alternativeText ||
-                    activeSlide.title
-                  }
-                />
+                <div
+                  key={`${activeIndex}-${imageIndex}-secondary`}
+                  className={`${styles.slideTrack} ${
+                    direction === "prev"
+                      ? styles.slideInPrev
+                      : styles.slideInNext
+                  }`}
+                >
+                  <img
+                    src={getImageUrl(secondaryImage.url)}
+                    alt={
+                      secondaryImage.alternativeText ||
+                      activeSlide.title
+                    }
+                  />
+                </div>
               </div>
             )}
           </div>

@@ -415,9 +415,20 @@
 
 .galleryGrid{
 
-    grid-template-rows:repeat(4,120px);
+    grid-template-columns:repeat(4,1fr);
+
+    grid-template-rows:none;
+
+    grid-auto-rows:150px;
 
     gap:5px;
+}
+
+.centerGridItem{
+
+    grid-column:2 / span 2;
+
+    grid-row:span 2;
 }
 
 .centerHeading{
@@ -450,37 +461,48 @@
 
 .galleryGrid{
 
-    grid-template-rows:repeat(4,80px);
+    grid-template-columns:repeat(3,1fr);
+
+    grid-template-rows:none;
+
+    grid-auto-rows:130px;
 
     gap:5px;
 }
 
+.centerGridItem{
+
+    grid-column:1 / -1;
+
+    grid-row:span 2;
+}
+
 .centerCard{
 
-    padding:12px;
+    padding:20px;
 }
 
 .centerHeading{
 
-    font-size:15px;
+    font-size:18px;
 
-    margin-bottom:10px;
+    margin-bottom:14px;
 }
 
 .viewAllButton{
 
-    font-size:11px;
+    font-size:13px;
 
-    padding:4px 4px 4px 14px;
+    padding:5px 5px 5px 18px;
 }
 
 .viewAllButton svg{
 
-    width:24px;
+    width:28px;
 
-    height:24px;
+    height:28px;
 
-    padding:5px;
+    padding:6px;
 }
 
 }
@@ -498,39 +520,50 @@
 
 .galleryGrid{
 
-    grid-template-rows:repeat(4,55px);
+    grid-template-columns:repeat(2,1fr);
+
+    grid-template-rows:none;
+
+    grid-auto-rows:130px;
 
     gap:5px;
 }
 
+.centerGridItem{
+
+    grid-column:1 / -1;
+
+    grid-row:span 2;
+}
+
 .centerCard{
 
-    padding:6px;
+    padding:20px;
 }
 
 .centerHeading{
 
-    font-size:11px;
+    font-size:16px;
 
-    line-height:1.2;
+    line-height:1.3;
 
-    margin-bottom:6px;
+    margin-bottom:12px;
 }
 
 .viewAllButton{
 
-    font-size:9px;
+    font-size:12px;
 
-    padding:3px 3px 3px 10px;
+    padding:4px 4px 4px 16px;
 }
 
 .viewAllButton svg{
 
-    width:18px;
+    width:26px;
 
-    height:18px;
+    height:26px;
 
-    padding:4px;
+    padding:6px;
 }
 
 }

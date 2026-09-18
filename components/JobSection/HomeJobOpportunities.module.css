@@ -5,12 +5,16 @@
   padding: 70px 0 55px;
 
   background-color: #333333;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   margin-bottom: 70px;
 
   overflow: hidden;
+}
+
+.bgImage {
+  z-index: 5;
+  object-position: center;
+
+  pointer-events: none;
 }
 
 .overlay {

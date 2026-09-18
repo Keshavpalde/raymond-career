@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import ApplyButton from "./ApplyButton";
+import MenuToggle from "./MenuToggle";
+import MobileMenu from "./MobileMenu";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -26,6 +28,7 @@ interface HeaderProps {
 
 export default function Header({ data }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,18 +52,41 @@ export default function Header({ data }: HeaderProps) {
       );
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen
+      ? "hidden"
+      : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header className={styles.header}>
       <div
         className={`
           ${styles.wrapper}
           ${scrolled ? styles.scrolled : ""}
+          ${menuOpen ? styles.menuOpenWrapper : ""}
         `}
       >
         <Logo logo={data.Logo} />
         <Navigation navigation={data.navigation} />
         <ApplyButton button={data.ctaButton} />
+
+        <MenuToggle
+          open={menuOpen}
+          onToggle={() => setMenuOpen((prev) => !prev)}
+        />
       </div>
+
+      <MobileMenu
+        navigation={data.navigation}
+        ctaButton={data.ctaButton}
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+      />
     </header>
   );
 }

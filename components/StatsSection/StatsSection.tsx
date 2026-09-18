@@ -34,7 +34,9 @@ export default function StatsSection({ data }: Props) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className={styles.statsSection}>
+    <section
+      className={`${styles.statsSection} ${styles.sectionDesktop} ${styles.sectionMobile}`}
+    >
       <div className={styles.container}>
 
         <h2 className={styles.heading}>{data.heading}</h2>

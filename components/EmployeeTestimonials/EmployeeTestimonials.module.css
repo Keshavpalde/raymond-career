@@ -425,37 +425,71 @@
 
 .listWrapper{
 
+    position:relative;
+
+    max-height:720px;
+
+    overflow:hidden;
+
+    padding-right:10px;
+
+    -webkit-mask-image:linear-gradient(
+        180deg,
+        transparent 0,
+        #000 24px,
+        #000 calc(100% - 24px),
+        transparent 100%
+    );
+
+    mask-image:linear-gradient(
+        180deg,
+        transparent 0,
+        #000 24px,
+        #000 calc(100% - 24px),
+        transparent 100%
+    );
+
+}
+
+.scrollTrack{
+
     display:flex;
 
     flex-direction:column;
 
     gap:18px;
 
-    max-height:720px;
+}
 
-    overflow-y:auto;
+.scrollTrackAnimated{
 
-    padding-right:10px;
+    animation:verticalScroll var(--scroll-duration,30s) linear infinite;
+
+    will-change:transform;
 
 }
 
-.listWrapper::-webkit-scrollbar{
+.listWrapper:hover .scrollTrackAnimated{
 
-    width:6px;
-
-}
-
-.listWrapper::-webkit-scrollbar-thumb{
-
-    background:#ccc;
-
-    border-radius:10px;
+    animation-play-state:paused;
 
 }
 
-.listWrapper::-webkit-scrollbar-track{
+.cloneCard{
 
-    background:transparent;
+    pointer-events:none;
+
+}
+
+@keyframes verticalScroll{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-50%);
+    }
 
 }
 
@@ -661,11 +695,31 @@
 
         max-height: none;
 
+        overflow: visible;
+
+        -webkit-mask-image: none;
+
+        mask-image: none;
+
+    }
+
+    .scrollTrack {
+
         display: grid;
 
         grid-template-columns: repeat(3, 1fr);
 
-        overflow: visible;
+    }
+
+    .scrollTrackAnimated {
+
+        animation: none;
+
+    }
+
+    .cloneCard {
+
+        display: none;
 
     }
 
@@ -704,7 +758,7 @@
         max-width: 100%;
     }
 
-    .listWrapper{
+    .scrollTrack{
 
         grid-template-columns: repeat(2, 1fr);
     }
@@ -738,7 +792,7 @@
         text-align: left;
     }
 
-    .listWrapper {
+    .scrollTrack {
 
         grid-template-columns: 1fr 1fr;
 
@@ -791,7 +845,7 @@
         line-height: 1.7;
     }
 
-    .listWrapper{
+    .scrollTrack{
 
         grid-template-columns: 1fr;
     }

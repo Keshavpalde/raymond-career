@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 720px;
+  min-height: 85vh;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -65,6 +65,46 @@
   margin: 0;
   color: #fff;
 
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 900px) {
+
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 24px;
+  }
+
+  .headingWrapper h1 {
+    font-size: 34px;
+  }
+
+  .descriptionWrapper {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .content {
+    padding: 0 20px 40px;
+  }
+
+  .headingWrapper h1 {
+    font-size: 28px;
+  }
+
+  .descriptionWrapper p {
+    font-size: 15px;
+  }
+
 }

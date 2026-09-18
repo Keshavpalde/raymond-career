@@ -22,7 +22,7 @@
 .header h2 {
   margin: 0 0 10px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Cinzel';
   font-size: 38px;
   line-height: 1.15;
   font-weight: 400;
@@ -184,7 +184,7 @@
 .cardTop h3 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Jost';
 
   font-size: 23px;
   line-height: 1.2;

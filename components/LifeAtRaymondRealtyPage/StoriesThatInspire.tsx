@@ -127,7 +127,7 @@ export default function StoriesThatInspire({
           return (
             <article
               className={styles.card}
-              key={item.image?.id || index}
+              key={index}
             >
               {/* Image */}
 

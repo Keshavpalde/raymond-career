@@ -10,6 +10,7 @@ interface Props {
   testimonial: TestimonialItem;
   active: boolean;
   onClick: () => void;
+  isClone?: boolean;
 }
 
 const STRAPI_URL =
@@ -20,6 +21,7 @@ export default function TestimonialCard({
   testimonial,
   active,
   onClick,
+  isClone = false,
 }: Props) {
   const photo =
     testimonial.employeePhoto?.url?.startsWith("http")
@@ -30,9 +32,11 @@ export default function TestimonialCard({
     <button
       type="button"
       onClick={onClick}
+      aria-hidden={isClone}
+      tabIndex={isClone ? -1 : 0}
       className={`${styles.card} ${
         active ? styles.activeCard : ""
-      }`}
+      } ${isClone ? styles.cloneCard : ""}`}
     >
       <div className={styles.cardImage}>
         <Image

@@ -14,13 +14,13 @@
 }
 
 .content {
-  width: max(100%, 1440px);
+  width: 100%;
   margin: 0 auto;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 40% 60%;
   min-height: auto;
   overflow: hidden;
   border-radius: 0;
@@ -50,7 +50,7 @@
 
 .right {
   background: #232323;
-  padding: 30px 40px;
+  padding: 40px 70px;
 }
 
 .heading {
@@ -85,7 +85,7 @@
 =========================================== */
 
 .card {
-  padding: 15px;
+  padding: 20px 25px;
   border-radius: 20px;
   transition: all .45s ease;
   cursor: pointer;
@@ -174,7 +174,7 @@
 
 .cardDescription {
   color: rgba(255,255,255,.82);
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.5;
   transition: .35s;
 }
