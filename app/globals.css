@@ -3,6 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Shared mobile spacing (<=768px) used by every home section
+     so headings, cards and edges line up section to section. */
+  --mobile-section-y: 30px;
+  --mobile-gutter: 20px;
+  /* Space between a section's heading/intro and its content */
+  --mobile-heading-gap: 20px;
+
+  /* Section heading size, shared by every body section */
+  --section-heading-size: 30px;
+  --mobile-section-heading-size: 26px;
 }
 
 @theme inline {

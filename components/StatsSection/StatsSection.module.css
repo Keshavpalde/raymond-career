@@ -9,7 +9,7 @@
 /* Desktop/tablet padding lives here; mobile padding lives in
    .sectionMobile below, so each can be tuned independently. */
 .sectionDesktop {
-  padding: 110px 0;
+  padding: 0px 0;
 }
 
 .heading {
@@ -27,7 +27,7 @@
 .container {
   width: min(100%, 1440px);
   margin: 0 auto;
-  padding: 40px 50px;
+  padding: 0px 0px;
 }
 
 .grid {
@@ -526,8 +526,9 @@
     grid-row: auto;
   }
 
-  .imageCard {
-    min-height: 260px;
+  /* Images are hidden on mobile; only the stats cards are shown. */
+  .imageWrapper {
+    display: none;
   }
 
   .statsWrapper .statsCard {
@@ -554,7 +555,7 @@
 
 @media (max-width: 480px) {
   .sectionMobile {
-    padding: 60px 0;
+    padding: 0px 0;
   }
 
   .heading {
@@ -571,5 +572,45 @@
 
   .number {
     font-size: 42px;
+  }
+}
+
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width: 768px) {
+  .sectionMobile {
+    padding: var(--mobile-section-y) 0;
+  }
+
+  .container {
+    padding: 0 var(--mobile-gutter);
+  }
+
+  .grid {
+    padding: 0;
+    gap: 16px;
+  }
+
+  .heading {
+    margin-bottom: var(--mobile-heading-gap);
+  }
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
   }
 }

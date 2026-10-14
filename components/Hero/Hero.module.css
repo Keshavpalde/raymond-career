@@ -184,3 +184,13 @@
     }
 
 }
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--mobile-gutter);
+    }
+}

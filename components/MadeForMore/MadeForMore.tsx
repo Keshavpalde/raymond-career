@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "./MadeForMore.module.css";
 
@@ -19,6 +19,8 @@ interface Props {
 const STRAPI_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ||
   "http://localhost:1337";
+
+const MOBILE_QUERY = "(max-width: 767px)";
 
 function getRichText(blocks: any[] = []) {
   return blocks
@@ -52,6 +54,18 @@ export default function MadeForMore({
 
   const [activeTab, setActiveTab] =
     useState<MadeForMoreTab>(defaultTab);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia(MOBILE_QUERY);
+    const update = () => setIsMobile(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   const backgroundImage = useMemo(() => {
     if (!data.backgroundImage)
@@ -90,11 +104,18 @@ export default function MadeForMore({
               tabs={data.tabs}
               activeTab={activeTab}
               onChange={setActiveTab}
+              renderContent={
+                isMobile
+                  ? (tab) => <ContentPanel tab={tab} />
+                  : undefined
+              }
             />
 
-            <ContentPanel
-              tab={activeTab}
-            />
+            {!isMobile && (
+              <ContentPanel
+                tab={activeTab}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -391,6 +391,17 @@
 
 }
 
+@keyframes inlineReveal{
+  from{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 /* ==========================================================
    MOBILE
 ========================================================== */
@@ -403,10 +414,29 @@
 
   .header{
     margin-bottom:35px;
+    text-align:left;
   }
 
   .heading{
     font-size:26px;
+  }
+
+  /* Full-bleed dark panel: cancel the container's 30px side
+     padding and drop the rounded corners. */
+  .panel{
+    margin:0 -30px;
+    padding:30px;
+    border-radius:0;
+  }
+
+  .tabButton{
+    text-align:left;
+  }
+
+  /* Accordion: active tab's content sits right under its button */
+  .inlineContent{
+    margin:6px 0 14px;
+    animation:inlineReveal .35s ease;
   }
 
   .description{
@@ -453,8 +483,7 @@
   }
 
   .panel{
-    padding:20px;
-    border-radius:20px;
+    padding:24px 30px;
   }
 
   .heading{
@@ -491,4 +520,52 @@
     font-size:13px;
   }
 
+}
+
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width:768px){
+
+  .section{
+    padding:var(--mobile-section-y) 0;
+  }
+
+  .container{
+    padding:0 var(--mobile-gutter);
+  }
+
+  .header{
+    margin-bottom:var(--mobile-heading-gap);
+  }
+
+  .heading{
+    margin-bottom:12px;
+  }
+
+  /* Full-bleed dark panel */
+  .panel{
+    margin:0 calc(-1 * var(--mobile-gutter));
+    padding:var(--mobile-gutter);
+    border-radius:0;
+  }
+
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
 }

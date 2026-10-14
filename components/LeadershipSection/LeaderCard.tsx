@@ -8,6 +8,7 @@ import { LeaderItem } from "@/types/leadership";
 interface Props {
   leader: LeaderItem;
   active: boolean;
+  mobile?: boolean;
   onClick: () => void;
   onPlay: () => void;
 }
@@ -19,11 +20,12 @@ const STRAPI_URL =
 export default function LeaderCard({
   leader,
   active,
+  mobile = false,
   onClick,
   onPlay,
 }: Props) {
   const activeImage =
-    (active && leader.expandedImage) || leader.image;
+    ((active || mobile) && leader.expandedImage) || leader.image;
 
   const imageUrl = activeImage?.url?.startsWith("http")
     ? activeImage.url
@@ -33,7 +35,8 @@ export default function LeaderCard({
     <div
       className={`
         ${styles.card}
-        ${active ? styles.activeCard : ""}
+        ${active && !mobile ? styles.activeCard : ""}
+        ${mobile ? styles.mobileCard : ""}
       `}
       onClick={onClick}
     >
@@ -78,7 +81,7 @@ export default function LeaderCard({
           {leader.designation}
         </p>
 
-        {active && (
+        {active && !mobile && (
           <div className={styles.quoteBlock}>
             <span className={styles.quoteIcon}>&ldquo;</span>
             <p className={styles.quoteText}>

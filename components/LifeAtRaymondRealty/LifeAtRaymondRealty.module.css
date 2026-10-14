@@ -567,3 +567,129 @@
 }
 
 }
+
+/* ==========================================================
+   MOBILE SLIDER LAYOUT (MobileGallery)
+   Left-aligned heading, swipeable colour images,
+   dark View All button underneath.
+========================================================== */
+
+.mobileGallery{
+    display:none;
+}
+
+@media (max-width:768px){
+
+.section{
+    padding:40px 0;
+}
+
+.mobileGallery{
+    display:block;
+}
+
+.mobileHeading{
+    font-family:var(--font-cinzel);
+    color:#1a1a1a;
+    font-size:28px;
+    font-weight:300;
+    letter-spacing:.5px;
+    line-height:1.2;
+    margin:0 0 28px;
+    padding:0 30px;
+}
+
+.mobileSlider{
+    padding-bottom:36px;
+}
+
+.mobileSlide{
+    position:relative;
+    aspect-ratio:4 / 5;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+/* Show images in colour; no hover zoom on touch */
+.mobileSlide .galleryImage,
+.mobileSlide .galleryCard:hover .galleryImage{
+    filter:grayscale(0);
+    transform:none;
+}
+
+.mobileSlider :global(.swiper-pagination){
+    bottom:0;
+}
+
+.mobileSlider :global(.swiper-pagination-bullet){
+    background:#1a1a1a;
+    opacity:.25;
+}
+
+.mobileSlider :global(.swiper-pagination-bullet-active){
+    background:#E53945;
+    opacity:1;
+}
+
+.mobileActions{
+    padding:24px 30px 0;
+}
+
+.viewAllButton.mobileViewAll{
+    background:#1a1a1a;
+    color:#fff;
+    font-size:15px;
+    padding:6px 6px 6px 24px;
+}
+
+.mobileViewAll svg{
+    width:34px;
+    height:34px;
+    padding:8px;
+}
+
+}
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width:768px){
+
+.section{
+    padding:var(--mobile-section-y) 0;
+}
+
+.mobileHeading{
+    padding:0 var(--mobile-gutter);
+    margin-bottom:var(--mobile-heading-gap);
+}
+
+.mobileSlider{
+    padding-bottom:28px;
+}
+
+.mobileActions{
+    padding:16px var(--mobile-gutter) 0;
+}
+
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.centerHeading,
+.mobileHeading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .centerHeading,
+.mobileHeading {
+    font-size: var(--mobile-section-heading-size);
+  }
+}

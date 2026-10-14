@@ -358,3 +358,56 @@ margin-bottom: 40px;
     order: -1;
   }
 }
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width: 768px) {
+  .section {
+    min-height: 0;
+    margin-bottom: 0;
+    padding: var(--mobile-section-y) 0;
+  }
+
+  /* Hide the hanging-light background artwork on mobile */
+  .bgImage {
+    display: none;
+  }
+
+  .container {
+    width: calc(100% - 2 * var(--mobile-gutter));
+  }
+
+  .header {
+    min-height: 0;
+  }
+
+  .headingWrap {
+    width: auto;
+  }
+
+  .headingWrap h2 {
+    margin-bottom: var(--mobile-heading-gap);
+  }
+
+  .buttonWrapper {
+    margin-top: var(--mobile-heading-gap);
+  }
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.headingWrap h2 {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .headingWrap h2 {
+    font-size: var(--mobile-section-heading-size);
+  }
+}

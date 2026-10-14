@@ -24,6 +24,8 @@ const STRAPI_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ||
   "http://localhost:1337";
 
+const MOBILE_QUERY = "(max-width: 768px)";
+
 interface Props {
   data: LeadershipSectionData;
 }
@@ -64,6 +66,20 @@ export default function LeadershipSection({
 
   const swiperRef = useRef<SwiperInstance | null>(null);
 
+  // On mobile every card shows its expanded image with the
+  // play button straight away, so there's no click-to-expand.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia(MOBILE_QUERY);
+    const update = () => setIsMobile(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+
+    return () => query.removeEventListener("change", update);
+  }, []);
+
   useEffect(() => {
     swiperRef.current?.update();
 
@@ -72,7 +88,7 @@ export default function LeadershipSection({
     }, 460);
 
     return () => clearTimeout(timeout);
-  }, [activeLeader]);
+  }, [activeLeader, isMobile]);
 
   const backgroundImage = useMemo(() => {
     if (!data?.backgroundImage)
@@ -122,15 +138,16 @@ export default function LeadershipSection({
                 >
                   <LeaderCard
                     leader={leader}
+                    mobile={isMobile}
                     active={
                       activeLeader?.id ===
                       leader.id
                     }
-                    onClick={() =>
-                      setActiveLeader(
-                        leader
-                      )
-                    }
+                    onClick={() => {
+                      if (!isMobile) {
+                        setActiveLeader(leader);
+                      }
+                    }}
                     onPlay={() => {
                       setActiveLeader(
                         leader

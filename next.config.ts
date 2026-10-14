@@ -6,6 +6,7 @@ const strapiUrl = new URL(
 
 const nextConfig: NextConfig = {
   images: {
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         protocol: strapiUrl.protocol.replace(":", "") as "http" | "https",

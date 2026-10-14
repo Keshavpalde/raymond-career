@@ -503,3 +503,49 @@
     }
 
 }
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width:768px){
+
+    .section{
+        padding:var(--mobile-section-y) 0;
+    }
+
+    .container{
+        padding:0 var(--mobile-gutter);
+    }
+
+    .header{
+        gap:16px;
+        margin-bottom:var(--mobile-heading-gap);
+    }
+
+    .sliderWrapper{
+        margin-top:0;
+    }
+
+    /* Just enough room for the 48px arrows */
+    .slider{
+        padding-bottom:64px;
+    }
+
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
+}

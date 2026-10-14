@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import StatsSection from "@/components/StatsSection";
 import ValuesSection from "@/components/ValuesSection";
 import LeadershipSection from "@/components/LeadershipSection";
+import FunctionalHeads from "@/components/FunctionalHeads/FunctionalHeads";
 import MadeForMore from "@/components/MadeForMore";
 import LifeAtRaymondRealty from "@/components/LifeAtRaymondRealty";
 import EmployeeTestimonials from "@/components/EmployeeTestimonials";
@@ -52,6 +53,15 @@ export default async function HomePage() {
         <RevealOnScroll>
           <LeadershipSection
             data={home.leadershipThoughts}
+          />
+        </RevealOnScroll>
+      )}
+
+      {/* Functional Heads Section */}
+      {home.functionalHeads && (
+        <RevealOnScroll>
+          <FunctionalHeads
+            data={home.functionalHeads}
           />
         </RevealOnScroll>
       )}

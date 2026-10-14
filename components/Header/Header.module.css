@@ -266,12 +266,39 @@
     }
 }
 
+/* Mobile: full-width solid black bar instead of the floating
+   transparent pill. */
+@media (max-width: 768px) {
+    .header {
+        top: 0;
+        padding: 0;
+    }
+
+    .wrapper,
+    .wrapper.scrolled {
+        background: #000;
+        backdrop-filter: none;
+        border: none;
+        border-radius: 0;
+    }
+}
+
 @media (max-width: 420px) {
     .logo img {
-        width: 120px;
-    }
+        width: 215px;
+        height:auto;    }
 
     .mobileNavLink {
         font-size: 20px;
+    }
+}
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 var(--mobile-gutter);
     }
 }

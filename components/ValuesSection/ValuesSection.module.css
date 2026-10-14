@@ -273,12 +273,12 @@
 @media(max-width:768px){
 
 .valuesSection{
-    padding:80px 0;
+    padding:40px 0 0;
 }
 
+/* Image is hidden on mobile; only the content panel is shown. */
 .left{
-    height:420px;
-    min-height:420px;
+    display:none;
 }
 
 .right{
@@ -287,10 +287,13 @@
 
 .heading{
     font-size:34px;
+    text-align:left;
 }
 
 .subHeading{
     font-size:18px;
+    text-align:left;
+    margin:0 0 50px;
 }
 
 .grid{
@@ -318,11 +321,6 @@
 
 @media(max-width:480px){
 
-.left{
-    height:320px;
-    min-height:320px;
-}
-
 .heading{
     font-size:30px;
 }
@@ -335,4 +333,44 @@
     padding:30px 20px;
 }
 
+}
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width:768px){
+
+.valuesSection{
+    padding:var(--mobile-section-y) 0 0;
+}
+
+.right{
+    padding:var(--mobile-section-y) var(--mobile-gutter);
+}
+
+.heading{
+    margin-bottom:12px;
+}
+
+.subHeading{
+    margin:0 0 var(--mobile-heading-gap);
+}
+
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
 }

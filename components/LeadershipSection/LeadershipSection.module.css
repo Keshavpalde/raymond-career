@@ -640,7 +640,7 @@ width:340px;
 
 .section{
 
-padding:70px 0;
+padding:40px 0;
 
 }
 
@@ -734,4 +734,104 @@ font-size:22px;
 
 }
 
+}
+
+/* ==========================================================
+   MOBILE LAYOUT
+   Left-aligned text, one full-width card per slide showing
+   the expanded (colour) image, and the play button always
+   visible in the bottom-right corner.
+========================================================== */
+
+@media(max-width:768px){
+
+.heading,
+.description{
+    text-align:left;
+    margin-left:0;
+    margin-right:0;
+}
+
+/* Swiper sets width:auto inline on each slide */
+.slider :global(.swiper-slide){
+    width:100% !important;
+}
+
+.card.mobileCard{
+    width:100%;
+}
+
+.mobileCard:hover{
+    transform:none;
+}
+
+.mobileCard:hover .image{
+    transform:none;
+}
+
+.mobileCard .image{
+    filter:grayscale(0);
+}
+
+.mobileCard .cardContent{
+    padding-right:100px;
+}
+
+.mobileCard .playButton{
+    left:auto;
+    top:auto;
+    right:20px;
+    bottom:20px;
+    transform:none;
+    opacity:1;
+    background:#E53945;
+    color:#fff;
+}
+
+}
+
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media(max-width:768px){
+
+.section{
+    padding:var(--mobile-section-y) 0;
+}
+
+.container{
+    padding:0 var(--mobile-gutter);
+}
+
+.heading{
+    margin-bottom:12px;
+}
+
+.description{
+    margin-bottom:var(--mobile-heading-gap);
+}
+
+/* Just enough room for the 52px arrows */
+.slider{
+    padding-bottom:68px;
+}
+
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
 }

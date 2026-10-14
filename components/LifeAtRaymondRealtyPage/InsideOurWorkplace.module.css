@@ -242,3 +242,36 @@
     font-size: 24px;
   }
 }
+
+/* ==========================================================
+   SHARED MOBILE LAYOUT (see --mobile-* in app/globals.css)
+   Same padding, left alignment and heading size as the home
+   page sections. Kept last so it wins over earlier rules.
+========================================================== */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--mobile-section-y) 0;
+  }
+  .container {
+    padding-left: var(--mobile-gutter);
+    padding-right: var(--mobile-gutter);
+  }
+
+  .navRow {
+    padding-left: var(--mobile-gutter);
+    padding-right: var(--mobile-gutter);
+  }
+
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
+
+  .descriptionWrapper {
+    margin-top: 12px;
+  }
+
+  .descriptionWrapper p {
+    font-size: 15px;
+  }
+}

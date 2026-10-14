@@ -2,6 +2,7 @@ import { HeroData } from "./hero";
 import { StatsSectionData } from "./statsSection";
 import { ValuesSectionData } from "./valuesSection";
 import { LeadershipSectionData } from "./leadership";
+import { FunctionalHeadsData } from "@/types/functionalHeads";
 import { MadeForMoreData } from "./madeForMore";
 import { LifeAtRaymondRealtyData } from "./lifeAtRaymondRealty";
 import { EmployeeTestimonialsData } from "./employeeTestimonials";
@@ -16,6 +17,8 @@ export interface HomeData {
   ourValues?: ValuesSectionData;
 
   leadershipThoughts?: LeadershipSectionData;
+
+  functionalHeads?: FunctionalHeadsData;
 
   madeForMore?: MadeForMoreData;
 

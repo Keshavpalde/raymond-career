@@ -7,6 +7,7 @@ import styles from "./EmployeeTestimonials.module.css";
 
 import FeaturedVideo from "./FeaturedVideo";
 import TestimonialList from "./TestimonialList";
+import MobileTestimonials from "./MobileTestimonials";
 
 import {
   EmployeeTestimonialsData,
@@ -117,7 +118,23 @@ export default function EmployeeTestimonials({
 
         {/* Content */}
 
-        <div className={styles.content}>
+        {/* Mobile: slider only. Shown/hidden purely by CSS so
+            phones never get the desktop layout, even before JS
+            runs. */}
+
+        <div className={styles.mobileOnly}>
+          <MobileTestimonials
+            testimonials={testimonials}
+            initialIndex={Math.max(
+              testimonials.indexOf(defaultItem),
+              0
+            )}
+          />
+        </div>
+
+        {/* Desktop / tablet */}
+
+        <div className={`${styles.content} ${styles.desktopOnly}`}>
 
           {/* Left Video */}
 

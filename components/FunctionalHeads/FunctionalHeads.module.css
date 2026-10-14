@@ -1,0 +1,458 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(1400px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 850px;
+  margin-bottom: 50px;
+}
+
+.heading {
+  font-family: var(--font-cinzel);
+  color: #1a1a1a;
+  margin: 0 0 20px;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+}
+
+.intro {
+  font-family: var(--font-jost);
+  color: #5a5a5a;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.intro p {
+  margin: 0 0 12px;
+}
+
+.sliderWrapper {
+  position: relative;
+}
+
+.sliderViewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.sliderTrack {
+  --visible: 5;
+
+  display: flex;
+  transition: transform 0.5s ease;
+  margin: 0 -10px;
+}
+
+.slide {
+  flex: 0 0 calc(100% / var(--visible));
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(26, 26, 26, 0.08);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.82;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 50px 16px 16px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  color: #fff;
+}
+
+.overlayText h3 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.overlayText p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.playButton {
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border: 0;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.playButton:hover {
+  transform: scale(1.08);
+  background: #e53945;
+  color: #fff;
+}
+
+.playIcon {
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+.sliderControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.sliderControls button {
+  width: 52px;
+  height: 52px;
+
+  border: 1px solid rgba(26, 26, 26, 0.25);
+  border-radius: 50%;
+
+  background: transparent;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.sliderControls button:hover:not(:disabled) {
+  background: #e53945;
+  border-color: #e53945;
+  color: #fff;
+}
+
+.sliderControls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Modal */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  position: relative;
+
+  width: min(1000px, 100%);
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #fff;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  z-index: 3;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.modalVideo {
+  width: 100%;
+  background: #000;
+}
+
+.modalVideo video {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+}
+
+.modalContent {
+  padding: 30px;
+}
+
+.modalContent h3 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.modalDesignation {
+  margin: 0 0 20px;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.modalDescription {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.modalDescription p {
+  margin: 0 0 15px;
+}
+
+/* Tablet */
+
+@media (max-width: 1023px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .container {
+    width: min(100% - 50px, 900px);
+  }
+
+  .sliderTrack {
+    --visible: 3;
+  }
+}
+
+/* Mobile — matches the Leadership Thoughts mobile cards */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .container {
+    width: calc(100% - 60px);
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .heading {
+    font-size: 32px;
+    margin-bottom: 22px;
+  }
+
+  .intro {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .sliderTrack {
+    --visible: 1;
+  }
+
+  .card {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .card:hover .image {
+    transform: none;
+  }
+
+  .imageWrapper {
+    aspect-ratio: auto;
+    height: 420px;
+  }
+
+  .overlay {
+    align-items: flex-end;
+    padding: 28px 20px 20px 28px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.75)
+    );
+  }
+
+  .overlayText h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .overlayText p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .playButton,
+  .playButton:hover {
+    width: 72px;
+    height: 72px;
+    background: #e53945;
+    color: #fff;
+    transform: none;
+  }
+
+  .playButton:active {
+    background: #c72f39;
+  }
+
+  .playIcon {
+    font-size: 28px;
+  }
+
+  .sliderControls {
+    margin-top: 36px;
+  }
+
+  .modalOverlay {
+    padding: 15px;
+  }
+
+  .modalContent {
+    padding: 20px;
+  }
+
+  .modalContent h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 28px;
+  }
+
+  .imageWrapper {
+    height: 360px;
+  }
+
+  .overlayText p {
+    font-size: 14px;
+  }
+
+  .playButton,
+  .playButton:hover {
+    width: 60px;
+    height: 60px;
+  }
+
+  .playIcon {
+    font-size: 22px;
+  }
+}
+/* ==========================================================
+   SHARED MOBILE SPACING (see --mobile-* in app/globals.css)
+   Kept last so it wins over the earlier breakpoint rules.
+========================================================== */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--mobile-section-y) 0;
+  }
+
+  .container {
+    width: calc(100% - 2 * var(--mobile-gutter));
+  }
+
+  .header {
+    margin-bottom: var(--mobile-heading-gap);
+  }
+
+  .heading {
+    margin-bottom: 12px;
+  }
+
+  .sliderControls {
+    margin-top: 16px;
+  }
+}
+
+/* ==========================================================
+   SHARED SECTION HEADING SIZE (see --*section-heading-size
+   in app/globals.css). Kept last so it overrides every
+   breakpoint above.
+========================================================== */
+
+.heading {
+  font-size: var(--section-heading-size);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: var(--mobile-section-heading-size);
+  }
+}
