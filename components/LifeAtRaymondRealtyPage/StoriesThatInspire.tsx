@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./StoriesThatInspire.module.css";
 
 import {
@@ -38,54 +38,74 @@ export default function StoriesThatInspire({
   const [isHovered, setIsHovered] = useState(false);
 
   /*
+   * Bumped on every manual arrow click so the auto slider
+   * restarts its timer instead of jumping right after.
+   */
+  const [manualSlideCount, setManualSlideCount] = useState(0);
+
+  /*
+   * Scroll one card forward (1) or back (-1),
+   * wrapping around at either end.
+   */
+  const slide = useCallback((direction: 1 | -1) => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    const card = slider.querySelector(
+      `.${styles.card}`
+    ) as HTMLElement | null;
+
+    if (!card) return;
+
+    const gap = parseFloat(getComputedStyle(slider).columnGap) || 0;
+
+    const scrollAmount = card.offsetWidth + gap;
+
+    const isAtStart = slider.scrollLeft <= 5;
+
+    const isAtEnd =
+      slider.scrollLeft + slider.clientWidth >=
+      slider.scrollWidth - 5;
+
+    if (direction === 1 && isAtEnd) {
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+
+      return;
+    }
+
+    if (direction === -1 && isAtStart) {
+      slider.scrollTo({
+        left: slider.scrollWidth,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
+    slider.scrollBy({
+      left: direction * scrollAmount,
+      behavior: "smooth",
+    });
+  }, []);
+
+  const handleManualSlide = (direction: 1 | -1) => {
+    slide(direction);
+    setManualSlideCount((count) => count + 1);
+  };
+
+  /*
    * Auto slider
    */
   useEffect(() => {
-    if (!sliderRef.current) return;
-
     if (isHovered) return;
 
-    const interval = setInterval(() => {
-      const slider = sliderRef.current;
-
-      if (!slider) return;
-
-      const card = slider.querySelector(
-        `.${styles.card}`
-      ) as HTMLElement | null;
-
-      if (!card) return;
-
-      const gap = 20;
-
-      const scrollAmount = card.offsetWidth + gap;
-
-      /*
-       * If we have reached the end,
-       * start again from the beginning.
-       */
-      if (
-        slider.scrollLeft + slider.clientWidth >=
-        slider.scrollWidth - 5
-      ) {
-        slider.scrollTo({
-          left: 0,
-          behavior: "smooth",
-        });
-
-        return;
-      }
-
-      slider.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }, 3000);
+    const interval = setInterval(() => slide(1), 3000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered]);
+  }, [isHovered, manualSlideCount, slide]);
 
   /*
    * If this section is empty in Strapi,
@@ -163,6 +183,30 @@ export default function StoriesThatInspire({
           );
         })}
       </div>
+
+      {/* ================================
+          Slider Arrows
+      ================================= */}
+
+      {(data.storyItems?.length ?? 0) > 1 && (
+        <div className={styles.sliderControls}>
+          <button
+            type="button"
+            onClick={() => handleManualSlide(-1)}
+            aria-label="Previous story"
+          >
+            ←
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleManualSlide(1)}
+            aria-label="Next story"
+          >
+            →
+          </button>
+        </div>
+      )}
     </section>
   );
 }
