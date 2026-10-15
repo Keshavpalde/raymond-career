@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import clsx from "clsx";
 import styles from "./FunctionalHeads.module.css";
 import {
   FunctionalHeadsData,
@@ -23,6 +24,23 @@ function getMediaUrl(url?: string) {
   const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
   return `${strapiUrl}${url}`;
+}
+
+function renderHeading(heading: string) {
+  const [firstWord, ...rest] = heading.trim().split(" ");
+
+  return (
+    <>
+      <span className={styles.headingAccent}>{firstWord}</span>{" "}
+      {rest.join(" ")}
+    </>
+  );
+}
+
+function hasRichText(blocks?: RichTextBlock[] | null) {
+  return (blocks || []).some((block) =>
+    block?.children?.some((child) => child?.text?.trim())
+  );
 }
 
 function renderRichText(blocks?: RichTextBlock[]) {
@@ -48,6 +66,9 @@ export default function FunctionalHeads({
   const [visibleCount, setVisibleCount] = useState(5);
   const [selectedHead, setSelectedHead] =
     useState<FunctionalHead | null>(null);
+  const [openDescriptionId, setOpenDescriptionId] = useState<
+    number | null
+  >(null);
 
   const functionHeads = data?.functionHeads || [];
 
@@ -82,6 +103,22 @@ export default function FunctionalHeads({
     }
   }, [visibleCount, functionHeads.length, currentIndex]);
 
+  useEffect(() => {
+    if (openDescriptionId === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenDescriptionId(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [openDescriptionId]);
+
   if (!data || functionHeads.length === 0) {
     return null;
   }
@@ -96,12 +133,14 @@ export default function FunctionalHeads({
 
   const handlePrevious = () => {
     if (canGoPrevious) {
+      setOpenDescriptionId(null);
       setCurrentIndex((prev) => prev - 1);
     }
   };
 
   const handleNext = () => {
     if (canGoNext) {
+      setOpenDescriptionId(null);
       setCurrentIndex((prev) => prev + 1);
     }
   };
@@ -112,7 +151,9 @@ export default function FunctionalHeads({
         <div className={styles.container}>
           <div className={styles.header}>
             {data.heading && (
-              <h2 className={styles.heading}>{data.heading}</h2>
+              <h2 className={styles.heading}>
+                {renderHeading(data.heading)}
+              </h2>
             )}
 
             {data.description && (
@@ -135,13 +176,22 @@ export default function FunctionalHeads({
               >
                 {functionHeads.map((head) => {
                   const imageUrl = getMediaUrl(head.image?.url);
+                  const hasDescription = hasRichText(head.description);
+                  const isDescriptionOpen =
+                    openDescriptionId === head.id;
+                  const descriptionId = `functional-head-description-${head.id}`;
 
                   return (
                     <div
                       className={styles.slide}
                       key={head.id}
                     >
-                      <article className={styles.card}>
+                      <article
+                        className={clsx(
+                          styles.card,
+                          isDescriptionOpen && styles.cardOpen
+                        )}
+                      >
                         <div className={styles.imageWrapper}>
                           {imageUrl && (
                             <Image
@@ -152,8 +202,31 @@ export default function FunctionalHeads({
                               }
                               fill
                               className={styles.image}
-                              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 33.333vw, 20vw"
+                              quality={90}
+                              // Landscape photos are cropped into portrait
+                              // cards, so the rendered image is ~1.8x wider
+                              // than the card itself.
+                              sizes="(max-width: 480px) 540px, (max-width: 767px) 640px, (max-width: 1023px) 60vw, (max-width: 1400px) 36vw, 510px"
                             />
+                          )}
+
+                          {hasDescription && (
+                            <div
+                              id={descriptionId}
+                              className={styles.descriptionPanel}
+                              aria-hidden={!isDescriptionOpen}
+                            >
+                              <span
+                                className={styles.quoteMark}
+                                aria-hidden="true"
+                              >
+                                &ldquo;
+                              </span>
+
+                              <div className={styles.descriptionText}>
+                                {renderRichText(head.description)}
+                              </div>
+                            </div>
                           )}
 
                           <div className={styles.overlay}>
@@ -165,20 +238,46 @@ export default function FunctionalHeads({
                               )}
                             </div>
 
-                            {head.video?.url && (
-                              <button
-                                type="button"
-                                className={styles.playButton}
-                                onClick={() =>
-                                  setSelectedHead(head)
-                                }
-                                aria-label={`Play video for ${head.name}`}
-                              >
-                                <span className={styles.playIcon}>
-                                  ▶
-                                </span>
-                              </button>
-                            )}
+                            <div className={styles.actions}>
+                              {head.video?.url && (
+                                <button
+                                  type="button"
+                                  className={styles.playButton}
+                                  onClick={() =>
+                                    setSelectedHead(head)
+                                  }
+                                  aria-label={`Play video for ${head.name}`}
+                                >
+                                  <span className={styles.playIcon}>
+                                    ▶
+                                  </span>
+                                </button>
+                              )}
+
+                              {hasDescription && (
+                                <button
+                                  type="button"
+                                  className={styles.toggleButton}
+                                  onClick={() =>
+                                    setOpenDescriptionId(
+                                      isDescriptionOpen ? null : head.id
+                                    )
+                                  }
+                                  aria-expanded={isDescriptionOpen}
+                                  aria-controls={descriptionId}
+                                  aria-label={
+                                    isDescriptionOpen
+                                      ? `Hide message from ${head.name}`
+                                      : `Read message from ${head.name}`
+                                  }
+                                >
+                                  <span
+                                    className={styles.toggleIcon}
+                                    aria-hidden="true"
+                                  />
+                                </button>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </article>

@@ -14,8 +14,8 @@ interface StoriesThatInspireProps {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-function getRichText(blocks: RichTextBlock[] = []) {
-  return blocks
+function getRichText(blocks?: RichTextBlock[] | null) {
+  return (blocks || [])
     .map((block) =>
       block.children?.map((child) => child.text).join("")
     )

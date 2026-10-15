@@ -10,8 +10,8 @@ interface RecognitionProps {
   data: RecognitionData;
 }
 
-function getRichText(blocks: RichTextBlock[] = []) {
-  return blocks
+function getRichText(blocks?: RichTextBlock[] | null) {
+  return (blocks || [])
     .map((block) =>
       block.children?.map((child) => child.text || "").join("")
     )

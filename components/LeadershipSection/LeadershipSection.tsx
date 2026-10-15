@@ -41,8 +41,8 @@ function renderHeading(heading: string) {
   );
 }
 
-function getRichText(blocks: any[] = []) {
-  return blocks
+function getRichText(blocks?: any[] | null) {
+  return (blocks || [])
     .map((block) =>
       block.children
         ?.map((child: any) => child.text)

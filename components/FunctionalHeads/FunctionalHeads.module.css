@@ -1,7 +1,7 @@
 .section {
   position: relative;
   width: 100%;
-  padding: 100px 0;
+  padding: 70px 0;
   overflow: hidden;
   background-color: #f1f1f1;
 }
@@ -26,6 +26,10 @@
   font-weight: 300;
   letter-spacing: 0.5px;
   line-height: 1.15;
+}
+
+.headingAccent {
+  color: #e53945;
 }
 
 .intro {
@@ -100,12 +104,26 @@
 
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.4) 45%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.3) 22%,
+    rgba(0, 0, 0, 0) 42%
   );
 
   color: #fff;
+
+  /* Let clicks and scrolling reach the description panel underneath */
+  pointer-events: none;
+}
+
+.overlay button {
+  pointer-events: auto;
+}
+
+.actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .overlayText h3 {
@@ -154,6 +172,116 @@
 .playIcon {
   font-size: 16px;
   margin-left: 3px;
+}
+
+/* Description panel ("+" button) */
+
+.descriptionPanel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 20px 96px;
+  overflow-y: auto;
+
+  background: rgba(17, 21, 31, 0.92);
+  color: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s linear 0.35s;
+}
+
+.cardOpen .descriptionPanel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0s;
+}
+
+.cardOpen .overlay {
+  background: none;
+}
+
+.quoteMark {
+  font-family: var(--font-cinzel);
+  font-size: 56px;
+  line-height: 0.8;
+  color: #e53945;
+  margin-bottom: 8px;
+}
+
+.descriptionText {
+  font-family: var(--font-jost);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.descriptionText p {
+  margin: 0 0 12px;
+}
+
+.descriptionText p:last-child {
+  margin-bottom: 0;
+}
+
+.toggleButton {
+  position: relative;
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.toggleButton:hover,
+.toggleButton:focus-visible,
+.cardOpen .toggleButton {
+  background: #e53945;
+  border-color: #e53945;
+}
+
+.cardOpen .toggleButton {
+  transform: rotate(45deg);
+}
+
+.toggleIcon::before,
+.toggleIcon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.toggleIcon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .sliderControls {
@@ -338,11 +466,29 @@
     align-items: flex-end;
     padding: 28px 20px 20px 28px;
     background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.75)
+      to top,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.3) 25%,
+      rgba(0, 0, 0, 0) 45%
     );
+  }
+
+  .descriptionPanel {
+    padding: 32px 28px 120px;
+  }
+
+  .descriptionText {
+    font-size: 16px;
+  }
+
+  .toggleButton {
+    width: 48px;
+    height: 48px;
+  }
+
+  .toggleIcon::before,
+  .toggleIcon::after {
+    width: 16px;
   }
 
   .overlayText h3 {

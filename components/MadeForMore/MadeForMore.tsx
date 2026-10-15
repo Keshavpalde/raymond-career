@@ -22,8 +22,8 @@ const STRAPI_URL =
 
 const MOBILE_QUERY = "(max-width: 767px)";
 
-function getRichText(blocks: any[] = []) {
-  return blocks
+function getRichText(blocks?: any[] | null) {
+  return (blocks || [])
     .map((block) =>
       block.children
         ?.map((child: any) => child.text)
