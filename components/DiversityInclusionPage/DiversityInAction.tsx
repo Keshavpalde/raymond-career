@@ -7,6 +7,7 @@ import {
   DiversityInActionData,
   RichTextBlock,
 } from "@/types/diversityInclusionPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface DiversityInActionProps {
   data: DiversityInActionData | null;
@@ -164,23 +165,17 @@ export default function DiversityInAction({
 
         {initiatives.length > 0 && (
           <div className={styles.navigation}>
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="prev"
               onClick={scrollPrevious}
               aria-label="Previous initiatives"
-            >
-              ←
-            </button>
+            />
 
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="next"
               onClick={scrollNext}
               aria-label="Next initiatives"
-            >
-              →
-            </button>
+            />
           </div>
         )}
       </div>

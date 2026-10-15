@@ -6,6 +6,7 @@ import {
   InsideOurWorkplaceData,
   RichTextBlock,
 } from "@/types/lifeAtRaymondRealtyPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface InsideOurWorkplaceProps {
   data: InsideOurWorkplaceData;
@@ -146,23 +147,17 @@ export default function InsideOurWorkplace({
 
       <div className={styles.navRow}>
         <div className={styles.navInner}>
-          <button
-            type="button"
-            className={styles.arrow}
+          <SliderArrow
+            direction="prev"
             onClick={() => goTo(activeIndex - 1)}
             aria-label="Previous workplace"
-          >
-            <span>←</span>
-          </button>
+          />
 
-          <button
-            type="button"
-            className={styles.arrow}
+          <SliderArrow
+            direction="next"
             onClick={() => goTo(activeIndex + 1)}
             aria-label="Next workplace"
-          >
-            <span>→</span>
-          </button>
+          />
         </div>
       </div>
     </section>

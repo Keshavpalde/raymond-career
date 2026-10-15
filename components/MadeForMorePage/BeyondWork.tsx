@@ -7,6 +7,7 @@ import {
   BeyondWorkData,
   RichTextBlock,
 } from "@/types/madeForMorePage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface BeyondWorkProps {
   data: BeyondWorkData;
@@ -128,23 +129,17 @@ export default function BeyondWork({ data }: BeyondWorkProps) {
         {/* Navigation */}
         {slides.length > 1 && (
           <div className={styles.navigation}>
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="prev"
               onClick={handlePrevious}
               aria-label="Previous slide"
-            >
-              <span>←</span>
-            </button>
+            />
 
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="next"
               onClick={handleNext}
               aria-label="Next slide"
-            >
-              <span>→</span>
-            </button>
+            />
           </div>
         )}
       </div>

@@ -6,6 +6,7 @@ import {
   WellbeingFirstData,
   RichTextBlock,
 } from "@/types/madeForMorePage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface WellbeingFirstProps {
   data: WellbeingFirstData;
@@ -121,23 +122,17 @@ export default function WellbeingFirst({
 
         {/* Navigation */}
         <div className={styles.navigation}>
-          <button
-            type="button"
-            className={styles.arrow}
+          <SliderArrow
+            direction="prev"
             onClick={handlePrevious}
             aria-label="Previous slide"
-          >
-            <span>←</span>
-          </button>
+          />
 
-          <button
-            type="button"
-            className={styles.arrow}
+          <SliderArrow
+            direction="next"
             onClick={handleNext}
             aria-label="Next slide"
-          >
-            <span>→</span>
-          </button>
+          />
         </div>
 
       </div>

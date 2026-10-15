@@ -288,35 +288,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
   margin-top: 35px;
-}
-
-.sliderControls button {
-  width: 52px;
-  height: 52px;
-
-  border: 1px solid rgba(26, 26, 26, 0.25);
-  border-radius: 50%;
-
-  background: transparent;
-  color: #1a1a1a;
-  font-size: 16px;
-  font-weight: 700;
-
-  cursor: pointer;
-  transition: 0.35s ease;
-}
-
-.sliderControls button:hover:not(:disabled) {
-  background: #e53945;
-  border-color: #e53945;
-  color: #fff;
-}
-
-.sliderControls button:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
 }
 
 /* Modal */

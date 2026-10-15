@@ -115,41 +115,10 @@
 .navigation {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   margin-top: 16px;
-}
-
-.arrow {
-  border: 0;
-  padding: 0;
-
-  background: transparent;
-
-  font-size: 34px;
-  line-height: 1;
-
-  font-weight: 300;
-
-  color: #111111;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.arrow:hover {
-  opacity: 0.65;
-}
-
-.arrow:first-child:hover {
-  transform: translateX(-4px);
-}
-
-.arrow:last-child:hover {
-  transform: translateX(4px);
+  gap: 12px;
 }
 
 /* =========================================
@@ -201,10 +170,6 @@
 
   .mediaWrapper {
     aspect-ratio: 16 / 10;
-  }
-
-  .arrow {
-    font-size: 30px;
   }
 }
 /* ==========================================================

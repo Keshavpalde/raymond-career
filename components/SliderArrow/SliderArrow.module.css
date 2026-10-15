@@ -1,0 +1,64 @@
+.arrow {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  border: 1px solid rgba(26, 26, 26, 0.25);
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #1a1a1a;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  background: #e53945;
+  border-color: #e53945;
+  color: #ffffff;
+}
+
+.arrow:focus-visible {
+  outline: 2px solid #e53945;
+  outline-offset: 2px;
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

@@ -246,32 +246,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 12px;
 
   width: min(1248px, calc(100% - 40px));
   margin: 35px auto 0;
-}
-
-.sliderControls button {
-  width: 52px;
-  height: 52px;
-
-  border: 1px solid rgba(26, 26, 26, 0.25);
-  border-radius: 50%;
-
-  background: transparent;
-  color: #1a1a1a;
-  font-size: 16px;
-  font-weight: 700;
-
-  cursor: pointer;
-  transition: 0.35s ease;
-}
-
-.sliderControls button:hover {
-  background: #e53945;
-  border-color: #e53945;
-  color: #fff;
 }
 
 /* =========================================

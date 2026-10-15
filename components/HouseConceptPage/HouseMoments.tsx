@@ -7,6 +7,7 @@ import {
   HouseMomentsData,
   RichTextBlock,
 } from "@/types/houseConceptPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface HouseMomentsProps {
   data: HouseMomentsData;
@@ -127,14 +128,12 @@ export default function HouseMoments({
           <div className={styles.sliderArea}>
 
             {/* Previous Arrow */}
-            <button
-              type="button"
+            <SliderArrow
+              direction="prev"
               className={`${styles.arrow} ${styles.previous}`}
               onClick={goPrevious}
               aria-label="Previous house moment"
-            >
-              <span>←</span>
-            </button>
+            />
 
             {/* Images */}
             <div className={styles.sliderViewport}>
@@ -176,14 +175,12 @@ export default function HouseMoments({
             </div>
 
             {/* Next Arrow */}
-            <button
-              type="button"
+            <SliderArrow
+              direction="next"
               className={`${styles.arrow} ${styles.next}`}
               onClick={goNext}
               aria-label="Next house moment"
-            >
-              <span>→</span>
-            </button>
+            />
           </div>
         )}
 

@@ -111,74 +111,13 @@
   height: auto;
 }
 
-.slider {
-  padding-bottom: 76px;
+.sliderControls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
 }
 
-.slider :global(.swiper-button-next),
-.slider :global(.swiper-button-prev) {
-
-    width: 48px;
-
-    height: 48px;
-
-    border-radius: 50%;
-
-    top: auto;
-
-    bottom: 0;
-
-    margin-top: 0;
-
-    background: transparent;
-
-    border: 1px solid rgba(0,0,0,.2);
-
-    color: #1a1a1a;
-
-    transition: .35s ease;
-
-}
-
-.slider :global(.swiper-button-prev) {
-
-    left: auto;
-
-    right: 66px;
-
-}
-
-.slider :global(.swiper-button-next) {
-
-    right: 0;
-
-}
-
-.slider :global(.swiper-button-next:hover),
-.slider :global(.swiper-button-prev:hover) {
-
-    background: #E53945;
-
-    border-color: #E53945;
-
-    color: #fff;
-
-}
-
-.slider :global(.swiper-button-next::after),
-.slider :global(.swiper-button-prev::after) {
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-}
-
-.slider :global(.swiper-button-disabled) {
-
-    opacity: .3;
-
-}
 /* ==========================================================
    AWARD CARD
 ========================================================== */
@@ -527,9 +466,8 @@
         margin-top:0;
     }
 
-    /* Just enough room for the 48px arrows */
-    .slider{
-        padding-bottom:64px;
+    .sliderControls{
+        margin-top:16px;
     }
 
 }

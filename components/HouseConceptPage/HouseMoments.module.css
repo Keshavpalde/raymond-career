@@ -174,39 +174,9 @@
 
   top: 50%;
 
-  width: 34px;
-  height: 34px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: none;
-
-  background: transparent;
-
-  color: #111111;
-
-  font-size: 27px;
-
-  line-height: 1;
-
-  cursor: pointer;
-
   transform: translateY(-50%);
 
   z-index: 5;
-
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.arrow:hover {
-  opacity: 0.6;
 }
 
 .previous {
@@ -215,16 +185,6 @@
 
 .next {
   right: -2px;
-}
-
-.previous:hover {
-  transform:
-    translate(-3px, -50%);
-}
-
-.next:hover {
-  transform:
-    translate(3px, -50%);
 }
 
 /* =========================================
@@ -341,9 +301,6 @@
    * Mobile transform must move by
    * exactly one image.
    */
-  .arrow {
-    font-size: 25px;
-  }
 
   .previous {
     left: -2px;

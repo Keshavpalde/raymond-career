@@ -379,44 +379,6 @@
 
 }
 
-.navArrow{
-
-    width:44px;
-
-    height:44px;
-
-    border-radius:50%;
-
-    background:transparent;
-
-    border:1px solid rgba(0,0,0,.25);
-
-    color:#1a1a1a;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    transition:.35s ease;
-
-}
-
-.navArrow:hover{
-
-    background:#E53945;
-
-    border-color:#E53945;
-
-    color:#fff;
-
-}
-
 /* ==========================================================
    RIGHT SIDEBAR
 ========================================================== */
@@ -948,11 +910,6 @@
     justify-content:flex-end;
     gap:12px;
     margin-top:24px;
-}
-
-.mobileNav .navArrow{
-    width:52px;
-    height:52px;
 }
 
 /* Video modal */

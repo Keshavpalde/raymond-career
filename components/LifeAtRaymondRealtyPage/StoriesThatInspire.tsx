@@ -7,6 +7,7 @@ import {
   StoriesThatInspireData,
   RichTextBlock,
 } from "@/types/lifeAtRaymondRealtyPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface StoriesThatInspireProps {
   data: StoriesThatInspireData;
@@ -190,21 +191,17 @@ export default function StoriesThatInspire({
 
       {(data.storyItems?.length ?? 0) > 1 && (
         <div className={styles.sliderControls}>
-          <button
-            type="button"
+          <SliderArrow
+            direction="prev"
             onClick={() => handleManualSlide(-1)}
             aria-label="Previous story"
-          >
-            ←
-          </button>
+          />
 
-          <button
-            type="button"
+          <SliderArrow
+            direction="next"
             onClick={() => handleManualSlide(1)}
             aria-label="Next story"
-          >
-            →
-          </button>
+          />
         </div>
       )}
     </section>

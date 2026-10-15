@@ -7,6 +7,7 @@ import {
   EmployeeStoriesData,
   RichTextBlock,
 } from "@/types/employeeStoriesPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface EmployeeStoriesProps {
   data: EmployeeStoriesData | null;
@@ -263,8 +264,8 @@ export default function EmployeeStories({
             </div>
 
           {stories.length > 1 && (
-            <button
-              type="button"
+            <SliderArrow
+              direction="prev"
               className={`${styles.navButton} ${styles.prevButton}`}
               onClick={() =>
                 handleStoryChange(
@@ -273,14 +274,12 @@ export default function EmployeeStories({
                 )
               }
               aria-label="Previous employee story"
-            >
-              <span>←</span>
-            </button>
+            />
           )}
 
           {stories.length > 1 && (
-            <button
-              type="button"
+            <SliderArrow
+              direction="next"
               className={`${styles.navButton} ${styles.nextButton}`}
               onClick={() =>
                 handleStoryChange(
@@ -288,9 +287,7 @@ export default function EmployeeStories({
                 )
               }
               aria-label="Next employee story"
-            >
-              <span>→</span>
-            </button>
+            />
           )}
 
         </div>

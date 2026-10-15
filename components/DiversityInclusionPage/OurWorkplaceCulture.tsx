@@ -7,6 +7,7 @@ import {
   OurWorkplaceCultureData,
   RichTextBlock,
 } from "@/types/diversityInclusionPage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface OurWorkplaceCultureProps {
   data: OurWorkplaceCultureData | null;
@@ -142,23 +143,17 @@ export default function OurWorkplaceCulture({
 
           <div className={styles.navigation}>
 
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="prev"
               onClick={goToPrevious}
               aria-label="Previous slide"
-            >
-              ←
-            </button>
+            />
 
-            <button
-              type="button"
-              className={styles.arrow}
+            <SliderArrow
+              direction="next"
               onClick={goToNext}
               aria-label="Next slide"
-            >
-              →
-            </button>
+            />
 
           </div>
 

@@ -126,37 +126,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 18px;
-}
-
-.arrow {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-
-  color: #1a1a1a;
-  font-family: inherit;
-  font-size: 28px;
-  line-height: 1;
-  font-weight: 300;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: opacity 0.2s ease;
-}
-
-.arrow:hover {
-  opacity: 0.6;
-}
-
-.arrow span {
-  display: block;
+  gap: 12px;
 }
 
 /* =========================================
@@ -234,12 +204,6 @@
     margin-top: 24px;
     padding-left: 20px;
     padding-right: 20px;
-  }
-
-  .arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 24px;
   }
 }
 

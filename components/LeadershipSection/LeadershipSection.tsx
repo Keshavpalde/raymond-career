@@ -4,16 +4,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperInstance } from "swiper/types";
 
 import "swiper/css";
-import "swiper/css/navigation";
 
 import styles from "./LeadershipSection.module.css";
 
 import LeaderCard from "./LeaderCard";
 import VideoModal from "./VideoModal";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 import {
   LeadershipSectionData,
@@ -65,6 +64,22 @@ export default function LeadershipSection({
     useState(false);
 
   const swiperRef = useRef<SwiperInstance | null>(null);
+
+  // Mirrors Swiper's edge state so the arrows can disable
+  // themselves at the first / last card.
+  const [sliderEdges, setSliderEdges] = useState({
+    isBeginning: true,
+    isEnd: false,
+    isLocked: false,
+  });
+
+  const syncSliderEdges = (swiper: SwiperInstance) => {
+    setSliderEdges({
+      isBeginning: swiper.isBeginning,
+      isEnd: swiper.isEnd,
+      isLocked: swiper.isLocked,
+    });
+  };
 
   // On mobile every card shows its expanded image with the
   // play button straight away, so there's no click-to-expand.
@@ -122,13 +137,16 @@ export default function LeadershipSection({
             </p>
 
             <Swiper
-              modules={[Navigation]}
-              navigation
               spaceBetween={24}
               slidesPerView="auto"
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
+                syncSliderEdges(swiper);
               }}
+              onProgress={syncSliderEdges}
+              onResize={syncSliderEdges}
+              onLock={syncSliderEdges}
+              onUnlock={syncSliderEdges}
               className={styles.slider}
             >
               {data.leaders.map((leader) => (
@@ -158,6 +176,24 @@ export default function LeadershipSection({
                 </SwiperSlide>
               ))}
             </Swiper>
+
+            {!sliderEdges.isLocked && (
+              <div className={styles.sliderControls}>
+                <SliderArrow
+                  direction="prev"
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  disabled={sliderEdges.isBeginning}
+                  aria-label="Previous leader"
+                />
+
+                <SliderArrow
+                  direction="next"
+                  onClick={() => swiperRef.current?.slideNext()}
+                  disabled={sliderEdges.isEnd}
+                  aria-label="Next leader"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>

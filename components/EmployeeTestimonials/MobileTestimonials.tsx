@@ -11,6 +11,7 @@ import "swiper/css";
 import styles from "./EmployeeTestimonials.module.css";
 
 import { TestimonialItem } from "@/types/employeeTestimonials";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface Props {
   testimonials: TestimonialItem[];
@@ -153,23 +154,17 @@ export default function MobileTestimonials({
 
       {testimonials.length > 1 && (
         <div className={styles.mobileNav}>
-          <button
-            type="button"
+          <SliderArrow
+            direction="prev"
             onClick={() => swiperRef.current?.slidePrev()}
             aria-label="Previous testimonial"
-            className={styles.navArrow}
-          >
-            ←
-          </button>
+          />
 
-          <button
-            type="button"
+          <SliderArrow
+            direction="next"
             onClick={() => swiperRef.current?.slideNext()}
             aria-label="Next testimonial"
-            className={styles.navArrow}
-          >
-            →
-          </button>
+          />
         </div>
       )}
 

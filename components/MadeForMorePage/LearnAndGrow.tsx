@@ -6,6 +6,7 @@ import {
   LearnAndGrowData,
   RichTextBlock,
 } from "@/types/madeForMorePage";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface LearnAndGrowProps {
   data: LearnAndGrowData;
@@ -186,25 +187,19 @@ export default function LearnAndGrow({
 
         {activeImages.length > VISIBLE_IMAGES && (
           <div className={styles.sliderControls}>
-            <button
-              type="button"
-              className={styles.sliderArrow}
+            <SliderArrow
+              direction="prev"
               onClick={slidePrev}
               disabled={!canSlidePrev}
               aria-label="Previous images"
-            >
-              &#8249;
-            </button>
+            />
 
-            <button
-              type="button"
-              className={styles.sliderArrow}
+            <SliderArrow
+              direction="next"
               onClick={slideNext}
               disabled={!canSlideNext}
               aria-label="Next images"
-            >
-              &#8250;
-            </button>
+            />
           </div>
         )}
 
@@ -239,17 +234,14 @@ export default function LearnAndGrow({
           </button>
 
           {activeImages.length > 1 && (
-            <button
-              type="button"
-              className={`${styles.lightboxArrow} ${styles.lightboxArrowPrev}`}
+            <SliderArrow
+              direction="prev"
               onClick={(event) => {
                 event.stopPropagation();
                 showLightboxImage(-1);
               }}
               aria-label="Previous image"
-            >
-              &#8249;
-            </button>
+            />
           )}
 
           <img
@@ -260,17 +252,14 @@ export default function LearnAndGrow({
           />
 
           {activeImages.length > 1 && (
-            <button
-              type="button"
-              className={`${styles.lightboxArrow} ${styles.lightboxArrowNext}`}
+            <SliderArrow
+              direction="next"
               onClick={(event) => {
                 event.stopPropagation();
                 showLightboxImage(1);
               }}
               aria-label="Next image"
-            >
-              &#8250;
-            </button>
+            />
           )}
         </div>
       )}

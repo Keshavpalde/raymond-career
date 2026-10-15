@@ -9,6 +9,7 @@ import {
   FunctionalHead,
   RichTextBlock,
 } from "@/types/functionalHeads";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface FunctionalHeadsProps {
   data: FunctionalHeadsData;
@@ -290,23 +291,19 @@ export default function FunctionalHeads({
 
           {functionHeads.length > visibleCount && (
             <div className={styles.sliderControls}>
-              <button
-                type="button"
+              <SliderArrow
+                direction="prev"
                 onClick={handlePrevious}
                 disabled={!canGoPrevious}
                 aria-label="Previous"
-              >
-                ←
-              </button>
+              />
 
-              <button
-                type="button"
+              <SliderArrow
+                direction="next"
                 onClick={handleNext}
                 disabled={!canGoNext}
                 aria-label="Next"
-              >
-                →
-              </button>
+              />
             </div>
           )}
         </div>

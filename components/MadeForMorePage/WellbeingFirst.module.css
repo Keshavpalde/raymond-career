@@ -98,35 +98,10 @@
 
 .navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 17px;
-}
-
-.arrow {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #222222;
-  font-family: inherit;
-  font-size: 32px;
-  line-height: 1;
-  font-weight: 300;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease;
-}
-
-.arrow:hover {
-  opacity: 0.6;
-}
-
-.arrow span {
-  display: block;
+  gap: 12px;
 }
 
 /* Tablet */
@@ -220,10 +195,6 @@
 
   .navigation {
     margin-top: 12px;
-  }
-
-  .arrow {
-    font-size: 28px;
   }
 }
 /* ==========================================================

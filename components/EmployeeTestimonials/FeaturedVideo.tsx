@@ -6,6 +6,7 @@ import Image from "next/image";
 import styles from "./EmployeeTestimonials.module.css";
 
 import { TestimonialItem } from "@/types/employeeTestimonials";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 interface Props {
   testimonial: TestimonialItem;
@@ -175,23 +176,17 @@ export default function FeaturedVideo({
         </div>
 
         <div className={styles.navArrows}>
-          <button
-            type="button"
+          <SliderArrow
+            direction="prev"
             onClick={onPrev}
             aria-label="Previous testimonial"
-            className={styles.navArrow}
-          >
-            ←
-          </button>
+          />
 
-          <button
-            type="button"
+          <SliderArrow
+            direction="next"
             onClick={onNext}
             aria-label="Next testimonial"
-            className={styles.navArrow}
-          >
-            →
-          </button>
+          />
         </div>
       </div>
     </div>
