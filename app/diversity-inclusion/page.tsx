@@ -5,6 +5,7 @@ import WomenBrigade from "@/components/DiversityInclusionPage/WomenBrigade";
 import DiversityStatistics from "@/components/DiversityInclusionPage/DiversityStatistics";
 import DhwaniSection from "@/components/DiversityInclusionPage/DhwaniSection";
 import OurWorkplaceCulture from "@/components/DiversityInclusionPage/OurWorkplaceCulture";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 import { getDiversityInclusionPage } from "@/services/diversityInclusionPage";
 
@@ -40,13 +41,17 @@ export default async function DiversityInclusionPage() {
 
       {/* Section 6: Dhwani */}
       {data.dhwaniSection && (
-        <DhwaniSection data={data.dhwaniSection} />
+        <RevealOnScroll>
+          <DhwaniSection data={data.dhwaniSection} />
+        </RevealOnScroll>
       )}
 
       {/* Section 7: Our Workplace Culture */}
-      <OurWorkplaceCulture
-        data={data.OurWorkplaceCulture}
-      />
+      <RevealOnScroll>
+        <OurWorkplaceCulture
+          data={data.OurWorkplaceCulture}
+        />
+      </RevealOnScroll>
     </>
   );
 }

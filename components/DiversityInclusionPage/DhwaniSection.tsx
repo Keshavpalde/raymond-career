@@ -24,6 +24,17 @@ function getMediaUrl(url?: string | null): string {
   return `${baseUrl.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
 }
 
+function renderHeading(heading: string) {
+  const [firstWord, ...rest] = heading.trim().split(" ");
+
+  return (
+    <>
+      <span className={styles.headingAccent}>{firstWord}</span>{" "}
+      {rest.join(" ")}
+    </>
+  );
+}
+
 function renderInlineContent(
   children: DhwaniTextChild[],
   keyPrefix: string
@@ -92,7 +103,9 @@ export default function DhwaniSection({
         <div className={styles.container}>
           <div className={styles.content}>
             {data.heading && (
-              <h2 className={styles.heading}>{data.heading}</h2>
+              <h2 className={styles.heading}>
+                {renderHeading(data.heading)}
+              </h2>
             )}
 
             {data.description?.length > 0 && (

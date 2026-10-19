@@ -106,7 +106,10 @@ export default function OurWorkplaceCulture({
           <div className={styles.mediaWrapper}>
 
             {activeSlide.mediaType === "video" ? (
-              <div className={styles.videoWrapper}>
+              <div
+                key={activeIndex}
+                className={`${styles.videoWrapper} ${styles.slideIn}`}
+              >
                 <video
                   src={mediaUrl}
                   className={styles.media}
@@ -117,13 +120,14 @@ export default function OurWorkplaceCulture({
               </div>
             ) : (
               <img
+                key={activeIndex}
                 src={mediaUrl}
                 alt={
                   activeSlide.media
                     ?.alternativeText ||
                   data.heading
                 }
-                className={styles.media}
+                className={`${styles.media} ${styles.slideIn}`}
               />
             )}
 

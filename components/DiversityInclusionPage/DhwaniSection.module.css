@@ -12,7 +12,7 @@
 
 .overlay {
   position: relative;
-  padding: 90px 6%;
+  padding: 70px 0;
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.76) 0%,
@@ -26,8 +26,7 @@
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
   gap: 60px;
-  width: 100%;
-  max-width: 1400px;
+  width: min(1200px, calc(100% - 80px));
   margin: 0 auto;
 }
 
@@ -37,16 +36,24 @@
 
 .heading {
   margin: 0 0 24px;
-  font-size: clamp(32px, 3.5vw, 52px);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
+  font-family: var(--font-cinzel);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.headingAccent {
+  color: #e53945;
 }
 
 .description {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 17px;
-  line-height: 1.8;
+  font-family: var(--font-jost);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
@@ -99,10 +106,6 @@
 }
 
 @media (max-width: 1024px) {
-  .overlay {
-    padding: 65px 5%;
-  }
-
   .container {
     gap: 35px;
   }
@@ -112,20 +115,21 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .overlay {
-    padding: 48px 22px;
+    padding: var(--mobile-section-y) 0;
     background: rgba(0, 0, 0, 0.68);
   }
 
   .container {
+    width: calc(100% - 2 * var(--mobile-gutter));
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 
   .heading {
-    margin-bottom: 18px;
-    font-size: 32px;
+    margin: 0 0 12px;
+    font-size: var(--mobile-section-heading-size);
   }
 
   .description {
