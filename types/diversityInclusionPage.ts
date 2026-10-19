@@ -1,3 +1,5 @@
+import type { DhwaniSectionData } from "./dhwaniSection";
+
 // ============================================
 // Strapi Media
 // ============================================
@@ -163,6 +165,11 @@ export interface DiversityInclusionPageData {
     | null;
 
   // Section 6
+  dhwaniSection?:
+    | DhwaniSectionData
+    | null;
+
+  // Section 7
   OurWorkplaceCulture:
     | OurWorkplaceCultureData
     | null;

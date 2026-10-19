@@ -30,6 +30,19 @@
   -webkit-text-stroke: 1px #ed1b2f;
 
   white-space: nowrap;
+
+  display: inline-grid;
+  font-variant-numeric: tabular-nums;
+}
+
+.numberSizer,
+.numberValue {
+  grid-area: 1 / 1;
+  text-align: right;
+}
+
+.numberSizer {
+  visibility: hidden;
 }
 
 .label {
