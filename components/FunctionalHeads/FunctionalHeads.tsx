@@ -217,13 +217,6 @@ export default function FunctionalHeads({
                               className={styles.descriptionPanel}
                               aria-hidden={!isDescriptionOpen}
                             >
-                              <span
-                                className={styles.quoteMark}
-                                aria-hidden="true"
-                              >
-                                &ldquo;
-                              </span>
-
                               <div className={styles.descriptionText}>
                                 {renderRichText(head.description)}
                               </div>
