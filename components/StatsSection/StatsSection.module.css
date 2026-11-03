@@ -45,8 +45,6 @@
   display: grid;
   align-items: stretch;
   overflow: hidden;
-  transition: transform .35s ease, box-shadow .35s ease;
-  transform-origin: center top;
 }
 
 .statsWrapper {
@@ -57,22 +55,6 @@
 .imageWrapper {
   grid-row: span 2;
   min-height: 0;
-}
-
-.statsWrapper.topExpanded {
-  grid-row: 1 / span 2;
-}
-
-.statsWrapper.bottomExpanded {
-  grid-row: 2 / span 2;
-}
-
-.imageWrapper.collapsedTop {
-  grid-row: 1 / span 1;
-}
-
-.imageWrapper.collapsedBottom {
-  grid-row: 3 / span 1;
 }
 
 .pos1 {
@@ -115,33 +97,6 @@
   grid-row: 3;
 }
 
-.hovered {
-  z-index: 2;
-}
-
-.gridHoverActive .cardWrapper:not(.hovered) {
-  transform: scale(0.94);
-}
-
-.gridHoverActive .statsWrapper.hovered {
-  transform: translateY(-10px) scale(1.04);
-  z-index: 10;
-}
-
-.gridHoverActive .pos1.hovered,
-.gridHoverActive .pos3.hovered {
-  grid-row: 1 / span 2;
-}
-
-.gridHoverActive .pos6.hovered,
-.gridHoverActive .pos8.hovered {
-  grid-row: 2 / span 2;
-}
-
-.gridHoverActive .statsWrapper.hovered .statsCard {
-  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.18);
-}
-
 /* ==========================================================
    COMMON CARD
 ========================================================== */
@@ -170,22 +125,6 @@
   display: grid;
   gap: 18px;
   height: 100%;
-}
-
-.gridHoverActive .statsWrapper.hovered .statsCard {
-  transform: translateY(-10px);
-  max-height: 600px;
-}
-
-.gridHoverActive .statsWrapper.hovered .statsCard .hoverContent {
-  opacity: 1;
-  max-height: 260px;
-  transform: translateY(0);
-}
-
-.gridHoverActive .statsWrapper.hovered .statsCard .number,
-.gridHoverActive .statsWrapper.hovered .statsCard .title {
-  transform: translateY(-4px);
 }
 
 .statsCard:nth-child(1),
@@ -235,16 +174,7 @@
 .statsCard {
   min-height: 220px;
   max-height: 100%;
-  cursor: pointer;
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    max-height .35s ease;
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
-}
-
-.gridHoverActive .statsWrapper.hovered {
-  max-height: 100%;
 }
 
 .red {
@@ -275,7 +205,6 @@
   font-weight: 500;
   line-height: 1;
   margin: 0;
-  transition: transform .35s ease;
 }
 
 .title {
@@ -283,49 +212,6 @@
   line-height: 1.4;
   font-weight: 500;
   margin: 0;
-  transition: transform .35s ease;
-}
-
-.description {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 15px;
-  line-height: 1.8;
-  margin: 0;
-}
-
-.hoverContent {
-  opacity: 0;
-  overflow: hidden;
-  max-height: 0;
-  transform: translateY(18px);
-  transition:
-    opacity .35s ease,
-    max-height .35s ease,
-    transform .35s ease;
-}
-
-.hoverContent p {
-  margin: 0;
-}
-
-/* ==========================================================
-   CARD HOVER
-========================================================== */
-
-.statsCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.18);
-}
-
-.statsCard:hover .number,
-.statsCard:hover .title {
-  transform: translateY(-4px);
-}
-
-.statsCard:hover .hoverContent {
-  opacity: 1;
-  max-height: 260px;
-  transform: translateY(0);
 }
 
 /* ==========================================================
@@ -334,11 +220,6 @@
 
 .imageCard {
   min-height: 0;
-  cursor: pointer;
-}
-
-.imageCard:hover {
-  transform: translateY(-6px);
 }
 
 .image {
@@ -346,29 +227,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition:
-    transform .7s ease,
-    filter .5s ease;
-}
-
-.imageCard:hover .image {
-  transform: scale(1.05);
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.08)
-  );
-  opacity: 0;
-  transition: .4s ease;
-}
-
-.imageCard:hover .imageOverlay {
-  opacity: 1;
 }
 
 @keyframes fadeUp {
@@ -457,11 +315,7 @@
   .pos7,
   .pos8,
   .statsWrapper,
-  .imageWrapper,
-  .topExpanded,
-  .bottomExpanded,
-  .collapsedTop,
-  .collapsedBottom {
+  .imageWrapper {
     grid-column: auto;
     grid-row: auto;
   }
@@ -517,11 +371,7 @@
   .pos7,
   .pos8,
   .statsWrapper,
-  .imageWrapper,
-  .topExpanded,
-  .bottomExpanded,
-  .collapsedTop,
-  .collapsedBottom {
+  .imageWrapper {
     grid-column: auto;
     grid-row: auto;
   }

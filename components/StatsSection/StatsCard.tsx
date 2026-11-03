@@ -13,20 +13,6 @@ interface Props {
   card: StatsCardData;
 }
 
-function getRichText(blocks?: any[]): string {
-  if (!blocks?.length) return "";
-
-  return blocks
-    .map((block) => {
-      if (!block.children) return "";
-
-      return block.children
-        .map((child: any) => child.text)
-        .join("");
-    })
-    .join("\n");
-}
-
 function parseCounter(value?: string) {
   if (!value) {
     return {
@@ -56,11 +42,6 @@ export default function StatsCard({ card }: Props) {
   const { number, suffix } = useMemo(
     () => parseCounter(card.number),
     [card.number]
-  );
-
-  const content = useMemo(
-    () => getRichText(card.hoverContent),
-    [card.hoverContent]
   );
 
   useEffect(() => {
@@ -133,24 +114,6 @@ export default function StatsCard({ card }: Props) {
           <h4 className={styles.title}>
             {card.title}
           </h4>
-
-        </div>
-
-        {/* =======================
-            HOVER CONTENT
-        ======================== */}
-
-        <div className={styles.hoverContent}>
-
-          {content ? (
-            <p className={styles.description}>
-              {content}
-            </p>
-          ) : (
-            <p className={styles.description}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          )}
 
         </div>
 

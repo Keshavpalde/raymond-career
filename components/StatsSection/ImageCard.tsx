@@ -45,7 +45,6 @@ export default function ImageCard({ card }: ImageCardProps) {
         className={styles.image}
       />
 
-      <div className={styles.imageOverlay}></div>
     </div>
   );
 }
