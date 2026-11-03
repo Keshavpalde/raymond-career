@@ -11,7 +11,6 @@ import "swiper/css";
 import styles from "./LeadershipSection.module.css";
 
 import LeaderCard from "./LeaderCard";
-import VideoModal from "./VideoModal";
 import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 import {
@@ -60,9 +59,6 @@ export default function LeadershipSection({
       ) || null
     );
 
-  const [videoOpen, setVideoOpen] =
-    useState(false);
-
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   // Mirrors Swiper's edge state so the arrows can disable
@@ -81,8 +77,8 @@ export default function LeadershipSection({
     });
   };
 
-  // On mobile every card shows its expanded image with the
-  // play button straight away, so there's no click-to-expand.
+  // On mobile every card shows its expanded image straight
+  // away; the + button only reveals the quote, without widening.
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -161,17 +157,13 @@ export default function LeadershipSection({
                       activeLeader?.id ===
                       leader.id
                     }
-                    onClick={() => {
-                      if (!isMobile) {
-                        setActiveLeader(leader);
-                      }
-                    }}
-                    onPlay={() => {
-                      setActiveLeader(
-                        leader
-                      );
-                      setVideoOpen(true);
-                    }}
+                    onToggle={() =>
+                      setActiveLeader((current) =>
+                        current?.id === leader.id
+                          ? null
+                          : leader
+                      )
+                    }
                   />
                 </SwiperSlide>
               ))}
@@ -197,16 +189,6 @@ export default function LeadershipSection({
           </div>
         </div>
       </section>
-
-      {activeLeader && (
-        <VideoModal
-          open={videoOpen}
-          onClose={() =>
-            setVideoOpen(false)
-          }
-          leader={activeLeader}
-        />
-      )}
     </>
   );
 }

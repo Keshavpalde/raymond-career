@@ -9,8 +9,7 @@ interface Props {
   leader: LeaderItem;
   active: boolean;
   mobile?: boolean;
-  onClick: () => void;
-  onPlay: () => void;
+  onToggle: () => void;
 }
 
 const STRAPI_URL =
@@ -21,8 +20,7 @@ export default function LeaderCard({
   leader,
   active,
   mobile = false,
-  onClick,
-  onPlay,
+  onToggle,
 }: Props) {
   const activeImage =
     ((active || mobile) && leader.expandedImage) || leader.image;
@@ -37,8 +35,8 @@ export default function LeaderCard({
         ${styles.card}
         ${active && !mobile ? styles.activeCard : ""}
         ${mobile ? styles.mobileCard : ""}
+        ${active ? styles.quoteOpen : ""}
       `}
-      onClick={onClick}
     >
       {/* IMAGE */}
 
@@ -56,18 +54,6 @@ export default function LeaderCard({
         />
 
         <div className={styles.overlay}></div>
-
-        {/* PLAY BUTTON */}
-
-        <button
-          className={styles.playButton}
-          onClick={(e) => {
-            e.stopPropagation();
-            onPlay();
-          }}
-        >
-          ▶
-        </button>
       </div>
 
       {/* CONTENT */}
@@ -81,7 +67,7 @@ export default function LeaderCard({
           {leader.designation}
         </p>
 
-        {active && !mobile && (
+        {active && (
           <div className={styles.quoteBlock}>
             <span className={styles.quoteIcon}>&ldquo;</span>
             <p className={styles.quoteText}>
@@ -91,6 +77,22 @@ export default function LeaderCard({
           </div>
         )}
       </div>
+
+      {/* QUOTE TOGGLE */}
+
+      <button
+        type="button"
+        className={styles.quoteToggle}
+        onClick={onToggle}
+        aria-expanded={active}
+        aria-label={
+          active
+            ? `Hide quote from ${leader.name}`
+            : `Show quote from ${leader.name}`
+        }
+      >
+        +
+      </button>
     </div>
   );
 }
