@@ -180,6 +180,19 @@ font-family: 'Cinzel';
 }
 
 /* =========================
+   Navigation
+========================= */
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+/* =========================
    Slide transition
 ========================= */
 
@@ -301,6 +314,10 @@ font-family: 'Cinzel';
   .tabDescription {
     font-size: 16px;
     line-height: 1.45;
+  }
+
+  .navigation {
+    margin-top: 14px;
   }
 
   /* Images */

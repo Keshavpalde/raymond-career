@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import styles from "./Activities.module.css";
+import SliderArrow from "@/components/SliderArrow/SliderArrow";
 
 import {
   ActivitiesData,
@@ -53,7 +54,7 @@ export default function Activities({
    * Auto slide images
    * Cycles through the active tab's images every few seconds.
    * Restarts whenever the tab changes. Tabs themselves only
-   * change via manual click.
+   * change via manual click. Using an arrow restarts the timer.
    */
   useEffect(() => {
     if (images.length <= 2) {
@@ -68,7 +69,7 @@ export default function Activities({
     }, IMAGE_SLIDE_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [activeIndex, images.length]);
+  }, [activeIndex, imageIndex, images.length]);
 
   if (!data || slides.length === 0) {
     return null;
@@ -176,17 +177,15 @@ export default function Activities({
                     {slideData.title}
                   </span>
 
-                  {activeIndex === index && (
-                    <span className={styles.tabDescription}>
-                      {getRichText(slideData.description)
-                        .split("\n")
-                        .map((text, textIndex) => (
-                          <span key={textIndex}>
-                            {text}
-                          </span>
-                        ))}
-                    </span>
-                  )}
+                  <span className={styles.tabDescription}>
+                    {getRichText(slideData.description)
+                      .split("\n")
+                      .map((text, textIndex) => (
+                        <span key={textIndex}>
+                          {text}
+                        </span>
+                      ))}
+                  </span>
                 </button>
               );
             })}
@@ -244,6 +243,23 @@ export default function Activities({
             )}
           </div>
         </div>
+
+        {/* Navigation */}
+        {images.length > 1 && (
+          <div className={styles.navigation}>
+            <SliderArrow
+              direction="prev"
+              onClick={showPrevImage}
+              aria-label="Previous image"
+            />
+
+            <SliderArrow
+              direction="next"
+              onClick={showNextImage}
+              aria-label="Next image"
+            />
+          </div>
+        )}
 
       </div>
     </section>
