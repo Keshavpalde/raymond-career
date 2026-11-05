@@ -67,6 +67,7 @@ export interface RecognitionItemData {
   image: StrapiImage;
   title: string;
   description: RichTextBlock[];
+  images?: StrapiImage[] | null;
 }
 
 export interface RecognitionItemWrapperData {
