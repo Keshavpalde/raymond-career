@@ -12,7 +12,7 @@ interface LearnAndGrowProps {
   data: LearnAndGrowData;
 }
 
-const VISIBLE_IMAGES = 4;
+const IMAGE_SLIDE_INTERVAL = 4000;
 
 function getRichText(blocks?: RichTextBlock[] | null) {
   return (blocks || [])
@@ -32,7 +32,7 @@ export default function LearnAndGrow({
   data,
 }: LearnAndGrowProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [sliderStart, setSliderStart] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<
     number | null
   >(null);
@@ -65,8 +65,17 @@ export default function LearnAndGrow({
 
   function selectTab(index: number) {
     setActiveIndex(index);
-    setSliderStart(0);
+    setImageIndex(0);
     setLightboxIndex(null);
+  }
+
+  function showImage(offset: number) {
+    setImageIndex((index) =>
+      activeImages.length === 0
+        ? 0
+        : (index + offset + activeImages.length) %
+          activeImages.length
+    );
   }
 
   function showLightboxImage(offset: number) {
@@ -81,6 +90,22 @@ export default function LearnAndGrow({
       );
     });
   }
+
+  // Auto-advance the photo. Restarts after a tab change or a
+  // manual arrow/dot click, and pauses while the lightbox is open.
+  useEffect(() => {
+    if (activeImages.length <= 1 || lightboxIndex !== null) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setImageIndex(
+        (index) => (index + 1) % activeImages.length
+      );
+    }, IMAGE_SLIDE_INTERVAL);
+
+    return () => clearTimeout(timeout);
+  }, [activeIndex, imageIndex, activeImages.length, lightboxIndex]);
 
   useEffect(() => {
     if (lightboxIndex === null) {
@@ -107,27 +132,7 @@ export default function LearnAndGrow({
     return null;
   }
 
-  const canSlidePrev = sliderStart > 0;
-  const canSlideNext =
-    sliderStart + VISIBLE_IMAGES < activeImages.length;
-
-  function slidePrev() {
-    setSliderStart((start) => Math.max(0, start - 1));
-  }
-
-  function slideNext() {
-    setSliderStart((start) =>
-      Math.min(
-        Math.max(0, activeImages.length - VISIBLE_IMAGES),
-        start + 1
-      )
-    );
-  }
-
-  const visibleImages = activeImages.slice(
-    sliderStart,
-    sliderStart + VISIBLE_IMAGES
-  );
+  const currentImage = activeImages[imageIndex];
 
   return (
     <section className={styles.section}>
@@ -147,74 +152,94 @@ export default function LearnAndGrow({
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className={styles.tabs}>
-          {tabs.map((tab, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`${styles.tab} ${
-                activeIndex === index ? styles.activeTab : ""
-              }`}
-              onClick={() => selectTab(index)}
-            >
-              {tab.title}
-            </button>
-          ))}
-        </div>
+        <div className={styles.layout}>
 
-        {/* Images */}
-        <div className={styles.imagesGrid}>
-          {visibleImages.map((imageUrl, index) => (
-            <button
-              key={sliderStart + index}
-              type="button"
-              className={styles.imageWrapper}
-              onClick={() =>
-                setLightboxIndex(sliderStart + index)
-              }
-              aria-label={`View ${activeTab.title} image ${
-                sliderStart + index + 1
-              }`}
-            >
-              <img
-                src={imageUrl}
-                alt={activeTab.title || "Learn and Grow"}
-              />
-            </button>
-          ))}
-        </div>
+          {/* Tabs (description shows on the active one) */}
+          <div className={styles.tabs}>
+            {tabs.map((tab, index) => {
+              const isActive = activeIndex === index;
 
-        {activeImages.length > VISIBLE_IMAGES && (
-          <div className={styles.sliderControls}>
-            <SliderArrow
-              direction="prev"
-              onClick={slidePrev}
-              disabled={!canSlidePrev}
-              aria-label="Previous images"
-            />
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  className={`${styles.tab} ${
+                    isActive ? styles.activeTab : ""
+                  }`}
+                  onClick={() => selectTab(index)}
+                  aria-pressed={isActive}
+                >
+                  <span className={styles.tabTitle}>
+                    {tab.title}
+                  </span>
 
-            <SliderArrow
-              direction="next"
-              onClick={slideNext}
-              disabled={!canSlideNext}
-              aria-label="Next images"
-            />
-          </div>
-        )}
-
-        {/* Active Tab Content */}
-        <div className={styles.content}>
-          {/* Tab-specific Description */}
-          <div className={styles.description}>
-            {getRichText(activeTab.description)
-              .split("\n")
-              .filter(Boolean)
-              .map((text, index) => (
-                <p key={index}>{text}</p>
-              ))}
+                  {isActive && (
+                    <span className={styles.tabDescription}>
+                      {getRichText(tab.description)
+                        .split("\n")
+                        .filter(Boolean)
+                        .map((text, textIndex) => (
+                          <span key={textIndex}>{text}</span>
+                        ))}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
+          {/* Image slider */}
+          <div className={styles.media}>
+            {currentImage && (
+              <button
+                key={`${activeIndex}-${imageIndex}`}
+                type="button"
+                className={styles.imageWrapper}
+                onClick={() => setLightboxIndex(imageIndex)}
+                aria-label={`View ${activeTab.title} image ${
+                  imageIndex + 1
+                }`}
+              >
+                <img
+                  src={currentImage}
+                  alt={activeTab.title || "Learn and Grow"}
+                />
+              </button>
+            )}
+
+            {activeImages.length > 1 && (
+              <div className={styles.sliderControls}>
+                <div className={styles.dots}>
+                  {activeImages.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`${styles.dot} ${
+                        index === imageIndex ? styles.activeDot : ""
+                      }`}
+                      onClick={() => setImageIndex(index)}
+                      aria-label={`Show image ${index + 1}`}
+                      aria-current={index === imageIndex}
+                    />
+                  ))}
+                </div>
+
+                <div className={styles.arrows}>
+                  <SliderArrow
+                    direction="prev"
+                    onClick={() => showImage(-1)}
+                    aria-label="Previous image"
+                  />
+
+                  <SliderArrow
+                    direction="next"
+                    onClick={() => showImage(1)}
+                    aria-label="Next image"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
