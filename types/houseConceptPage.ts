@@ -104,6 +104,8 @@ export interface HouseData {
   name: string;
 
   description?: RichTextBlock[] | null;
+
+  image?: StrapiMedia | null;
 }
 
 /* =========================================

@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   padding: 70px 0 90px;
-  background: #ffffff;
+  background: #f5f5f5;
   overflow: hidden;
 }
 
@@ -52,142 +52,78 @@
   color: #666666;
 }
 
-/* =========================================
-   HOUSES AREA
 
-   Positions are authored against a fixed
-   900x640 coordinate space (see the .tsx
-   constants) and expressed here as percent,
-   so the SVG track and the house cards stay
-   perfectly aligned at any rendered width.
+/* =========================================
+   HOUSES GRID
 ========================================= */
 
-.housesWrapper {
-  position: relative;
-
-  width: 100%;
-  max-width: 900px;
-
-  aspect-ratio: 900 / 640;
-
-  margin: 0 auto;
-}
-
-.track {
+/* Holds the shared wave clipPath; takes no space. */
+.clipDefs {
   position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
-.track path {
-  fill: none;
-  stroke: #d6d6d6;
-  stroke-width: 1.5;
-  stroke-linecap: round;
+.housesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
 }
 
 /* =========================================
    HOUSE CARD
+
+   Each house sets --accent (logo ring,
+   underline, wave band) and --tint (the
+   soft panel behind the text).
 ========================================= */
 
 .houseCard {
-  position: absolute;
+  --accent: #999999;
+  --tint: #f4f4f4;
 
-  z-index: 2;
+  position: relative;
 
   display: flex;
-
   align-items: center;
 
-  gap: 14px;
+  min-height: 340px;
 
-  padding: 0 22px;
+  border-radius: 18px;
+  overflow: hidden;
 
-  background: #f4f4f4;
+  background: linear-gradient(
+    120deg,
+    var(--tint) 0%,
+    #ffffff 70%
+  );
 
-  border-radius: 999px;
-
-  box-shadow:
-    0 14px 24px rgba(0, 0, 0, 0.1);
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-/* =========================================
-   HOVER
-========================================= */
-
-.houseCard:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 18px 28px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Mavericks */
-
-.house1:hover {
-  background: #ffe1cc;
+.house1 {
+  --accent: #f26b1d;
+  --tint: #fdeadb;
 }
 
 /* Titans */
-
-.house2:hover {
-  background: #d9efd6;
+.house2 {
+  --accent: #3db54a;
+  --tint: #e3f5e4;
 }
 
 /* Pioneers */
-
-.house3:hover {
-  background: #d5eaf9;
+.house3 {
+  --accent: #1e88e5;
+  --tint: #e1effb;
 }
 
 /* Masters */
-
-.house4:hover {
-  background: #fff2c2;
-}
-
-/* =========================================
-   LOGO
-
-   The icon artwork (colored swirl, etc.)
-   comes from Strapi as-is — no color/shape
-   is generated here.
-========================================= */
-
-.logoWrapper {
-  width: 72px;
-  height: 72px;
-
-  flex: 0 0 72px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  overflow: hidden;
-
-  background: #ffffff;
-}
-
-.logo {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
+.house4 {
+  --accent: #f6b800;
+  --tint: #fdf4d6;
 }
 
 /* =========================================
@@ -195,54 +131,147 @@
 ========================================= */
 
 .houseContent {
-  flex: 1;
+  position: relative;
+  z-index: 2;
 
-  min-width: 0;
+  width: 100%;
+
+  padding: 36px 32px;
+}
+
+.hasImage .houseContent {
+  width: 46%;
+}
+
+.logo {
+  display: block;
+
+  width: 84px;
+  height: 84px;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
 }
 
 .houseContent h3 {
-  margin: 0 0 3px;
+  margin: 0;
 
-  font-size: 18px;
-
-  line-height: 1.2;
-
+  font-size: 32px;
+  line-height: 1.15;
   font-weight: 700;
 
-  color: #2b2b2b;
+  color: #1c2340;
+}
+
+.underline {
+  display: block;
+
+  width: 44px;
+  height: 3px;
+
+  margin: 14px 0 18px;
+
+  border-radius: 2px;
+
+  background: var(--accent);
 }
 
 .houseContent p {
   margin: 0;
 
-  font-size: 13px;
+  font-size: 16px;
+  line-height: 1.55;
 
-  line-height: 1.35;
+  color: #555555;
+}
 
-  color: #666666;
+/* =========================================
+   TEAM PHOTO + WAVE
+========================================= */
+
+.media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 60%;
+}
+
+/* Coloured band: same wave shape, nudged
+   left so a strip shows past the photo. */
+.wave {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -18px;
+
+  clip-path: url(#meet-the-houses-wave);
+
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 55%, #ffffff) 0%,
+    var(--accent) 100%
+  );
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  clip-path: url(#meet-the-houses-wave);
 }
 
 /* =========================================
    TABLET
 ========================================= */
 
-@media (max-width: 900px) {
-  .housesWrapper {
-    max-width: 640px;
+@media (max-width: 1100px) {
+  .houseCard {
+    min-height: 300px;
+  }
+
+  .houseContent {
+    padding: 28px 24px;
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 14px;
+  }
+
+  .houseContent h3 {
+    font-size: 26px;
   }
 
   .houseContent p {
-    font-size: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .housesGrid {
+    grid-template-columns: 1fr;
   }
 }
 
 /* =========================================
    MOBILE
 
-   The flowing zigzag doesn't hold up at
-   narrow widths, so it collapses to a
-   single left-aligned stack with a plain
-   vertical connector.
+   Photo sits on top as a plain block and
+   the text runs full width underneath.
 ========================================= */
 
 @media (max-width: 640px) {
@@ -250,87 +279,52 @@
     padding: 55px 0 65px;
   }
 
-  .headingWrapper {
-    margin-bottom: 35px;
-  }
-
   .heading {
     font-size: 23px;
   }
 
-  .description p {
-    font-size: 12px;
-  }
-
-  .housesWrapper {
-    aspect-ratio: auto;
-    max-width: 480px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-
-    padding-left: 34px;
-  }
-
-  .track {
-    display: none;
-  }
-
-  .housesWrapper::before {
-    content: "";
-
-    position: absolute;
-
-    top: 30px;
-    bottom: 30px;
-    left: 26px;
-
-    width: 1px;
-
-    background: #d6d6d6;
+  .housesGrid {
+    gap: 20px;
   }
 
   .houseCard {
+    flex-direction: column;
+    align-items: stretch;
+
+    min-height: 0;
+  }
+
+  .media {
     position: relative;
+    order: -1;
 
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-
-    padding: 14px 20px 14px 10px;
+    width: 100%;
+    height: 220px;
   }
 
-  .houseCard::before {
-    content: "";
-
-    position: absolute;
-
-    top: 50%;
-    left: -34px;
-
-    width: 20px;
-    height: 1px;
-
-    background: #d6d6d6;
-
-    transform: translateY(-50%);
+  .wave {
+    display: none;
   }
 
-  .logoWrapper {
-    width: 52px;
-    height: 52px;
+  .photo {
+    clip-path: none;
+  }
 
-    flex-basis: 52px;
+  .hasImage .houseContent {
+    width: 100%;
+  }
+
+  .houseContent {
+    padding: 24px 22px 26px;
+  }
+
+  .logo {
+    width: 56px;
+    height: 56px;
   }
 
   .houseContent h3 {
-    font-size: 16px;
-  }
-
-  .houseContent p {
-    font-size: 12px;
+    font-size: 24px;
   }
 }
 
