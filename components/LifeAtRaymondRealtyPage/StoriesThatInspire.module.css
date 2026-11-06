@@ -59,7 +59,11 @@
   overflow-x: auto;
   overflow-y: hidden;
 
-  padding: 0 20px;
+  /* Same centred width as the arrows, so cards stop short of
+     the screen edges. */
+  width: min(1248px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 0;
 
   scroll-behavior: smooth;
 
@@ -248,21 +252,8 @@
   justify-content: flex-end;
   gap: 12px;
 
-  width: min(1248px, calc(100% - 40px));
+  width: min(1248px, calc(100% - 80px));
   margin: 35px auto 0;
-}
-
-/* =========================================
-   Desktop
-========================================= */
-
-@media (min-width: 1200px) {
-  .slider {
-    padding-left: max(
-      20px,
-      calc((100vw - 1248px) / 2)
-    );
-  }
 }
 
 /* =========================================
@@ -325,8 +316,7 @@
   .slider {
     gap: 12px;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    width: calc(100% - 40px);
   }
 
   .card {
@@ -404,8 +394,7 @@
   }
 
   .slider {
-    padding-left: var(--mobile-gutter);
-    padding-right: var(--mobile-gutter);
+    width: calc(100% - 2 * var(--mobile-gutter));
   }
 
   .sliderControls {
