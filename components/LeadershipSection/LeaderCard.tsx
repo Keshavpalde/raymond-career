@@ -22,8 +22,8 @@ export default function LeaderCard({
   mobile = false,
   onToggle,
 }: Props) {
-  const activeImage =
-    ((active || mobile) && leader.expandedImage) || leader.image;
+  // Always the main photo, even when the card is expanded.
+  const activeImage = leader.image;
 
   const imageUrl = activeImage?.url?.startsWith("http")
     ? activeImage.url

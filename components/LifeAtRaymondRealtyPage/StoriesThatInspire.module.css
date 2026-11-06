@@ -402,3 +402,19 @@
     margin-top: 16px;
   }
 }
+
+/* ==========================================================
+   FOUR CARDS PER VIEW (desktop)
+   Each card takes a quarter of the slider width (minus the
+   three gaps), so exactly four photos show at a time.
+========================================================== */
+
+@media (min-width: 992px) {
+  .card {
+    flex-basis: calc((100% - 3 * 20px) / 4);
+  }
+
+  .card:hover {
+    flex-basis: calc((100% - 3 * 20px) / 4 + 80px);
+  }
+}

@@ -77,8 +77,8 @@ export default function LeadershipSection({
     });
   };
 
-  // On mobile every card shows its expanded image straight
-  // away; the + button only reveals the quote, without widening.
+  // On mobile the + button only reveals the quote, without
+  // widening the card.
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
