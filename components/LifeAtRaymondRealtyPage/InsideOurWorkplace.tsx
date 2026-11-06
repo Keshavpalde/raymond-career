@@ -46,12 +46,34 @@ export default function InsideOurWorkplace({
 
   const items = data?.workplaceItems || [];
 
-  const goTo = (index: number) => {
-    if (items.length === 0) {
-      return;
+  // Last index that still fills the track (3 cards on desktop),
+  // so stepping never lands on a position that can't scroll.
+  const getMaxIndex = () => {
+    const track = trackRef.current;
+    const card = track?.children[0] as HTMLElement | undefined;
+
+    if (!track || !card || card.offsetWidth === 0) {
+      return Math.max(items.length - 1, 0);
     }
 
-    setActiveIndex((index + items.length) % items.length);
+    const visible = Math.max(
+      Math.round(track.clientWidth / card.offsetWidth),
+      1
+    );
+
+    return Math.max(items.length - visible, 0);
+  };
+
+  const goTo = (index: number) => {
+    const maxIndex = getMaxIndex();
+
+    if (index > maxIndex) {
+      setActiveIndex(0);
+    } else if (index < 0) {
+      setActiveIndex(maxIndex);
+    } else {
+      setActiveIndex(index);
+    }
   };
 
   useEffect(() => {
@@ -91,7 +113,9 @@ export default function InsideOurWorkplace({
     }
 
     const id = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % items.length);
+      setActiveIndex((current) =>
+        current + 1 > getMaxIndex() ? 0 : current + 1
+      );
     }, AUTOSLIDE_INTERVAL);
 
     return () => clearInterval(id);
