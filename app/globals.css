@@ -14,6 +14,29 @@
   /* Section heading size, shared by every body section */
   --section-heading-size: 30px;
   --mobile-section-heading-size: 26px;
+
+  /* Page banner (hero) heading placement, shared by every inner
+     page banner so the heading sits in the same spot site-wide.
+     Taken from the Diversity & Inclusion banner. */
+  --hero-max-width: 1440px;
+  --hero-inline: 60px;
+  --hero-bottom: 60px;
+  --hero-heading-size: 40px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --hero-inline: 40px;
+    --hero-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --hero-inline: var(--mobile-gutter);
+    --hero-bottom: 40px;
+    --hero-heading-size: clamp(30px, 8vw, 36px);
+  }
 }
 
 @theme inline {

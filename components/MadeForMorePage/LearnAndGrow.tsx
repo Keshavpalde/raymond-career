@@ -92,7 +92,7 @@ export default function LearnAndGrow({
   }
 
   // Auto-advance the photo. Restarts after a tab change or a
-  // manual arrow/dot click, and pauses while the lightbox is open.
+  // manual arrow click, and pauses while the lightbox is open.
   useEffect(() => {
     if (activeImages.length <= 1 || lightboxIndex !== null) {
       return;
@@ -154,7 +154,7 @@ export default function LearnAndGrow({
 
         <div className={styles.layout}>
 
-          {/* Tabs (description shows on the active one) */}
+          {/* Tabs */}
           <div className={styles.tabs}>
             {tabs.map((tab, index) => {
               const isActive = activeIndex === index;
@@ -173,16 +173,14 @@ export default function LearnAndGrow({
                     {tab.title}
                   </span>
 
-                  {isActive && (
-                    <span className={styles.tabDescription}>
-                      {getRichText(tab.description)
-                        .split("\n")
-                        .filter(Boolean)
-                        .map((text, textIndex) => (
-                          <span key={textIndex}>{text}</span>
-                        ))}
-                    </span>
-                  )}
+                  <span className={styles.tabDescription}>
+                    {getRichText(tab.description)
+                      .split("\n")
+                      .filter(Boolean)
+                      .map((text, textIndex) => (
+                        <span key={textIndex}>{text}</span>
+                      ))}
+                  </span>
                 </button>
               );
             })}
@@ -209,34 +207,17 @@ export default function LearnAndGrow({
 
             {activeImages.length > 1 && (
               <div className={styles.sliderControls}>
-                <div className={styles.dots}>
-                  {activeImages.map((_, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      className={`${styles.dot} ${
-                        index === imageIndex ? styles.activeDot : ""
-                      }`}
-                      onClick={() => setImageIndex(index)}
-                      aria-label={`Show image ${index + 1}`}
-                      aria-current={index === imageIndex}
-                    />
-                  ))}
-                </div>
+                <SliderArrow
+                  direction="prev"
+                  onClick={() => showImage(-1)}
+                  aria-label="Previous image"
+                />
 
-                <div className={styles.arrows}>
-                  <SliderArrow
-                    direction="prev"
-                    onClick={() => showImage(-1)}
-                    aria-label="Previous image"
-                  />
-
-                  <SliderArrow
-                    direction="next"
-                    onClick={() => showImage(1)}
-                    aria-label="Next image"
-                  />
-                </div>
+                <SliderArrow
+                  direction="next"
+                  onClick={() => showImage(1)}
+                  aria-label="Next image"
+                />
               </div>
             )}
           </div>

@@ -102,11 +102,15 @@
 }
 
 .tabDescription {
-  color: rgba(255, 255, 255, 0.78);
+  color: #666666;
 
   font-size: 18px;
   line-height: 1.6;
   font-weight: 300;
+}
+
+.activeTab .tabDescription {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .tabDescription span {
@@ -154,52 +158,15 @@
   }
 }
 
-/* Dots centred under the photo, arrows on the right */
+/* Arrows on the right under the photo */
 
 .sliderControls {
-  position: relative;
-
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  min-height: 48px;
-  margin-top: 14px;
-}
-
-.dots {
-  display: flex;
-  gap: 8px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-
-  background: #555555;
-
-  cursor: pointer;
-
-  transition: background-color 0.25s ease;
-}
-
-.activeDot {
-  background: #e52b45;
-}
-
-.arrows {
-  position: absolute;
-  right: 0;
-  top: 50%;
-
-  display: flex;
+  justify-content: flex-end;
   gap: 12px;
 
-  transform: translateY(-50%);
+  margin-top: 14px;
 }
 
 /* Lightbox */
@@ -307,17 +274,6 @@
 
   .tabDescription {
     font-size: 15px;
-  }
-
-  /* Not enough width for dots and arrows on one line. */
-  .sliderControls {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .arrows {
-    position: static;
-    transform: none;
   }
 
   .lightboxOverlay {

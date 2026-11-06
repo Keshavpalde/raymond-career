@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import styles from "./AwardsRecognition.module.css";
 
 import { AwardItem } from "@/types/awardsRecognition";
@@ -38,11 +36,10 @@ export default function AwardCard({
     <div className={styles.card}>
       {imageUrl && (
         <div className={styles.cardImage}>
-          <Image
+          {/* Plain img so the photo keeps its own height. */}
+          <img
             src={imageUrl}
             alt={award.awardTitle || "Award"}
-            fill
-            unoptimized
             className={styles.image}
           />
         </div>

@@ -161,8 +161,6 @@
 
     width:100%;
 
-    aspect-ratio:4/3;
-
     border-radius:16px;
 
     overflow:hidden;
@@ -174,19 +172,16 @@
 
 .image{
 
-    object-fit:cover;
+    display:block;
 
-    transition:.5s ease;
+    width:100%;
+
+    height:auto;
 }
 
 .card:hover .cardImage{
 
     transform:translateY(-4px);
-}
-
-.card:hover .image{
-
-    transform:scale(1.06);
 }
 
 /* ==========================================================

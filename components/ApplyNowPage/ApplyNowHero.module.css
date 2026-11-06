@@ -129,3 +129,25 @@
     text-align: left;
   }
 }
+
+/* ==========================================================
+   SHARED BANNER HEADING (see --hero-* in app/globals.css)
+   Same heading size and placement as every other page banner.
+   Kept last so it wins over the rules above.
+========================================================== */
+
+.content {
+  width: calc(min(100%, var(--hero-max-width)) - 2 * var(--hero-inline));
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 0 var(--hero-bottom);
+  justify-content: flex-start;
+}
+
+.content h1 {
+  font-size: var(--hero-heading-size);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  text-align: left;
+}
