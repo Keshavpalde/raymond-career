@@ -2,7 +2,8 @@ import DiversityInclusionHero from "@/components/DiversityInclusionPage/Diversit
 import OurCommitmentToInclusion from "@/components/DiversityInclusionPage/OurCommitmentToInclusion";
 import DiversityInAction from "@/components/DiversityInclusionPage/DiversityInAction";
 import WomenBrigade from "@/components/DiversityInclusionPage/WomenBrigade";
-import DiversityStatistics from "@/components/DiversityInclusionPage/DiversityStatistics";
+// Diversity Statistics is hidden for now; restore this import with the section below.
+// import DiversityStatistics from "@/components/DiversityInclusionPage/DiversityStatistics";
 import DhwaniSection from "@/components/DiversityInclusionPage/DhwaniSection";
 import OurWorkplaceCulture from "@/components/DiversityInclusionPage/OurWorkplaceCulture";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -34,10 +35,11 @@ export default async function DiversityInclusionPage() {
         data={data.womenBrigade}
       />
 
-      {/* Section 5: Diversity Statistics */}
+      {/* Section 5: Diversity Statistics (hidden for now)
       <DiversityStatistics
         data={data.diversityStatistics}
       />
+      */}
 
       {/* Section 6: Dhwani */}
       {data.dhwaniSection && (

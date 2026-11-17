@@ -134,6 +134,38 @@ export default function LearnAndGrow({
 
   const currentImage = activeImages[imageIndex];
 
+  const sliderControls =
+    activeImages.length > 1 ? (
+      <div className={styles.sliderControls}>
+        <SliderArrow
+          direction="prev"
+          onClick={() => showImage(-1)}
+          aria-label="Previous image"
+        />
+
+        <SliderArrow
+          direction="next"
+          onClick={() => showImage(1)}
+          aria-label="Next image"
+        />
+      </div>
+    ) : null;
+
+  const imageButton = currentImage ? (
+    <button
+      key={`${activeIndex}-${imageIndex}`}
+      type="button"
+      className={styles.imageWrapper}
+      onClick={() => setLightboxIndex(imageIndex)}
+      aria-label={`View ${activeTab.title} image ${imageIndex + 1}`}
+    >
+      <img
+        src={currentImage}
+        alt={activeTab.title || "Learn and Grow"}
+      />
+    </button>
+  ) : null;
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -160,6 +192,7 @@ export default function LearnAndGrow({
               const isActive = activeIndex === index;
 
               return (
+                <div key={index} className={styles.tabItem}>
                 <button
                   key={index}
                   type="button"
@@ -182,44 +215,24 @@ export default function LearnAndGrow({
                       ))}
                   </span>
                 </button>
+
+                {/* Mobile/tablet: this tab's photos sit right
+                    under it, arrows above the photo. */}
+                {isActive && (imageButton || sliderControls) && (
+                  <div className={styles.inlineMedia}>
+                    {sliderControls}
+                    {imageButton}
+                  </div>
+                )}
+                </div>
               );
             })}
           </div>
 
-          {/* Image slider */}
+          {/* Desktop: photo slider beside the tabs */}
           <div className={styles.media}>
-            {currentImage && (
-              <button
-                key={`${activeIndex}-${imageIndex}`}
-                type="button"
-                className={styles.imageWrapper}
-                onClick={() => setLightboxIndex(imageIndex)}
-                aria-label={`View ${activeTab.title} image ${
-                  imageIndex + 1
-                }`}
-              >
-                <img
-                  src={currentImage}
-                  alt={activeTab.title || "Learn and Grow"}
-                />
-              </button>
-            )}
-
-            {activeImages.length > 1 && (
-              <div className={styles.sliderControls}>
-                <SliderArrow
-                  direction="prev"
-                  onClick={() => showImage(-1)}
-                  aria-label="Previous image"
-                />
-
-                <SliderArrow
-                  direction="next"
-                  onClick={() => showImage(1)}
-                  aria-label="Next image"
-                />
-              </div>
-            )}
+            {imageButton}
+            {sliderControls}
           </div>
         </div>
       </div>

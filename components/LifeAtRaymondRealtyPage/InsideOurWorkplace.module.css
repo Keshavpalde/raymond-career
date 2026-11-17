@@ -238,3 +238,46 @@
     font-size: 15px;
   }
 }
+
+/* ==========================================================
+   ARROWS ABOVE THE PHOTOS ON MOBILE
+   Same as Learn & Grow and Activities: once the layout
+   stacks, the slider arrows sit above the photos so users
+   reach them before scrolling past the image.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 767px) {
+  /* Header, arrows and carousel in one column so the arrows
+     can sit between the header and the photos. */
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .container {
+    display: contents;
+  }
+
+  .header,
+  .carouselWrapper {
+    margin-left: var(--mobile-gutter);
+    margin-right: var(--mobile-gutter);
+    width: auto;
+  }
+
+  .header {
+    order: 1;
+    margin-bottom: 8px;
+  }
+
+  .navRow {
+    order: 2;
+    margin-top: 0;
+  }
+
+  .carouselWrapper {
+    order: 3;
+  }
+}

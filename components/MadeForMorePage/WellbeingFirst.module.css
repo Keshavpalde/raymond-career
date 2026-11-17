@@ -232,3 +232,38 @@
     text-align: left;
   }
 }
+
+/* ==========================================================
+   ARROWS ABOVE THE PHOTOS ON MOBILE
+   Same as Learn & Grow and Activities: once the layout
+   stacks, the slider arrows sit above the photos so users
+   reach them before scrolling past the image.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 767px) {
+  /* Lift the card, images and arrows into one column so the
+     arrows can sit between the card and the images. */
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .slider {
+    display: contents;
+  }
+
+  .contentCard {
+    order: 1;
+  }
+
+  .navigation {
+    order: 2;
+    margin: 0;
+  }
+
+  .images {
+    order: 3;
+  }
+}

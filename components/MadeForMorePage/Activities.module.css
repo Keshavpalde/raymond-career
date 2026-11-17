@@ -353,6 +353,37 @@ font-family: 'Cinzel';
   }
 }
 /* ==========================================================
+   PHOTOS UNDER THEIR TAB (stacked layout, <=767px)
+   On desktop the images sit beside the tabs with the arrows
+   below. Once the layout stacks, the active tab's images show
+   directly under that tab instead of after the whole list,
+   with the arrows above the images so they are easy to reach.
+========================================================== */
+
+.desktopMedia {
+  min-width: 0;
+}
+
+.inlineMedia {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .desktopMedia {
+    display: none;
+  }
+
+  .inlineMedia {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .inlineMedia .navigation {
+    margin: 0 0 10px;
+  }
+}
+
+/* ==========================================================
    SHARED MOBILE LAYOUT (see --mobile-* in app/globals.css)
    Same padding, left alignment and heading size as the home
    page sections. Kept last so it wins over earlier rules.

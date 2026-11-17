@@ -10,6 +10,9 @@
   --mobile-gutter: 20px;
   /* Space between a section's heading/intro and its content */
   --mobile-heading-gap: 20px;
+  /* Height of the solid black mobile header bar (<=768px).
+     Page banners start below it instead of behind it. */
+  --mobile-header-height: 68px;
 
   /* Section heading size, shared by every body section */
   --section-heading-size: 30px;

@@ -133,6 +133,65 @@ export default function Activities({
       ? images[(imageIndex + 1) % images.length]
       : undefined;
 
+  const navigation =
+    images.length > 1 ? (
+      <div className={styles.navigation}>
+        <SliderArrow
+          direction="prev"
+          onClick={showPrevImage}
+          aria-label="Previous image"
+        />
+
+        <SliderArrow
+          direction="next"
+          onClick={showNextImage}
+          aria-label="Next image"
+        />
+      </div>
+    ) : null;
+
+  const slideClass = `${styles.slideTrack} ${
+    direction === "prev" ? styles.slideInPrev : styles.slideInNext
+  }`;
+
+  const imagesBlock = (
+    <div
+      className={styles.imagesWrapper}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Main Image */}
+      {mainImage && (
+        <div className={styles.mainImage}>
+          <div
+            key={`${activeIndex}-${imageIndex}-main`}
+            className={slideClass}
+          >
+            <img
+              src={getImageUrl(mainImage.url)}
+              alt={mainImage.alternativeText || activeSlide.title}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Secondary Image */}
+      {secondaryImage && (
+        <div className={styles.secondaryImage}>
+          <div
+            key={`${activeIndex}-${imageIndex}-secondary`}
+            className={slideClass}
+          >
+            <img
+              src={getImageUrl(secondaryImage.url)}
+              alt={secondaryImage.alternativeText || activeSlide.title}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -163,8 +222,8 @@ export default function Activities({
               }
 
               return (
+                <div key={index} className={styles.tabItem}>
                 <button
-                  key={index}
                   type="button"
                   className={`${styles.tab} ${
                     activeIndex === index
@@ -187,79 +246,26 @@ export default function Activities({
                       ))}
                   </span>
                 </button>
+
+                {/* Mobile: this tab's photos sit right under it,
+                    arrows above the photos. */}
+                {activeIndex === index && (
+                  <div className={styles.inlineMedia}>
+                    {navigation}
+                    {imagesBlock}
+                  </div>
+                )}
+                </div>
               );
             })}
           </div>
 
-          {/* Images */}
-          <div
-            className={styles.imagesWrapper}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-
-            {/* Main Image */}
-            {mainImage && (
-              <div className={styles.mainImage}>
-                <div
-                  key={`${activeIndex}-${imageIndex}-main`}
-                  className={`${styles.slideTrack} ${
-                    direction === "prev"
-                      ? styles.slideInPrev
-                      : styles.slideInNext
-                  }`}
-                >
-                  <img
-                    src={getImageUrl(mainImage.url)}
-                    alt={
-                      mainImage.alternativeText ||
-                      activeSlide.title
-                    }
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Secondary Image */}
-            {secondaryImage && (
-              <div className={styles.secondaryImage}>
-                <div
-                  key={`${activeIndex}-${imageIndex}-secondary`}
-                  className={`${styles.slideTrack} ${
-                    direction === "prev"
-                      ? styles.slideInPrev
-                      : styles.slideInNext
-                  }`}
-                >
-                  <img
-                    src={getImageUrl(secondaryImage.url)}
-                    alt={
-                      secondaryImage.alternativeText ||
-                      activeSlide.title
-                    }
-                  />
-                </div>
-              </div>
-            )}
-          </div>
+          {/* Desktop: images beside the tabs */}
+          <div className={styles.desktopMedia}>{imagesBlock}</div>
         </div>
 
-        {/* Navigation */}
-        {images.length > 1 && (
-          <div className={styles.navigation}>
-            <SliderArrow
-              direction="prev"
-              onClick={showPrevImage}
-              aria-label="Previous image"
-            />
-
-            <SliderArrow
-              direction="next"
-              onClick={showNextImage}
-              aria-label="Next image"
-            />
-          </div>
-        )}
+        {/* Desktop: navigation under the images */}
+        <div className={styles.desktopMedia}>{navigation}</div>
 
       </div>
     </section>

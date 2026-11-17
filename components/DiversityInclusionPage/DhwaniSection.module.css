@@ -145,3 +145,20 @@
     min-height: 200px;
   }
 }
+
+/* ==========================================================
+   GAP ABOVE DHWANI
+   Women Brigade and Dhwani both have full-bleed backgrounds.
+   With Diversity Statistics hidden they would touch, so keep
+   the same white gap the page uses between other sections.
+========================================================== */
+
+.dhwaniSection {
+  margin-top: 60px;
+}
+
+@media (max-width: 768px) {
+  .dhwaniSection {
+    margin-top: var(--mobile-section-y);
+  }
+}

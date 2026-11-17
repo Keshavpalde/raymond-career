@@ -300,5 +300,6 @@
 @media (max-width: 768px) {
     .wrapper {
         padding: 0 var(--mobile-gutter);
+        height: var(--mobile-header-height);
     }
 }

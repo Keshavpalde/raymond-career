@@ -285,6 +285,33 @@
     right: 12px;
   }
 }
+
+/* ==========================================================
+   PHOTOS UNDER THEIR TAB (stacked layout, <=1100px)
+   On desktop the photo slider sits beside the tabs. Once the
+   layout stacks, the active tab's photos show directly under
+   that tab instead of after the whole list, with the arrows
+   above the photo so they are easy to reach.
+========================================================== */
+
+.inlineMedia {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .media {
+    display: none;
+  }
+
+  .inlineMedia {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .inlineMedia .sliderControls {
+    margin: 0 0 12px;
+  }
+}
 /* ==========================================================
    SHARED MOBILE LAYOUT (see --mobile-* in app/globals.css)
    Same padding, left alignment and heading size as the home

@@ -154,6 +154,7 @@
 
 /* ==========================================================
    MOBILE BANNER: show the full desktop video/image frame.
+   It starts below the fixed mobile header, not behind it.
    A 16:9 box matches the landscape media, so nothing is
    cropped. The box still grows if the text needs more room.
    Kept last so it wins over the breakpoint rules above.
@@ -164,5 +165,6 @@
     height: auto;
     min-height: 0;
     aspect-ratio: 16 / 9;
+    margin-top: var(--mobile-header-height);
   }
 }
