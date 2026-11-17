@@ -407,6 +407,8 @@
    FOUR CARDS PER VIEW (desktop)
    Each card takes a quarter of the slider width (minus the
    three gaps), so exactly four photos show at a time.
+   Hovering a card no longer widens it, so the last card
+   stays fully visible.
 ========================================================== */
 
 @media (min-width: 992px) {
@@ -414,7 +416,10 @@
     flex-basis: calc((100% - 3 * 20px) / 4);
   }
 
+  /* No widening on hover: it pushed the last card past the
+     slider edge and cut its story text. The story wraps to
+     the card width and scrolls inside it if it is long. */
   .card:hover {
-    flex-basis: calc((100% - 3 * 20px) / 4 + 80px);
+    flex-basis: calc((100% - 3 * 20px) / 4);
   }
 }

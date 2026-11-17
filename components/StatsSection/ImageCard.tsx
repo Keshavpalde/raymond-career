@@ -44,6 +44,7 @@ export default function ImageCard({ card }: ImageCardProps) {
         }
         className={styles.image}
       />
+      <span className={styles.imageCaption}>Artistic Impression</span>
 
     </div>
   );

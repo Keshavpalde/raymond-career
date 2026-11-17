@@ -174,3 +174,18 @@
   letter-spacing: -0.5px;
   text-align: left;
 }
+
+/* ==========================================================
+   MOBILE BANNER: show the full desktop video/image frame.
+   A 16:9 box matches the landscape media, so nothing is
+   cropped. The box still grows if the text needs more room.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}

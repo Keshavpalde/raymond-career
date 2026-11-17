@@ -181,7 +181,7 @@ max-width: 100%;
 
     color:#fff;
 
-    font-size:22px;
+    font-size:21px;
 
     font-weight:600;
 
@@ -193,7 +193,7 @@ max-width: 100%;
 
     color:rgba(255,255,255,.9);
 
-    font-size:16px;
+    font-size:15px;
 
     line-height:1.6;
 
@@ -241,6 +241,7 @@ max-width: 100%;
     z-index:5;
 
     transition:background .3s ease, transform .35s ease;
+    display:none;
 
 }
 

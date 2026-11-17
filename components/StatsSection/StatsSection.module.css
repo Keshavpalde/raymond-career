@@ -229,6 +229,18 @@
   display: block;
 }
 
+.imageCaption {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
 @keyframes fadeUp {
   to {
     opacity: 1;
