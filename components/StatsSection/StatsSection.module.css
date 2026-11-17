@@ -476,3 +476,38 @@
     font-size: var(--mobile-section-heading-size);
   }
 }
+
+/* ==========================================================
+   MOBILE: STATS IN A 2 x 2 GRID
+   The four stats cards sit two per row (two rows) instead of
+   one long column. Sizes are scaled down so the longest
+   number ("50,100+") fits in a half-width card.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .statsWrapper .statsCard {
+    min-height: 130px;
+    border-radius: 20px;
+  }
+
+  .cardInner {
+    padding: 18px 16px;
+    gap: 10px;
+    align-content: space-between;
+  }
+
+  .number {
+    font-size: clamp(26px, 8vw, 34px);
+    white-space: nowrap;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}

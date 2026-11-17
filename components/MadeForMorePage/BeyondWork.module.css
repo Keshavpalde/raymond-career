@@ -279,12 +279,28 @@
 ========================================================== */
 
 @media (max-width: 767px) {
-  .navigation {
+  /* The arrows live outside .slider, so lift the text column,
+     arrows and photos into one column to reorder them. */
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .slider {
+    display: contents;
+  }
+
+  .leftColumn {
     order: 1;
+  }
+
+  .navigation {
+    order: 2;
     margin: 0;
   }
 
   .imageGrid {
-    order: 2;
+    order: 3;
   }
 }

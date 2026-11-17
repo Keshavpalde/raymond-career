@@ -41,15 +41,27 @@ export default function HouseMoments({
   const moments = data?.moments || [];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Mobile (<=768px) shows one image per view; matches the
+  // breakpoint in HouseMoments.module.css.
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   const totalSlides = moments.length;
 
   /*
-   * Desktop shows 3 images at a time.
-   * Therefore the maximum starting index is
-   * total images - 3.
+   * Desktop shows 3 images at a time, mobile shows 1.
+   * The maximum starting index is total images minus
+   * the number visible.
    */
-  const visibleCount = 3;
+  const visibleCount = isMobile ? 1 : 3;
 
   const maxIndex = Math.max(
     0,
@@ -139,9 +151,13 @@ export default function HouseMoments({
             <div className={styles.sliderViewport}>
               <div
                 className={styles.sliderTrack}
-                style={{
-                  transform: `translateX(calc(-${activeIndex} * (33.333333% + 6px)))`,
-                }}
+                // The step per slide is set in CSS so it
+                // can differ between desktop and mobile.
+                style={
+                  {
+                    "--slide-index": activeIndex,
+                  } as React.CSSProperties
+                }
               >
                 {moments.map((moment, index) => {
                   const imageUrl = getMediaUrl(

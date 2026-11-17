@@ -724,3 +724,28 @@ font-size:14px;
     width: 100%;
   }
 }
+
+/* ==========================================================
+   MOBILE LEADER PHOTO
+   The leader portraits have empty background above the head.
+   Anchoring the photo to the bottom (instead of the top)
+   crops that space away so the leader fills the card.
+   The overlay is only a short fade behind the name, not a
+   dark wash over the whole photo.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 768px) {
+  .mobileCard .image {
+    object-position: center bottom;
+  }
+
+  .mobileCard .overlay,
+  .mobileCard:hover .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+}

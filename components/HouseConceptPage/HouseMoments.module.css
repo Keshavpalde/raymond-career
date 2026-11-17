@@ -129,6 +129,12 @@
 
   width: 100%;
 
+  /* One step = one slide (a third of the width minus the
+     shared gaps) plus one 12px gap. */
+  transform: translateX(
+    calc(var(--slide-index, 0) * -1 * ((100% - 24px) / 3 + 12px))
+  );
+
   transition:
     transform 0.55s ease;
 }
@@ -391,5 +397,52 @@
   .description {
     max-width: none;
     margin: 0;
+  }
+}
+
+/* ==========================================================
+   MOBILE: FULL-WIDTH BACKGROUND
+   The grey panel becomes the whole section background
+   (edge to edge) instead of a box narrower than the screen,
+   with the standard mobile section padding and gutter. One
+   photo per view, arrows sitting on the photo's edges.
+   Kept last so it wins over the breakpoint rules above.
+========================================================== */
+
+@media (max-width: 768px) {
+  .section {
+    background: #eeeeee;
+    padding: calc(var(--mobile-section-y) + 10px) 0;
+  }
+
+  .backgroundPanel {
+    display: none;
+  }
+
+  .sliderArea {
+    padding: 0;
+  }
+
+  .sliderTrack {
+    gap: 0;
+    transform: translateX(calc(var(--slide-index, 0) * -100%));
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .previous {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .pagination {
+    margin-top: 18px;
+    flex-wrap: wrap;
   }
 }
